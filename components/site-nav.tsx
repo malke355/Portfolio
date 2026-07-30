@@ -2,6 +2,7 @@
 
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { ThemeToggle } from '@/components/theme-toggle'
 import { navLinks as links, site } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
@@ -92,6 +93,7 @@ export function SiteNav() {
         </ul>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <a
             href="#contact"
             className="bg-primary text-primary-foreground focus-visible:ring-ring hidden rounded-xl px-4 py-2 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-10px_var(--primary)] focus-visible:ring-2 focus-visible:outline-none sm:inline-flex"
