@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { TerminalProvider } from '@/components/terminal/terminal-provider'
+import { allSkills } from '@/content/skills'
 import { absoluteUrl, site, siteUrl, socials } from '@/lib/site'
 import { bootScript } from '@/lib/theme'
 import './globals.css'
@@ -81,16 +82,9 @@ const personSchema = {
     addressCountry: 'ET',
   },
   sameAs: [socials.github.href, socials.linkedin.href],
-  knowsAbout: [
-    'React',
-    'Next.js',
-    'React Native',
-    'TypeScript',
-    'Node.js',
-    'Express',
-    'MongoDB',
-    'Docker',
-  ],
+  // Derived from the skills content so the structured data cannot claim a
+  // technology that is not listed on the page.
+  knowsAbout: allSkills,
 }
 
 export default function RootLayout({

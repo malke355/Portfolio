@@ -1,7 +1,6 @@
 'use client'
 
 import { ArrowUpRight } from 'lucide-react'
-import { GithubPanel } from '@/components/terminal/github-panel'
 import type { Block, Tone } from '@/lib/terminal/types'
 import { cn } from '@/lib/utils'
 
@@ -106,9 +105,6 @@ export function BlockView({ block }: { block: Block }) {
           {block.text}
         </p>
       )
-
-    case 'github':
-      return <GithubPanel />
 
     default: {
       // Exhaustiveness guard: adding a Block kind without a renderer becomes

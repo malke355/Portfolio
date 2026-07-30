@@ -12,9 +12,9 @@ const PROMPT = 'guest@melkamu.dev'
 const QUICK_ACTIONS = [
   'help',
   'ask are you available for work',
-  'gh',
   'projects',
   'ask what is your tech stack',
+  'education',
 ] as const
 
 const WELCOME: Block[] = [

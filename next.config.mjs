@@ -9,9 +9,9 @@ const contentSecurityPolicy = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://va.vercel-scripts.com`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://avatars.githubusercontent.com",
+  "img-src 'self' data: blob:",
   "font-src 'self' data:",
-  "connect-src 'self' https://api.github.com https://va.vercel-scripts.com",
+  "connect-src 'self' https://va.vercel-scripts.com",
   "frame-ancestors 'self'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -45,9 +45,6 @@ const nextConfig = {
     // the Next image optimizer (GitHub Pages, plain static hosting).
     unoptimized: process.env.NEXT_PUBLIC_UNOPTIMIZED_IMAGES === '1',
     formats: ['image/avif', 'image/webp'],
-    remotePatterns: [
-      { protocol: 'https', hostname: 'avatars.githubusercontent.com' },
-    ],
   },
   async headers() {
     return [{ source: '/(.*)', headers: securityHeaders }]

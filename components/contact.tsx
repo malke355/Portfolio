@@ -56,7 +56,7 @@ export function Contact() {
         <SectionHeading
           eyebrow="Contact"
           title="Let's build something together"
-          description="Open to full-stack roles, freelance projects and AI product collaborations. I usually reply within a day."
+          description="Open to full-stack roles, internships and freelance projects. I usually reply within a day."
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-[1fr_0.8fr]">

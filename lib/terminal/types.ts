@@ -13,8 +13,6 @@ export type Block =
   | { kind: 'link'; label: string; href: string }
   | { kind: 'divider' }
   | { kind: 'spinner'; text: string }
-  /** Placeholder replaced by a rich renderer once live data resolves. */
-  | { kind: 'github' }
 
 export type Entry = {
   id: string

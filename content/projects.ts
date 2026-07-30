@@ -52,7 +52,7 @@ export const projects: readonly Project[] = [
     description:
       'A savings and credit cooperative platform handling member records, share contributions, loan applications and approval workflows with a full audit trail and admin reporting.',
     highlights: ['Loan workflows', 'Audit trail', 'Member portal'],
-    stack: ['Next.js', 'TypeScript', 'Express', 'MongoDB', 'Docker'],
+    stack: ['Next.js', 'TypeScript', 'Express', 'MongoDB'],
     image: '/images/project-sacco.png',
     alt: 'SACCO management platform admin interface with member table',
     links: { github: socials.github.href },
