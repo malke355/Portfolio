@@ -33,6 +33,7 @@ export function Skills() {
             <Reveal
               key={group.id}
               delay={i * 110}
+              spotlight
               className="group glass hover:border-primary/40 relative overflow-hidden rounded-3xl p-6 transition-all duration-500 hover:-translate-y-1.5"
             >
               <div

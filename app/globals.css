@@ -143,6 +143,39 @@
   border: 1px solid var(--border);
 }
 
+/* Pointer-tracked spotlight. The coordinates arrive as custom properties set
+   by Reveal, so the browser only recalculates a gradient — no React render
+   and no layout on pointer move. */
+.spotlight {
+  position: relative;
+}
+
+.spotlight::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease-out;
+  background: radial-gradient(
+    16rem circle at var(--spot-x, 50%) var(--spot-y, 0%),
+    color-mix(in oklab, var(--primary) 13%, transparent),
+    transparent 68%
+  );
+}
+
+.spotlight:hover::after,
+.spotlight:focus-within::after {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlight::after {
+    transition: none;
+  }
+}
+
 /* Wraps the blurred colour blobs so light mode can dial them back to a
    hint rather than the glow the dark theme wants. */
 @utility ambient-layer {

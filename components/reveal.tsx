@@ -9,6 +9,8 @@ type RevealProps = {
   className?: string
   delay?: number
   as?: 'div' | 'section' | 'li' | 'article' | 'header' | 'span'
+  /** Track the pointer and light the surface under it. */
+  spotlight?: boolean
 }
 
 /**
@@ -39,9 +41,22 @@ export function Reveal({
   className,
   delay = 0,
   as = 'div',
+  spotlight = false,
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null)
   const [visible, setVisible] = useState(false)
+
+  // Writes two custom properties so the browser only has to repaint a
+  // gradient. Going through state here would re-render on every pointer move.
+  const onPointerMove = spotlight
+    ? (event: React.PointerEvent<HTMLElement>) => {
+        const node = ref.current
+        if (!node) return
+        const rect = node.getBoundingClientRect()
+        node.style.setProperty('--spot-x', `${event.clientX - rect.left}px`)
+        node.style.setProperty('--spot-y', `${event.clientY - rect.top}px`)
+      }
+    : undefined
 
   useEffect(() => {
     const node = ref.current
@@ -69,12 +84,14 @@ export function Reveal({
   return (
     <Tag
       ref={ref}
+      onPointerMove={onPointerMove}
       style={{ transitionDelay: `${delay}ms` }}
       className={cn(
         'transition-all duration-700 ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:blur-none motion-reduce:transition-none',
         visible
           ? 'translate-y-0 opacity-100 blur-none'
           : 'translate-y-6 opacity-0 blur-[2px]',
+        spotlight && 'spotlight',
         className,
       )}
     >

@@ -34,6 +34,7 @@ export function About() {
                 <Reveal
                   key={stat.label}
                   delay={i * 90}
+                  spotlight
                   className="glass group hover:border-primary/40 rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1"
                 >
                   <p className="text-primary text-3xl font-semibold tracking-tight">

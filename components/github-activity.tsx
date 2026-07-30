@@ -109,7 +109,15 @@ export async function GithubActivity() {
 
           <ul className="flex flex-col gap-3">
             {summary.repos.map((repo, index) => (
-              <Reveal as="li" key={repo.name} delay={index * 70}>
+              <Reveal
+                as="li"
+                key={repo.name}
+                delay={index * 70}
+                spotlight
+                // The spotlight inherits its radius, so it has to match the
+                // card it sits over.
+                className="rounded-2xl"
+              >
                 <a
                   href={repo.url}
                   target="_blank"
