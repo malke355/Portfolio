@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server'
 import { fetchGitHubSummary, GITHUB_REVALIDATE_SECONDS } from '@/lib/github'
 
-export const revalidate = GITHUB_REVALIDATE_SECONDS
+// Next parses segment config statically, so this has to be a literal — an
+// imported constant fails the build with "Invalid segment configuration".
+export const revalidate = 3600
 
 export async function GET() {
   const summary = await fetchGitHubSummary()

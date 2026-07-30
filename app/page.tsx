@@ -9,10 +9,12 @@ import { ScrollProgress } from '@/components/scroll-progress'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteNav } from '@/components/site-nav'
 import { Skills } from '@/components/skills'
-import { GITHUB_REVALIDATE_SECONDS } from '@/lib/github'
-
-/** The page is static apart from the GitHub panel, which refreshes hourly. */
-export const revalidate = GITHUB_REVALIDATE_SECONDS
+/**
+ * The page is static apart from the GitHub panel, which refreshes hourly.
+ * Must be a literal: Next parses segment config statically and rejects an
+ * imported constant.
+ */
+export const revalidate = 3600
 
 export default function Page() {
   return (
