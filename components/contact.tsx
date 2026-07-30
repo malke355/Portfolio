@@ -1,31 +1,19 @@
 'use client'
 
-import { Mail, MapPin, Send } from 'lucide-react'
+import { MapPin, Send } from 'lucide-react'
 import { useState } from 'react'
-import { GithubIcon, LinkedinIcon } from '@/components/brand-icons'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
+import { isExternal, socialLinks } from '@/components/social-links'
+import { remoteNote } from '@/content/profile'
+import { site } from '@/lib/site'
 
+/** Email first, then the profile links. */
 const channels = [
-  {
-    label: 'Email',
-    value: 'melkamu372@gmail.com',
-    href: 'mailto:melkamu372@gmail.com',
-    Icon: Mail,
-  },
-  {
-    label: 'LinkedIn',
-    value: '/in/melkamu-teshome',
-    href: 'https://www.linkedin.com/in/melkamu-teshome',
-    Icon: LinkedinIcon,
-  },
-  {
-    label: 'GitHub',
-    value: '@melkamu372',
-    href: 'https://github.com/melkamu372',
-    Icon: GithubIcon,
-  },
-]
+  socialLinks[2],
+  socialLinks[1],
+  socialLinks[0],
+] as (typeof socialLinks)[number][]
 
 const inputClass =
   'w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 transition-colors duration-300 focus:border-primary/60 focus:ring-2 focus:ring-ring focus:outline-none'
@@ -37,16 +25,19 @@ export function Contact() {
     event.preventDefault()
     const form = event.currentTarget
     const data = new FormData(form)
-    const name = String(data.get('name') ?? '')
-    const email = String(data.get('email') ?? '')
-    const message = String(data.get('message') ?? '')
+    const name = String(data.get('name') ?? '').trim()
+    const email = String(data.get('email') ?? '').trim()
+    const message = String(data.get('message') ?? '').trim()
+    const topic = String(data.get('subject') ?? '').trim()
 
     setStatus('sending')
-    const subject = encodeURIComponent(`Portfolio enquiry from ${name}`)
+    const subject = encodeURIComponent(
+      topic ? `${topic} — from ${name}` : `Portfolio enquiry from ${name}`,
+    )
     const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`)
 
     window.setTimeout(() => {
-      window.location.href = `mailto:melkamu372@gmail.com?subject=${subject}&body=${body}`
+      window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`
       setStatus('sent')
       form.reset()
     }, 500)
@@ -162,13 +153,9 @@ export function Contact() {
               <Reveal key={channel.label} delay={i * 90}>
                 <a
                   href={channel.href}
-                  target={
-                    channel.href.startsWith('http') ? '_blank' : undefined
-                  }
+                  target={isExternal(channel.href) ? '_blank' : undefined}
                   rel={
-                    channel.href.startsWith('http')
-                      ? 'noreferrer noopener'
-                      : undefined
+                    isExternal(channel.href) ? 'noreferrer noopener' : undefined
                   }
                   className="glass hover:border-primary/40 focus-visible:ring-ring flex items-center gap-4 rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 focus-visible:ring-2 focus-visible:outline-none"
                 >
@@ -180,7 +167,7 @@ export function Contact() {
                       {channel.label}
                     </span>
                     <span className="text-muted-foreground block truncate text-sm">
-                      {channel.value}
+                      {channel.handle}
                     </span>
                   </span>
                 </a>
@@ -190,11 +177,10 @@ export function Contact() {
             <Reveal delay={280} className="glass rounded-2xl p-5">
               <p className="flex items-center gap-2 text-sm font-medium">
                 <MapPin className="text-primary size-4" />
-                Addis Ababa, Ethiopia
+                {site.location}
               </p>
               <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                Available for remote work across EMEA and US time zones, with
-                overlap hours for standups and pairing.
+                {remoteNote}
               </p>
             </Reveal>
           </div>

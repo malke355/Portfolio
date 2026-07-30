@@ -1,36 +1,10 @@
 import { ArrowRight, Mail, MapPin, Sparkles } from 'lucide-react'
 import Image from 'next/image'
-import { GithubIcon, LinkedinIcon } from '@/components/brand-icons'
 import { Reveal } from '@/components/reveal'
-
-const socials = [
-  {
-    label: 'GitHub',
-    href: 'https://github.com/melkamu372',
-    Icon: GithubIcon,
-  },
-  {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/melkamu-teshome',
-    Icon: LinkedinIcon,
-  },
-  {
-    label: 'Email',
-    href: 'mailto:melkamu372@gmail.com',
-    Icon: Mail,
-  },
-]
-
-const stack = [
-  'React',
-  'Next.js',
-  'React Native',
-  'TypeScript',
-  'Node.js',
-  'MongoDB',
-  'Tailwind CSS',
-  'Docker',
-]
+import { SocialLinks } from '@/components/social-links'
+import { currentFocus } from '@/content/profile'
+import { heroStack } from '@/content/skills'
+import { site } from '@/lib/site'
 
 export function Hero() {
   return (
@@ -50,10 +24,10 @@ export function Hero() {
           <Reveal>
             <span className="glass text-muted-foreground inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs">
               <Sparkles className="text-primary size-3.5" />
-              Full-Stack Developer &amp; AI enthusiast
+              {site.tagline}
               <span className="border-border text-primary ml-1 flex items-center gap-1.5 border-l pl-2">
                 <span className="bg-primary size-1.5 animate-pulse rounded-full" />
-                Open to work
+                {site.availability}
               </span>
             </span>
           </Reveal>
@@ -61,15 +35,13 @@ export function Hero() {
           <Reveal delay={80}>
             <h1 className="mt-6 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
               <span className="text-gradient">Hi, I&apos;m </span>
-              <span className="text-primary">Melkamu Teshome.</span>
+              <span className="text-primary">{site.name}.</span>
             </h1>
           </Reveal>
 
           <Reveal delay={150}>
             <p className="text-muted-foreground mt-5 max-w-xl text-base leading-relaxed sm:text-lg">
-              Full-Stack Developer building modern web and mobile applications —
-              from pixel-precise interfaces to reliable APIs, shipped with clean
-              architecture and a product mindset.
+              {site.summary}
             </p>
           </Reveal>
 
@@ -94,28 +66,10 @@ export function Hero() {
 
           <Reveal delay={290}>
             <div className="mt-9 flex flex-wrap items-center gap-5">
-              <ul className="flex items-center gap-2.5">
-                {socials.map(({ label, href, Icon }) => (
-                  <li key={label}>
-                    <a
-                      href={href}
-                      target={href.startsWith('http') ? '_blank' : undefined}
-                      rel={
-                        href.startsWith('http')
-                          ? 'noreferrer noopener'
-                          : undefined
-                      }
-                      className="glass text-muted-foreground hover:border-primary/40 hover:text-primary focus-visible:ring-ring grid size-10 place-items-center rounded-xl transition-all duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:outline-none"
-                    >
-                      <Icon className="size-4.5" />
-                      <span className="sr-only">{label}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <SocialLinks />
               <span className="text-muted-foreground inline-flex items-center gap-1.5 text-xs">
                 <MapPin className="text-primary size-3.5" />
-                Addis Ababa, Ethiopia · Remote friendly
+                {site.locationNote}
               </span>
             </div>
           </Reveal>
@@ -131,7 +85,7 @@ export function Hero() {
               <div className="relative aspect-4/5 overflow-hidden rounded-[1.6rem]">
                 <Image
                   src="/images/hero-portrait.png"
-                  alt="Portrait of Melkamu Teshome, full-stack developer"
+                  alt={`Portrait of ${site.name}, full-stack developer`}
                   fill
                   priority
                   sizes="(max-width: 1024px) 90vw, 420px"
@@ -147,9 +101,7 @@ export function Hero() {
                 <p className="text-primary font-mono text-[11px] tracking-widest uppercase">
                   currently
                 </p>
-                <p className="mt-1 text-sm font-medium">
-                  Building AI-powered products
-                </p>
+                <p className="mt-1 text-sm font-medium">{currentFocus}</p>
               </div>
             </div>
           </div>
@@ -168,7 +120,7 @@ export function Hero() {
             className="from-background pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l to-transparent"
           />
           <div className="animate-marquee flex w-max items-center gap-10 pr-10">
-            {[...stack, ...stack].map((item, i) => (
+            {[...heroStack, ...heroStack].map((item, i) => (
               <span
                 key={`${item}-${i}`}
                 className="text-muted-foreground font-mono text-xs tracking-[0.2em] whitespace-nowrap uppercase"

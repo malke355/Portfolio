@@ -2,47 +2,7 @@ import { GraduationCap, Star } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
 
-const roles = [
-  {
-    period: '2024 — Present',
-    role: 'Full-Stack Developer',
-    org: 'Freelance / Contract',
-    body: 'Designing and shipping web and mobile products for clients across delivery, fintech and cooperative finance. Owning architecture, UI implementation, API design and deployment.',
-    points: [
-      'Led delivery of 3 production platforms with Next.js and Node.js',
-      'Integrated LLM-powered assistants and search into client workflows',
-      'Containerised services with Docker for predictable deploys',
-    ],
-  },
-  {
-    period: '2023 — 2024',
-    role: 'Frontend Developer',
-    org: 'Product Team',
-    body: 'Built and maintained component libraries and dashboards, focusing on accessibility, responsive layout and perceived performance.',
-    points: [
-      'Rebuilt core dashboard, cutting first-load bundle significantly',
-      'Established reusable design-system components in TypeScript',
-      'Partnered with designers in Figma from concept to handoff',
-    ],
-  },
-  {
-    period: '2022 — 2023',
-    role: 'Junior Web Developer',
-    org: 'Agency Work',
-    body: 'Delivered marketing sites and internal tools, learning production discipline: code review, Git workflow and shipping on deadline.',
-    points: [
-      'Shipped 10+ responsive client sites',
-      'Wrote REST endpoints with Express and MongoDB',
-      'Adopted Git-based review workflow across the team',
-    ],
-  },
-]
-
-const achievements = [
-  'Graduated with distinction in core software engineering coursework',
-  'Led final-year team project on an AI-assisted web platform',
-  'Active open-source contributor and campus tech community mentor',
-]
+import { education, roles } from '@/content/experience'
 
 export function Experience() {
   return (
@@ -107,19 +67,17 @@ export function Experience() {
                 Education
               </p>
               <h3 className="mt-2 text-xl font-semibold tracking-tight">
-                BSc in Software Engineering
+                {education.degree}
               </h3>
               <p className="text-muted-foreground mt-1 text-sm">
-                Bahir Dar University · Institute of Technology
+                {education.institution}
               </p>
               <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
-                Studied software design, data structures, databases and
-                distributed systems, with a final-year focus on applied machine
-                learning for web products.
+                {education.body}
               </p>
 
               <ul className="border-border mt-6 flex flex-col gap-3 border-t pt-6">
-                {achievements.map((item) => (
+                {education.achievements.map((item) => (
                   <li key={item} className="flex gap-3 text-sm">
                     <Star className="text-primary mt-0.5 size-4 shrink-0" />
                     <span className="text-muted-foreground">{item}</span>

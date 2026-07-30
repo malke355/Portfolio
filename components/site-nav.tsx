@@ -2,16 +2,8 @@
 
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { navLinks as links, site } from '@/lib/site'
 import { cn } from '@/lib/utils'
-
-const links = [
-  { id: 'home', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'contact', label: 'Contact' },
-]
 
 export function SiteNav() {
   const [active, setActive] = useState('home')
@@ -67,7 +59,7 @@ export function SiteNav() {
           className="group focus-visible:ring-ring flex items-center gap-2.5 rounded-lg px-1 py-1 focus-visible:ring-2 focus-visible:outline-none"
         >
           <span className="bg-primary/15 text-primary ring-primary/30 grid size-8 place-items-center rounded-lg font-mono text-xs font-semibold ring-1 transition-transform duration-300 group-hover:scale-105">
-            MT
+            {site.initials}
           </span>
           <span className="text-sm font-medium tracking-tight">
             Melkamu<span className="text-muted-foreground">.dev</span>

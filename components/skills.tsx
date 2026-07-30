@@ -1,27 +1,19 @@
 import { Code2, Server, Wrench } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
+import type { SkillGroup } from '@/content/skills'
+import { skillGroups } from '@/content/skills'
 
-const groups = [
-  {
-    title: 'Frontend',
-    Icon: Code2,
-    blurb: 'Interfaces that feel instant and accessible.',
-    items: ['React', 'Next.js', 'React Native', 'TypeScript', 'Tailwind CSS'],
-  },
-  {
-    title: 'Backend',
-    Icon: Server,
-    blurb: 'APIs and data models built to scale.',
-    items: ['Node.js', 'Express', 'MongoDB', 'REST APIs'],
-  },
-  {
-    title: 'Tools',
-    Icon: Wrench,
-    blurb: 'The workflow around shipping software.',
-    items: ['Git', 'GitHub', 'Figma', 'Firebase', 'Docker'],
-  },
-]
+const icons = {
+  code: Code2,
+  server: Server,
+  wrench: Wrench,
+} as const
+
+function SkillIcon({ name }: { name: SkillGroup['icon'] }) {
+  const Icon = icons[name]
+  return <Icon className="size-5" />
+}
 
 export function Skills() {
   return (
@@ -37,9 +29,9 @@ export function Skills() {
         />
 
         <div className="mt-14 grid gap-5 md:grid-cols-3">
-          {groups.map((group, i) => (
+          {skillGroups.map((group, i) => (
             <Reveal
-              key={group.title}
+              key={group.id}
               delay={i * 110}
               className="group glass hover:border-primary/40 relative overflow-hidden rounded-3xl p-6 transition-all duration-500 hover:-translate-y-1.5"
             >
@@ -49,7 +41,7 @@ export function Skills() {
               />
               <div className="flex items-center gap-3">
                 <span className="bg-primary/12 text-primary ring-primary/25 grid size-11 place-items-center rounded-2xl ring-1 transition-transform duration-500 group-hover:scale-110">
-                  <group.Icon className="size-5" />
+                  <SkillIcon name={group.icon} />
                 </span>
                 <div>
                   <h3 className="text-lg font-medium">{group.title}</h3>

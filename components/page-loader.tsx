@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { site } from '@/lib/site'
 
 export function PageLoader() {
   const [done, setDone] = useState(false)
@@ -28,7 +29,7 @@ export function PageLoader() {
     >
       <div className="flex w-56 flex-col items-center gap-4">
         <span className="text-muted-foreground font-mono text-xs tracking-[0.35em] uppercase">
-          MT
+          {site.initials}
         </span>
         <div className="bg-border h-px w-full overflow-hidden">
           <div

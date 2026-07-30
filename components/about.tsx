@@ -1,34 +1,6 @@
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
-
-const stats = [
-  { value: '15+', label: 'Projects shipped', hint: 'web · mobile · internal' },
-  { value: '20+', label: 'Technologies', hint: 'frontend to infrastructure' },
-  { value: '3+', label: 'Years experience', hint: 'freelance & team work' },
-]
-
-const timeline = [
-  {
-    year: '2021',
-    title: 'Started with the web',
-    body: 'Fell in love with JavaScript, built my first responsive sites and learned Git the hard way.',
-  },
-  {
-    year: '2022',
-    title: 'Went full-stack',
-    body: 'Node.js, Express and MongoDB — designing REST APIs and authentication flows end to end.',
-  },
-  {
-    year: '2023',
-    title: 'Shipped to production',
-    body: 'Delivered client dashboards and a food delivery platform with Next.js and React Native.',
-  },
-  {
-    year: '2024',
-    title: 'AI-assisted products',
-    body: 'Integrated LLM features, vector search and automation into real product workflows.',
-  },
-]
+import { bio, stats, timeline } from '@/content/profile'
 
 export function About() {
   return (
@@ -46,21 +18,15 @@ export function About() {
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
           <div className="flex flex-col gap-6">
-            <Reveal className="glass rounded-3xl p-6 sm:p-8">
-              <p className="text-muted-foreground leading-relaxed">
-                I&apos;m Melkamu Teshome, a full-stack developer and AI
-                enthusiast focused on the JavaScript ecosystem. I work across
-                the whole stack — React and Next.js on the front end, Node.js,
-                Express and MongoDB on the back end, and React Native when the
-                product belongs in someone&apos;s pocket.
-              </p>
-              <p className="text-muted-foreground mt-4 leading-relaxed">
-                What I enjoy most is the point where engineering meets product:
-                turning a rough idea into a clean interface, a sane data model
-                and an API that other developers actually enjoy using. Lately
-                I&apos;ve been building AI-assisted features that make everyday
-                workflows dramatically faster.
-              </p>
+            <Reveal className="glass flex flex-col gap-4 rounded-3xl p-6 sm:p-8">
+              {bio.map((paragraph) => (
+                <p
+                  key={paragraph.slice(0, 32)}
+                  className="text-muted-foreground leading-relaxed"
+                >
+                  {paragraph}
+                </p>
+              ))}
             </Reveal>
 
             <div className="grid gap-4 sm:grid-cols-3">
