@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { GithubIcon } from '@/components/brand-icons'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
@@ -92,6 +93,13 @@ export function Projects() {
                   </div>
 
                   <div className="flex flex-wrap gap-3 pt-1">
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className="bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_-12px_var(--primary)] focus-visible:ring-2 focus-visible:outline-none"
+                    >
+                      Read more
+                      <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </Link>
                     <a
                       href={project.links.github}
                       target="_blank"
@@ -100,15 +108,6 @@ export function Projects() {
                     >
                       <GithubIcon className="size-4" />
                       GitHub
-                    </a>
-                    <a
-                      href={project.links.demo}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      className="bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_-12px_var(--primary)] focus-visible:ring-2 focus-visible:outline-none"
-                    >
-                      Live Demo
-                      <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </a>
                   </div>
                 </div>
