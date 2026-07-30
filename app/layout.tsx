@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+import { TerminalProvider } from '@/components/terminal/terminal-provider'
 import { absoluteUrl, site, siteUrl, socials } from '@/lib/site'
 import { themeInitScript } from '@/lib/theme'
 import './globals.css'
@@ -118,7 +119,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        {children}
+        <TerminalProvider>{children}</TerminalProvider>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}

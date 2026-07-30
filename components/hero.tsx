@@ -2,6 +2,7 @@ import { ArrowRight, Mail, MapPin, Sparkles } from 'lucide-react'
 import Image from 'next/image'
 import { Reveal } from '@/components/reveal'
 import { SocialLinks } from '@/components/social-links'
+import { TerminalTrigger } from '@/components/terminal/terminal-trigger'
 import { currentFocus } from '@/content/profile'
 import { heroStack } from '@/content/skills'
 import { site } from '@/lib/site'
@@ -57,9 +58,10 @@ export function Hero() {
                 View Projects
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
+              <TerminalTrigger variant="full" />
               <a
                 href="#contact"
-                className="glass hover:border-primary/40 hover:text-primary focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:outline-none"
+                className="text-muted-foreground hover:text-primary focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl px-3 py-3 text-sm font-medium transition-colors duration-300 focus-visible:ring-2 focus-visible:outline-none"
               >
                 Contact Me
                 <Mail className="size-4" />

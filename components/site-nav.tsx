@@ -2,6 +2,7 @@
 
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { TerminalTrigger } from '@/components/terminal/terminal-trigger'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { navLinks as links, site } from '@/lib/site'
 import { cn } from '@/lib/utils'
@@ -93,6 +94,7 @@ export function SiteNav() {
         </ul>
 
         <div className="flex items-center gap-2">
+          <TerminalTrigger />
           <ThemeToggle />
           <a
             href="#contact"
