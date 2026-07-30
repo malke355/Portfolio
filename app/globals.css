@@ -250,6 +250,14 @@
   animation: marquee-x 28s linear infinite;
 }
 
+/* The intro is a first impression, not information. An artificial delay in
+   front of already-static content is a cost, so it plays once per session and
+   never for visitors who asked for less motion. .skip-intro is set by the boot
+   script before paint, so the overlay never appears at all. */
+.skip-intro .page-loader {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -258,6 +266,9 @@
   .animate-float-slower,
   .animate-marquee {
     animation: none;
+  }
+  .page-loader {
+    display: none;
   }
 }
 

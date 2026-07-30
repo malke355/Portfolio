@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { TerminalProvider } from '@/components/terminal/terminal-provider'
 import { absoluteUrl, site, siteUrl, socials } from '@/lib/site'
-import { themeInitScript } from '@/lib/theme'
+import { bootScript } from '@/lib/theme'
 import './globals.css'
 
 const geistSans = Geist({
@@ -106,9 +106,10 @@ export default function RootLayout({
     >
       <head>
         <script
-          // Applies the stored or system theme before first paint. Without
-          // this the page renders light and then flips, which is jarring.
-          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+          // Applies the stored theme and decides whether to skip the intro,
+          // both before first paint. Without this the page renders light and
+          // then flips, which is jarring.
+          dangerouslySetInnerHTML={{ __html: bootScript }}
         />
       </head>
       <body className="font-sans antialiased">
