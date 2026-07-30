@@ -12,7 +12,11 @@ export type Project = {
   alt: string
   links: {
     github: string
-    demo: string
+    /**
+     * Optional on purpose. A "Live demo" button that lands on a profile page
+     * is worse than no button, so the UI hides it until there is a real URL.
+     */
+    demo?: string
   }
 }
 
@@ -27,7 +31,7 @@ export const projects: readonly Project[] = [
     stack: ['Next.js', 'React Native', 'Node.js', 'Express', 'MongoDB'],
     image: '/images/project-gebetago.png',
     alt: 'GebetaGo food delivery dashboard and mobile app interface',
-    links: { github: socials.github.href, demo: socials.github.href },
+    links: { github: socials.github.href },
   },
   {
     slug: 'expense-manager',
@@ -39,7 +43,7 @@ export const projects: readonly Project[] = [
     stack: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'MongoDB'],
     image: '/images/project-expense.png',
     alt: 'Expense manager dashboard with spending charts',
-    links: { github: socials.github.href, demo: socials.github.href },
+    links: { github: socials.github.href },
   },
   {
     slug: 'sacco',
@@ -51,7 +55,7 @@ export const projects: readonly Project[] = [
     stack: ['Next.js', 'TypeScript', 'Express', 'MongoDB', 'Docker'],
     image: '/images/project-sacco.png',
     alt: 'SACCO management platform admin interface with member table',
-    links: { github: socials.github.href, demo: socials.github.href },
+    links: { github: socials.github.href },
   },
 ] as const
 

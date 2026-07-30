@@ -9,6 +9,7 @@ import { ScrollProgress } from '@/components/scroll-progress'
 import { SiteFooter } from '@/components/site-footer'
 import { findProject, projects } from '@/content/projects'
 import { absoluteUrl, site } from '@/lib/site'
+import { cn } from '@/lib/utils'
 
 type PageProps = {
   params: Promise<{ slug: string }>
@@ -95,20 +96,29 @@ export default async function ProjectPage({ params }: PageProps) {
           </Reveal>
 
           <Reveal delay={120} className="mt-8 flex flex-wrap gap-3">
-            <a
-              href={project.links.demo}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_-12px_var(--primary)] focus-visible:ring-2 focus-visible:outline-none"
-            >
-              Live demo
-              <ArrowUpRight className="size-4" />
-            </a>
+            {project.links.demo && (
+              <a
+                href={project.links.demo}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_-12px_var(--primary)] focus-visible:ring-2 focus-visible:outline-none"
+              >
+                Live demo
+                <ArrowUpRight className="size-4" />
+              </a>
+            )}
             <a
               href={project.links.github}
               target="_blank"
               rel="noreferrer noopener"
-              className="border-border hover:border-primary/50 hover:text-primary focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:outline-none"
+              className={cn(
+                'focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:outline-none',
+                // Promote Source to the primary action when there is no demo,
+                // so the page never presents only a secondary button.
+                project.links.demo
+                  ? 'border-border hover:border-primary/50 hover:text-primary border'
+                  : 'bg-primary text-primary-foreground hover:shadow-[0_12px_32px_-12px_var(--primary)]',
+              )}
             >
               <GithubIcon className="size-4" />
               Source
