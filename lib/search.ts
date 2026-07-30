@@ -72,6 +72,44 @@ const STOPWORDS = new Set([
   'with',
   'you',
   'your',
+
+  // Conversational filler. These carry no information about the subject, but
+  // because they are rare in the corpus they carry a high IDF — one stray
+  // "know" in the education document made "do you know kubernetes" return a
+  // confident answer about university, which is exactly the kind of
+  // false-positive this engine must never produce.
+  'also',
+  'anything',
+  'could',
+  'give',
+  'got',
+  'hello',
+  'know',
+  'known',
+  'knows',
+  'lot',
+  'make',
+  'many',
+  'maybe',
+  'much',
+  'need',
+  'okay',
+  'please',
+  'really',
+  'say',
+  'show',
+  'some',
+  'something',
+  'stuff',
+  'sure',
+  'tell',
+  'thing',
+  'things',
+  'think',
+  'told',
+  'want',
+  'well',
+  'would',
 ])
 
 /**
