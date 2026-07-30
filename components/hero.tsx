@@ -87,18 +87,23 @@ export function Hero() {
               className="bg-primary/10 absolute -inset-6 -z-10 rounded-[2.5rem] blur-3xl"
             />
             <div className="glass relative overflow-hidden rounded-[2rem] p-2">
-              <div className="relative aspect-4/5 overflow-hidden rounded-[1.6rem]">
+              {/* Matches the photo's own 3:4 ratio so object-cover has nothing
+                  to crop. */}
+              <div className="relative aspect-3/4 overflow-hidden rounded-[1.6rem]">
                 <Image
                   src="/images/hero-portrait.png"
                   alt={`Portrait of ${site.name}, full-stack developer`}
                   fill
                   priority
                   sizes="(max-width: 1024px) 90vw, 420px"
-                  className="object-cover transition-transform duration-700 hover:scale-[1.03]"
+                  className="object-cover object-top transition-transform duration-700 hover:scale-[1.03]"
                 />
+                {/* Fades the bottom of the photo into the panel so the
+                    "currently" card sits on a calm surface. Kept shallow so it
+                    does not wash out the subject. */}
                 <div
                   aria-hidden
-                  className="from-background via-background/10 absolute inset-0 bg-gradient-to-t to-transparent"
+                  className="from-background/95 via-background/20 absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t to-transparent"
                 />
               </div>
 
