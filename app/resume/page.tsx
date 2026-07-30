@@ -147,7 +147,7 @@ export default function ResumePage() {
                 </span>
               </h3>
               <p className="text-muted-foreground font-mono text-xs print:text-black">
-                {education.status}
+                {education.year} · {education.status}
               </p>
             </div>
             <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed print:text-black">

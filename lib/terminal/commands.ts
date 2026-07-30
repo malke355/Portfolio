@@ -162,7 +162,11 @@ const educationCommand: Command = {
     ctx.print(
       { kind: 'heading', text: education.field },
       { kind: 'text', text: education.institution, tone: 'primary' },
-      { kind: 'text', text: education.status, tone: 'muted' },
+      {
+        kind: 'text',
+        text: `${education.year} · ${education.status}`,
+        tone: 'muted',
+      },
       { kind: 'text', text: education.body },
     )
   },

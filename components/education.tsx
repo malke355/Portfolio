@@ -28,7 +28,7 @@ export function Education() {
               <h3 className="text-lg font-medium">{education.field}</h3>
               <p className="text-primary text-sm">{education.institution}</p>
               <p className="text-muted-foreground mt-1 font-mono text-xs">
-                {education.status}
+                {education.year} · {education.status}
               </p>
             </div>
           </div>

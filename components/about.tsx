@@ -9,7 +9,7 @@ export function About() {
     { label: 'Based in', value: site.location },
     {
       label: 'Studying',
-      value: `${education.field}, ${education.institution}`,
+      value: `${education.year} ${education.field}, ${education.institution}`,
     },
     { label: 'Focus', value: currentFocus },
     { label: 'Availability', value: site.availability },

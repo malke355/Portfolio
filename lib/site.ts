@@ -33,7 +33,7 @@ export const site = {
   location: 'Addis Ababa, Ethiopia',
   locationNote: 'Addis Ababa, Ethiopia · Remote friendly',
   availability: 'Open to work',
-  email: 'melkamu372@gmail.com',
+  email: 'melkamut789@gmail.com',
   keywords: [
     'Melkamu Teshome',
     'Full-Stack Developer',
@@ -58,7 +58,7 @@ export const socials = {
   linkedin: {
     label: 'LinkedIn',
     handle: '/in/melkamu-teshome',
-    href: 'https://www.linkedin.com/in/melkamu-teshome',
+    href: 'https://www.linkedin.com/in/melkamu-teshome-03587830a/',
   },
   email: {
     label: 'Email',
