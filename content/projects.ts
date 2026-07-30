@@ -1,4 +1,7 @@
-import { socials } from '@/lib/site'
+import { site } from '@/lib/site'
+
+/** Each project links to its own repository, not to the profile page. */
+const repo = (name: string) => `https://github.com/${site.handle}/${name}`
 
 export type Project = {
   slug: string
@@ -31,7 +34,7 @@ export const projects: readonly Project[] = [
     stack: ['Next.js', 'React Native', 'Node.js', 'Express', 'MongoDB'],
     image: '/images/project-gebetago.png',
     alt: 'GebetaGo food delivery dashboard and mobile app interface',
-    links: { github: socials.github.href },
+    links: { github: repo('Food_delivery_platform') },
   },
   {
     slug: 'expense-manager',
@@ -43,19 +46,7 @@ export const projects: readonly Project[] = [
     stack: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'MongoDB'],
     image: '/images/project-expense.png',
     alt: 'Expense manager dashboard with spending charts',
-    links: { github: socials.github.href },
-  },
-  {
-    slug: 'sacco',
-    name: 'SACCO Management Platform',
-    tag: 'Enterprise',
-    description:
-      'A savings and credit cooperative platform handling member records, share contributions, loan applications and approval workflows with a full audit trail and admin reporting.',
-    highlights: ['Loan workflows', 'Audit trail', 'Member portal'],
-    stack: ['Next.js', 'TypeScript', 'Express', 'MongoDB'],
-    image: '/images/project-sacco.png',
-    alt: 'SACCO management platform admin interface with member table',
-    links: { github: socials.github.href },
+    links: { github: repo('Expense-manager') },
   },
 ] as const
 
