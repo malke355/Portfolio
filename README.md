@@ -14,9 +14,9 @@ just <kbd>/</kbd>.
 
 ```
 $ ask are you available for work
-$ gh
 $ projects gebetago
 $ skills backend
+$ education
 $ resume
 ```
 
@@ -56,21 +56,6 @@ curl "https://melkamu.dev/api/ask?q=what+is+your+tech+stack"
 
 ---
 
-## Live GitHub data
-
-`lib/github.ts` pulls the profile and repo list from the GitHub REST API and derives
-total stars, a language breakdown and top repositories. It is rendered **on the server**,
-so the numbers are in the initial HTML rather than popping in after hydration, and it
-revalidates hourly.
-
-Failures are returned as data (`{ available: false, reason }`) rather than thrown. The
-section is an enhancement over the curated projects above it, so a GitHub outage
-degrades it instead of breaking the page.
-
-Set `GITHUB_TOKEN` to lift the unauthenticated ceiling of 60 requests per hour.
-
----
-
 ## Stack
 
 | Concern  | Choice                                             |
@@ -98,11 +83,10 @@ Open <http://localhost:3000>.
 
 Copy `.env.example` to `.env.local`. Everything is optional for local development.
 
-| Variable                        | Purpose                                              |
-| ------------------------------- | ---------------------------------------------------- |
-| `NEXT_PUBLIC_SITE_URL`          | Canonical origin for metadata, sitemap and OG images |
-| `GITHUB_TOKEN`                  | Raises the GitHub API rate limit from 60/h to 5000/h |
-| `NEXT_PUBLIC_UNOPTIMIZED_IMAGES`| Skip image optimisation on hosts that lack it        |
+| Variable                         | Purpose                                              |
+| -------------------------------- | ---------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`           | Canonical origin for metadata, sitemap and OG images |
+| `NEXT_PUBLIC_UNOPTIMIZED_IMAGES` | Skip image optimisation on hosts that lack it        |
 
 ### Scripts
 
@@ -126,10 +110,10 @@ All copy lives in `content/`, typed and separate from the components:
 
 ```
 content/
-  profile.ts      bio, stats, timeline
+  profile.ts      bio, current focus, remote note
   skills.ts       skill groups and the hero marquee
   projects.ts     projects, one per detail page
-  experience.ts   roles and education
+  experience.ts   education
   knowledge.ts    search documents, derived from the four above
 ```
 
@@ -146,13 +130,12 @@ button appears.
 
 ## Routes
 
-| Route              | Rendering                        |
-| ------------------ | -------------------------------- |
-| `/`                | Static, revalidated hourly       |
-| `/projects/[slug]` | Static per project               |
-| `/resume`          | Static, print-optimised          |
-| `/api/ask`         | Dynamic                          |
-| `/api/github`      | Static, revalidated hourly       |
+| Route              | Rendering               |
+| ------------------ | ----------------------- |
+| `/`                | Static                  |
+| `/projects/[slug]` | Static per project      |
+| `/resume`          | Static, print-optimised |
+| `/api/ask`         | Dynamic                 |
 
 `/sitemap.xml`, `/robots.txt`, `/manifest.webmanifest` and `/opengraph-image` are all
 generated from `lib/site.ts`.
@@ -184,7 +167,13 @@ generated from `lib/site.ts`.
   project.
 - **The résumé is generated,** not a checked-in PDF, so it cannot fall behind the
   site. The print stylesheet forces ink-on-paper regardless of theme, sets A4
-  margins, and marks roles `break-inside-avoid` so none straddle a page boundary.
+  margins, and marks each section `break-inside-avoid` so none straddle a page
+  boundary.
+- **Nothing is claimed that is not published.** Conversational filler is stopworded
+  in the search engine, because one stray "know" in the education document was
+  enough to make "do you know kubernetes" answer confidently about university. The
+  `Person` JSON-LD `knowsAbout` list is derived from the skills content rather than
+  hand-written, for the same reason.
 
 ---
 
@@ -195,7 +184,6 @@ Works on any Node host. On Vercel:
 1. Import the repository.
 2. Set `NEXT_PUBLIC_SITE_URL` to the production origin — metadata, the sitemap and
    OG image URLs derive from it.
-3. Optionally set `GITHUB_TOKEN`.
 
 Framework detection, build command and output are picked up automatically.
 
