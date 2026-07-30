@@ -2,7 +2,7 @@ import { education, roles } from '@/content/experience'
 import { bio, currentFocus, stats, timeline } from '@/content/profile'
 import { findProject, projects } from '@/content/projects'
 import { skillGroups } from '@/content/skills'
-import { site, socials } from '@/lib/site'
+import { navLinks, site, socials } from '@/lib/site'
 import type { Block, Command, CommandContext } from '@/lib/terminal/types'
 
 type AskResponse = {
@@ -314,16 +314,9 @@ const goto: Command = {
   summary: 'Jump to a section of the page',
   run: (args, ctx) => {
     const target = args[0]?.toLowerCase()
-    const sections = [
-      'home',
-      'about',
-      'skills',
-      'projects',
-      'experience',
-      'contact',
-    ]
+    const sections = navLinks.map((link) => link.id)
 
-    if (!target || !sections.includes(target)) {
+    if (!target || !sections.some((section) => section === target)) {
       ctx.print({
         kind: 'text',
         text: `Sections: ${sections.join(', ')}.`,

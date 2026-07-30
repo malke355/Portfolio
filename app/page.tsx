@@ -1,6 +1,7 @@
 import { About } from '@/components/about'
 import { Contact } from '@/components/contact'
 import { Experience } from '@/components/experience'
+import { GithubActivity } from '@/components/github-activity'
 import { Hero } from '@/components/hero'
 import { PageLoader } from '@/components/page-loader'
 import { Projects } from '@/components/projects'
@@ -8,6 +9,10 @@ import { ScrollProgress } from '@/components/scroll-progress'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteNav } from '@/components/site-nav'
 import { Skills } from '@/components/skills'
+import { GITHUB_REVALIDATE_SECONDS } from '@/lib/github'
+
+/** The page is static apart from the GitHub panel, which refreshes hourly. */
+export const revalidate = GITHUB_REVALIDATE_SECONDS
 
 export default function Page() {
   return (
@@ -20,6 +25,7 @@ export default function Page() {
         <About />
         <Skills />
         <Projects />
+        <GithubActivity />
         <Experience />
         <Contact />
       </main>

@@ -72,6 +72,7 @@ export const navLinks = [
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
+  { id: 'github', label: 'GitHub' },
   { id: 'experience', label: 'Experience' },
   { id: 'contact', label: 'Contact' },
 ] as const
