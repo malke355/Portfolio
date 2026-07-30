@@ -113,9 +113,15 @@ export function Hero() {
         </Reveal>
       </div>
 
-      {/* tech marquee */}
+      {/* Tech marquee. The list is duplicated to make the scroll seamless, so
+          it is hidden from assistive tech — otherwise the whole stack is
+          announced twice. The Skills section covers the same ground in a
+          structured, readable form. */}
       <Reveal delay={340} className="mt-16">
-        <div className="border-border relative overflow-hidden border-y py-4">
+        <div
+          aria-hidden
+          className="border-border relative overflow-hidden border-y py-4"
+        >
           <div
             aria-hidden
             className="from-background pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r to-transparent"
