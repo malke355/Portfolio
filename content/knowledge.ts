@@ -102,6 +102,28 @@ export const knowledge: readonly KnowledgeDoc[] = [
     ],
     anchor: '#contact',
   },
+  {
+    id: 'stack-overview',
+    title: 'Tech stack',
+    section: 'skills',
+    body: skillGroups
+      .map((group) => `${group.title}: ${group.items.join(', ')}`)
+      .join('. '),
+    keywords: [
+      'stack',
+      'tech',
+      'technology',
+      'technologies',
+      'skills',
+      'tools',
+      'overview',
+      'use',
+      'using',
+      'languages',
+      'frameworks',
+    ],
+    anchor: '#skills',
+  },
   ...skillGroups.map((group) => ({
     id: `skills-${group.id}`,
     title: `${group.title} skills`,
