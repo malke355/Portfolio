@@ -13,7 +13,10 @@ export function Hero() {
       className="relative overflow-hidden pt-32 pb-20 sm:pt-40 lg:pb-28"
     >
       {/* ambient background */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+      <div
+        aria-hidden
+        className="ambient-layer pointer-events-none absolute inset-0 -z-10"
+      >
         <div className="grid-bg absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)] opacity-40" />
         <div className="animate-float-slow bg-primary/12 absolute -top-32 -left-24 size-[26rem] rounded-full blur-[110px]" />
         <div className="animate-float-slower bg-primary/8 absolute top-24 -right-20 size-[22rem] rounded-full blur-[120px]" />

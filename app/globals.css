@@ -2,6 +2,10 @@
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 
+/* Theme is driven by a class on <html>, set before first paint by the
+   inline script in the root layout, so there is no flash of wrong theme. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
@@ -34,33 +38,67 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* Light theme — the default when the class is absent, so server-rendered
+   HTML is readable even if JavaScript never runs. */
 :root {
+  color-scheme: light;
+
+  --background: oklch(0.988 0.003 150);
+  --foreground: oklch(0.21 0.015 165);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.015 165);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.015 165);
+  --secondary: oklch(0.955 0.006 160);
+  --secondary-foreground: oklch(0.24 0.015 165);
+  --muted: oklch(0.96 0.005 160);
+  --muted-foreground: oklch(0.47 0.017 165);
+
+  /* Darker emerald in light mode so text on tinted surfaces still clears
+     WCAG AA against the near-white background. */
+  --primary: oklch(0.56 0.135 158);
+  --primary-foreground: oklch(0.99 0.008 150);
+  --accent: oklch(0.56 0.135 158);
+  --accent-foreground: oklch(0.99 0.008 150);
+
+  --destructive: oklch(0.55 0.2 25);
+  --border: oklch(0.21 0.015 165 / 12%);
+  --input: oklch(0.21 0.015 165 / 16%);
+  --ring: oklch(0.56 0.135 158 / 55%);
+
+  /* Ambient wash strength — dialled down on light so it reads as paper. */
+  --ambient: 0.5;
+  --grain-opacity: 0.02;
+
+  --radius: 0.875rem;
+}
+
+.dark {
   color-scheme: dark;
 
-  /* neutrals */
-  --background: oklch(0.16 0.008 160);
+  --background: oklch(0.155 0.008 165);
   --foreground: oklch(0.97 0.005 160);
-  --card: oklch(0.21 0.01 165);
+  --card: oklch(0.203 0.011 167);
   --card-foreground: oklch(0.97 0.005 160);
-  --popover: oklch(0.21 0.01 165);
+  --popover: oklch(0.203 0.011 167);
   --popover-foreground: oklch(0.97 0.005 160);
-  --secondary: oklch(0.26 0.012 165);
+  --secondary: oklch(0.257 0.013 167);
   --secondary-foreground: oklch(0.97 0.005 160);
-  --muted: oklch(0.24 0.01 165);
-  --muted-foreground: oklch(0.71 0.015 160);
+  --muted: oklch(0.236 0.011 167);
+  --muted-foreground: oklch(0.715 0.016 162);
 
-  /* brand green accent */
-  --primary: oklch(0.75 0.18 149);
+  --primary: oklch(0.76 0.175 152);
   --primary-foreground: oklch(0.17 0.03 155);
-  --accent: oklch(0.75 0.18 149);
+  --accent: oklch(0.76 0.175 152);
   --accent-foreground: oklch(0.17 0.03 155);
 
   --destructive: oklch(0.65 0.2 25);
-  --border: oklch(1 0 0 / 10%);
+  --border: oklch(1 0 0 / 11%);
   --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.75 0.18 149 / 60%);
+  --ring: oklch(0.76 0.175 152 / 60%);
 
-  --radius: 0.875rem;
+  --ambient: 1;
+  --grain-opacity: 0.035;
 }
 
 @layer base {
@@ -69,26 +107,53 @@
   }
   html {
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
   }
   body {
     @apply bg-background text-foreground;
+    text-rendering: optimizeLegibility;
+  }
+  /* Headings read tighter and more deliberate at large sizes. */
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
   }
   ::selection {
-    background: color-mix(in oklab, var(--primary) 30%, transparent);
+    background: color-mix(in oklab, var(--primary) 28%, transparent);
+  }
+  ::placeholder {
+    color: color-mix(in oklab, var(--muted-foreground) 75%, transparent);
+  }
+  /* Themed scrollbar keeps the chrome from breaking the palette. */
+  * {
+    scrollbar-color: color-mix(in oklab, var(--foreground) 22%, transparent)
+      transparent;
+  }
+  /* Suppress transitions while the theme flips, otherwise every element
+     animates its colour at once and the switch looks like a smear. */
+  .theme-switching * {
+    transition: none !important;
   }
 }
 
 @utility glass {
-  background: color-mix(in oklab, var(--card) 55%, transparent);
+  background: color-mix(in oklab, var(--card) 62%, transparent);
   backdrop-filter: blur(16px) saturate(140%);
   border: 1px solid var(--border);
+}
+
+/* Wraps the blurred colour blobs so light mode can dial them back to a
+   hint rather than the glow the dark theme wants. */
+@utility ambient-layer {
+  opacity: var(--ambient);
 }
 
 @utility text-gradient {
   background: linear-gradient(
     180deg,
     var(--foreground) 0%,
-    color-mix(in oklab, var(--foreground) 55%, var(--background)) 100%
+    color-mix(in oklab, var(--foreground) 58%, var(--background)) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -108,6 +173,18 @@
       transparent 1px
     );
   background-size: 64px 64px;
+}
+
+/* Fixed film-grain layer. A tiny SVG turbulence tile costs nothing and
+   stops the large flat panels from banding. */
+@utility grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
 }
 
 @keyframes float-slow {

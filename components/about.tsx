@@ -7,7 +7,7 @@ export function About() {
     <section id="about" className="relative scroll-mt-24 py-24 lg:py-32">
       <div
         aria-hidden
-        className="bg-primary/5 pointer-events-none absolute top-1/3 left-1/2 -z-10 size-[30rem] -translate-x-1/2 rounded-full blur-[130px]"
+        className="bg-primary/5 ambient-layer pointer-events-none absolute top-1/3 left-1/2 -z-10 size-[30rem] -translate-x-1/2 rounded-full blur-[130px]"
       />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading

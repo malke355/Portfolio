@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { absoluteUrl, site, siteUrl, socials } from '@/lib/site'
+import { themeInitScript } from '@/lib/theme'
 import './globals.css'
 
 const geistSans = Geist({
@@ -57,8 +58,11 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'dark',
-  themeColor: '#0a0f0c',
+  colorScheme: 'light dark',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#fbfdfb' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a0f0c' },
+  ],
 }
 
 const personSchema = {
@@ -97,8 +101,17 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} bg-background`}
+      suppressHydrationWarning
     >
+      <head>
+        <script
+          // Applies the stored or system theme before first paint. Without
+          // this the page renders light and then flips, which is jarring.
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
+      </head>
       <body className="font-sans antialiased">
+        <div aria-hidden className="grain" />
         <a
           href="#main"
           className="focus:bg-primary focus:text-primary-foreground sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-200 focus:rounded-xl focus:px-4 focus:py-2.5 focus:text-sm focus:font-medium"

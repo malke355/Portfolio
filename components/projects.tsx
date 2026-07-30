@@ -11,7 +11,7 @@ export function Projects() {
     <section id="projects" className="relative scroll-mt-24 py-24 lg:py-32">
       <div
         aria-hidden
-        className="animate-float-slower bg-primary/8 pointer-events-none absolute top-40 -right-24 -z-10 size-[26rem] rounded-full blur-[130px]"
+        className="animate-float-slower bg-primary/8 ambient-layer pointer-events-none absolute top-40 -right-24 -z-10 size-[26rem] rounded-full blur-[130px]"
       />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading

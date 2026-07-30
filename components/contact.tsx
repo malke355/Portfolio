@@ -50,7 +50,7 @@ export function Contact() {
     >
       <div
         aria-hidden
-        className="animate-float-slow bg-primary/8 pointer-events-none absolute bottom-0 left-1/4 -z-10 size-[24rem] rounded-full blur-[130px]"
+        className="animate-float-slow bg-primary/8 ambient-layer pointer-events-none absolute bottom-0 left-1/4 -z-10 size-[24rem] rounded-full blur-[130px]"
       />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
