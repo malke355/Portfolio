@@ -329,6 +329,21 @@ const goto: Command = {
   },
 }
 
+const resume: Command = {
+  name: 'resume',
+  aliases: ['cv'],
+  summary: 'Open the printable résumé',
+  run: (_args, ctx) => {
+    ctx.print(
+      {
+        kind: 'text',
+        text: 'A single-page résumé, generated from this same content — print it to PDF from the page.',
+      },
+      { kind: 'link', label: 'Open résumé', href: '/resume' },
+    )
+  },
+}
+
 const clear: Command = {
   name: 'clear',
   aliases: ['cls'],
@@ -402,6 +417,7 @@ export const commands: readonly Command[] = [
   timelineCommand,
   github,
   contact,
+  resume,
   goto,
   clear,
   exit,

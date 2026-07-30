@@ -1,6 +1,7 @@
 'use client'
 
-import { Menu, X } from 'lucide-react'
+import { FileText, Menu, X } from 'lucide-react'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { TerminalTrigger } from '@/components/terminal/terminal-trigger'
 import { ThemeToggle } from '@/components/theme-toggle'
@@ -69,6 +70,15 @@ export function SiteNav() {
         </a>
 
         <ul className="hidden items-center gap-1 md:flex">
+          <li className="order-last">
+            <Link
+              href="/resume"
+              className="text-muted-foreground hover:text-foreground focus-visible:ring-ring ml-1 inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm transition-colors focus-visible:ring-2 focus-visible:outline-none"
+            >
+              Résumé
+              <FileText className="size-3.5" />
+            </Link>
+          </li>
           {links.map((link) => (
             <li key={link.id}>
               <a
@@ -136,6 +146,16 @@ export function SiteNav() {
                 </a>
               </li>
             ))}
+            <li className="border-border mt-1 border-t pt-1">
+              <Link
+                href="/resume"
+                onClick={() => setOpen(false)}
+                className="text-muted-foreground hover:bg-secondary hover:text-foreground flex items-center justify-between rounded-xl px-3 py-3 text-sm transition-colors"
+              >
+                Résumé
+                <FileText className="size-3.5" />
+              </Link>
+            </li>
           </ul>
         </div>
       )}

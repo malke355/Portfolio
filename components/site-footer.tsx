@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { SocialLinks } from '@/components/social-links'
 import { site } from '@/lib/site'
 
@@ -10,7 +11,15 @@ export function SiteFooter() {
           Tailwind CSS.
         </p>
 
-        <SocialLinks variant="outline" />
+        <div className="flex items-center gap-4">
+          <Link
+            href="/resume"
+            className="text-muted-foreground hover:text-primary focus-visible:ring-ring rounded-lg text-sm transition-colors focus-visible:ring-2 focus-visible:outline-none"
+          >
+            Résumé
+          </Link>
+          <SocialLinks variant="outline" />
+        </div>
       </div>
     </footer>
   )

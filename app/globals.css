@@ -261,3 +261,50 @@
     animation: none;
   }
 }
+
+/* The résumé is meant to be printed to PDF, so force ink-on-paper regardless
+   of the theme the visitor happens to be using. */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 14mm;
+  }
+
+  :root,
+  .dark {
+    --background: white;
+    --foreground: black;
+    --muted-foreground: #3f3f3f;
+    --border: #d4d4d4;
+    --primary: black;
+    color-scheme: light;
+  }
+
+  html,
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Screen furniture that has no meaning on paper. */
+  .grain,
+  .ambient-layer,
+  .glass {
+    display: none !important;
+  }
+
+  .print-sheet {
+    gap: 1.4rem !important;
+  }
+
+  a {
+    color: black !important;
+    text-decoration: none !important;
+  }
+
+  /* Never split a role or project across a page boundary. */
+  .break-inside-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
