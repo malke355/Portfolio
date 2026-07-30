@@ -11,13 +11,13 @@ export type TimelineEntry = {
 }
 
 export const bio = [
-  "I'm Melkamu Teshome, a full-stack developer and AI enthusiast focused on the JavaScript ecosystem. I work across the whole stack — React and Next.js on the front end, Node.js, Express and MongoDB on the back end, and React Native when the product belongs in someone's pocket.",
-  "What I enjoy most is the point where engineering meets product: turning a rough idea into a clean interface, a sane data model and an API that other developers actually enjoy using. Lately I've been building AI-assisted features that make everyday workflows dramatically faster.",
+  "I'm Melkamu Teshome, a full-stack developer focused on the JavaScript ecosystem. I work across the whole stack — React and Next.js on the front end, Node.js, Express and MongoDB on the back end, and React Native when the product belongs in someone's pocket.",
+  'What I enjoy most is the point where engineering meets product: turning a rough idea into a clean interface, a sane data model and an API that other developers actually enjoy using.',
 ] as const
 
 export const stats: readonly Stat[] = [
   { value: '15+', label: 'Projects shipped', hint: 'web · mobile · internal' },
-  { value: '20+', label: 'Technologies', hint: 'frontend to infrastructure' },
+  { value: '25+', label: 'Technologies', hint: 'frontend to infrastructure' },
   { value: '3+', label: 'Years experience', hint: 'freelance & team work' },
 ] as const
 
@@ -39,12 +39,17 @@ export const timeline: readonly TimelineEntry[] = [
   },
   {
     year: '2024',
-    title: 'AI-assisted products',
-    body: 'Integrated LLM features, vector search and automation into real product workflows.',
+    title: 'Moved into infrastructure',
+    body: 'Containerised services with Docker and Kubernetes, and started provisioning cloud infrastructure as code with Terraform.',
+  },
+  {
+    year: '2025',
+    title: 'Automated delivery',
+    body: 'Built CI/CD pipelines on GitHub Actions and Jenkins, with SonarQube quality gates and Prometheus monitoring.',
   },
 ] as const
 
-export const currentFocus = 'Building AI-powered products'
+export const currentFocus = 'Cloud infrastructure and delivery automation'
 
 export const remoteNote =
   'Available for remote work across EMEA and US time zones, with overlap hours for standups and pairing.'

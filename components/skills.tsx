@@ -1,4 +1,4 @@
-import { Code2, Server, Wrench } from 'lucide-react'
+import { CloudCog, Code2, Server, Wrench } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
 import type { SkillGroup } from '@/content/skills'
@@ -7,6 +7,7 @@ import { skillGroups } from '@/content/skills'
 const icons = {
   code: Code2,
   server: Server,
+  cloud: CloudCog,
   wrench: Wrench,
 } as const
 
@@ -24,11 +25,13 @@ export function Skills() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Skills"
-          title="The stack I build with every day"
-          description="A focused toolkit, chosen for speed of delivery and long-term maintainability."
+          title="From interface to infrastructure"
+          description="A toolkit that covers both halves of shipping software — building the product, and running it."
         />
 
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
+        {/* Two-up on tablet, four-up on wide screens. A three-column grid
+            leaves the fourth group orphaned on its own row. */}
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {skillGroups.map((group, i) => (
             <Reveal
               key={group.id}

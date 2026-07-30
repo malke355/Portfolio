@@ -74,9 +74,12 @@ const about: Command = {
   },
 }
 
+const skillGroupIds = skillGroups.map((group) => group.id)
+
 const skillsCommand: Command = {
   name: 'skills',
-  usage: 'skills [frontend|backend|tools]',
+  // Derived so adding a group cannot leave the usage text stale.
+  usage: `skills [${skillGroupIds.join('|')}]`,
   summary: 'The stack I build with',
   run: (args, ctx) => {
     const filter = args[0]?.toLowerCase()
@@ -87,7 +90,7 @@ const skillsCommand: Command = {
     if (groups.length === 0) {
       ctx.print({
         kind: 'text',
-        text: `Unknown group "${filter}". Try: frontend, backend, tools.`,
+        text: `Unknown group "${filter}". Try: ${skillGroupIds.join(', ')}.`,
         tone: 'error',
       })
       return

@@ -22,14 +22,14 @@ export const site = {
   url: siteUrl,
   name: 'Melkamu Teshome',
   initials: 'MT',
-  handle: 'melkamu372',
+  handle: 'malke355',
   role: 'Full-Stack Developer',
-  tagline: 'Full-Stack Developer & AI enthusiast',
+  tagline: 'Full-Stack Developer',
   title: 'Melkamu Teshome — Full-Stack Developer',
   description:
-    'Full-Stack Developer and AI enthusiast building modern web and mobile applications with React, Next.js, React Native and Node.js.',
+    'Full-stack developer building modern web and mobile applications with React, Next.js, React Native and Node.js.',
   summary:
-    'Full-Stack Developer building modern web and mobile applications — from pixel-precise interfaces to reliable APIs, shipped with clean architecture and a product mindset.',
+    'Full-stack developer building modern web and mobile applications — from pixel-precise interfaces to reliable APIs, shipped with clean architecture and a product mindset.',
   location: 'Addis Ababa, Ethiopia',
   locationNote: 'Addis Ababa, Ethiopia · Remote friendly',
   availability: 'Open to work',
@@ -52,8 +52,8 @@ export const site = {
 export const socials = {
   github: {
     label: 'GitHub',
-    handle: '@melkamu372',
-    href: 'https://github.com/melkamu372',
+    handle: '@malke355',
+    href: 'https://github.com/malke355',
   },
   linkedin: {
     label: 'LinkedIn',

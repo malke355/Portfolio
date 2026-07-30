@@ -1,7 +1,7 @@
 export type SkillGroup = {
-  id: 'frontend' | 'backend' | 'tools'
+  id: 'frontend' | 'backend' | 'cloud' | 'tools'
   title: string
-  icon: 'code' | 'server' | 'wrench'
+  icon: 'code' | 'server' | 'cloud' | 'wrench'
   blurb: string
   items: readonly string[]
 }
@@ -22,11 +22,34 @@ export const skillGroups: readonly SkillGroup[] = [
     items: ['Node.js', 'Express', 'MongoDB', 'REST APIs'],
   },
   {
+    id: 'cloud',
+    title: 'Cloud & DevOps',
+    icon: 'cloud',
+    blurb: 'The infrastructure and pipelines that ship it.',
+    items: [
+      'AWS',
+      'Docker',
+      'Kubernetes',
+      'Terraform',
+      'Ansible',
+      'Linux',
+      'Prometheus',
+    ],
+  },
+  {
     id: 'tools',
     title: 'Tools',
     icon: 'wrench',
     blurb: 'The workflow around shipping software.',
-    items: ['Git', 'GitHub', 'Figma', 'Firebase', 'Docker'],
+    items: [
+      'Git',
+      'GitHub Actions',
+      'Jenkins',
+      'CircleCI',
+      'SonarQube',
+      'Firebase',
+      'Figma',
+    ],
   },
 ] as const
 
@@ -34,12 +57,13 @@ export const skillGroups: readonly SkillGroup[] = [
 export const heroStack = [
   'React',
   'Next.js',
-  'React Native',
   'TypeScript',
   'Node.js',
   'MongoDB',
-  'Tailwind CSS',
+  'AWS',
   'Docker',
+  'Kubernetes',
+  'Terraform',
 ] as const
 
 export const allSkills = [
