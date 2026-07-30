@@ -2,7 +2,7 @@
 
 import { GitFork, Star } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import type { GitHubSummary, GitHubUnavailable } from '@/app/api/github/route'
+import type { GitHubResult, GitHubSummary } from '@/lib/github'
 
 type State =
   | { status: 'loading' }
@@ -27,7 +27,7 @@ export function GithubPanel() {
 
     fetch('/api/github', { signal: controller.signal })
       .then((response) => response.json())
-      .then((payload: GitHubSummary | GitHubUnavailable) => {
+      .then((payload: GitHubResult) => {
         setState(
           payload.available
             ? { status: 'ready', data: payload }
