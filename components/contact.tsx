@@ -55,11 +55,11 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="relative scroll-mt-24 border-t border-border py-24 lg:py-32"
+      className="border-border relative scroll-mt-24 border-t py-24 lg:py-32"
     >
       <div
         aria-hidden
-        className="animate-float-slow pointer-events-none absolute bottom-0 left-1/4 -z-10 size-[24rem] rounded-full bg-primary/8 blur-[130px]"
+        className="animate-float-slow bg-primary/8 pointer-events-none absolute bottom-0 left-1/4 -z-10 size-[24rem] rounded-full blur-[130px]"
       />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
@@ -75,7 +75,7 @@ export function Contact() {
                 <div className="flex flex-col gap-2">
                   <label
                     htmlFor="name"
-                    className="text-xs font-medium tracking-wide text-muted-foreground"
+                    className="text-muted-foreground text-xs font-medium tracking-wide"
                   >
                     Name
                   </label>
@@ -91,7 +91,7 @@ export function Contact() {
                 <div className="flex flex-col gap-2">
                   <label
                     htmlFor="email"
-                    className="text-xs font-medium tracking-wide text-muted-foreground"
+                    className="text-muted-foreground text-xs font-medium tracking-wide"
                   >
                     Email
                   </label>
@@ -110,7 +110,7 @@ export function Contact() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="subject"
-                  className="text-xs font-medium tracking-wide text-muted-foreground"
+                  className="text-muted-foreground text-xs font-medium tracking-wide"
                 >
                   Subject
                 </label>
@@ -125,7 +125,7 @@ export function Contact() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="message"
-                  className="text-xs font-medium tracking-wide text-muted-foreground"
+                  className="text-muted-foreground text-xs font-medium tracking-wide"
                 >
                   Message
                 </label>
@@ -143,15 +143,12 @@ export function Contact() {
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="group inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_-12px_var(--primary)] focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none disabled:pointer-events-none disabled:opacity-60"
+                  className="group bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_-12px_var(--primary)] focus-visible:ring-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-60"
                 >
                   {status === 'sending' ? 'Opening mail…' : 'Send message'}
                   <Send className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </button>
-                <p
-                  aria-live="polite"
-                  className="text-xs text-muted-foreground"
-                >
+                <p aria-live="polite" className="text-muted-foreground text-xs">
                   {status === 'sent'
                     ? "Thanks! Your mail client should be open — I'll reply shortly."
                     : 'Your message opens in your mail app, pre-filled and ready to send.'}
@@ -173,16 +170,16 @@ export function Contact() {
                       ? 'noreferrer noopener'
                       : undefined
                   }
-                  className="glass flex items-center gap-4 rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                  className="glass hover:border-primary/40 focus-visible:ring-ring flex items-center gap-4 rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 focus-visible:ring-2 focus-visible:outline-none"
                 >
-                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary/12 text-primary ring-1 ring-primary/25">
+                  <span className="bg-primary/12 text-primary ring-primary/25 grid size-11 shrink-0 place-items-center rounded-xl ring-1">
                     <channel.Icon className="size-5" />
                   </span>
                   <span className="min-w-0">
                     <span className="block text-sm font-medium">
                       {channel.label}
                     </span>
-                    <span className="block truncate text-sm text-muted-foreground">
+                    <span className="text-muted-foreground block truncate text-sm">
                       {channel.value}
                     </span>
                   </span>
@@ -192,10 +189,10 @@ export function Contact() {
 
             <Reveal delay={280} className="glass rounded-2xl p-5">
               <p className="flex items-center gap-2 text-sm font-medium">
-                <MapPin className="size-4 text-primary" />
+                <MapPin className="text-primary size-4" />
                 Addis Ababa, Ethiopia
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
                 Available for remote work across EMEA and US time zones, with
                 overlap hours for standups and pairing.
               </p>

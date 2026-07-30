@@ -35,7 +35,7 @@ export function About() {
     <section id="about" className="relative scroll-mt-24 py-24 lg:py-32">
       <div
         aria-hidden
-        className="pointer-events-none absolute top-1/3 left-1/2 -z-10 size-[30rem] -translate-x-1/2 rounded-full bg-primary/5 blur-[130px]"
+        className="bg-primary/5 pointer-events-none absolute top-1/3 left-1/2 -z-10 size-[30rem] -translate-x-1/2 rounded-full blur-[130px]"
       />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
@@ -47,14 +47,14 @@ export function About() {
         <div className="mt-14 grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
           <div className="flex flex-col gap-6">
             <Reveal className="glass rounded-3xl p-6 sm:p-8">
-              <p className="leading-relaxed text-muted-foreground">
+              <p className="text-muted-foreground leading-relaxed">
                 I&apos;m Melkamu Teshome, a full-stack developer and AI
-                enthusiast focused on the JavaScript ecosystem. I work across the
-                whole stack — React and Next.js on the front end, Node.js,
+                enthusiast focused on the JavaScript ecosystem. I work across
+                the whole stack — React and Next.js on the front end, Node.js,
                 Express and MongoDB on the back end, and React Native when the
                 product belongs in someone&apos;s pocket.
               </p>
-              <p className="mt-4 leading-relaxed text-muted-foreground">
+              <p className="text-muted-foreground mt-4 leading-relaxed">
                 What I enjoy most is the point where engineering meets product:
                 turning a rough idea into a clean interface, a sane data model
                 and an API that other developers actually enjoy using. Lately
@@ -68,13 +68,13 @@ export function About() {
                 <Reveal
                   key={stat.label}
                   delay={i * 90}
-                  className="glass group rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
+                  className="glass group hover:border-primary/40 rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1"
                 >
-                  <p className="text-3xl font-semibold tracking-tight text-primary">
+                  <p className="text-primary text-3xl font-semibold tracking-tight">
                     {stat.value}
                   </p>
                   <p className="mt-1 text-sm font-medium">{stat.label}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">
+                  <p className="text-muted-foreground mt-1 text-xs">
                     {stat.hint}
                   </p>
                 </Reveal>
@@ -82,7 +82,7 @@ export function About() {
             </div>
           </div>
 
-          <ol className="relative border-l border-border pl-6 sm:pl-8">
+          <ol className="border-border relative border-l pl-6 sm:pl-8">
             {timeline.map((item, i) => (
               <Reveal
                 as="li"
@@ -92,13 +92,13 @@ export function About() {
               >
                 <span
                   aria-hidden
-                  className="absolute top-1.5 -left-[calc(1.5rem+5px)] size-2.5 rounded-full bg-primary ring-4 ring-primary/15 transition-transform duration-300 group-hover:scale-125 sm:-left-[calc(2rem+5px)]"
+                  className="bg-primary ring-primary/15 absolute top-1.5 -left-[calc(1.5rem+5px)] size-2.5 rounded-full ring-4 transition-transform duration-300 group-hover:scale-125 sm:-left-[calc(2rem+5px)]"
                 />
-                <p className="font-mono text-xs tracking-widest text-primary">
+                <p className="text-primary font-mono text-xs tracking-widest">
                   {item.year}
                 </p>
                 <h3 className="mt-1.5 text-base font-medium">{item.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
                   {item.body}
                 </p>
               </Reveal>

@@ -17,9 +17,9 @@ const socials = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border py-10">
+    <footer className="border-border border-t py-10">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 sm:px-6 md:flex-row">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           © {new Date().getFullYear()} Melkamu Teshome. Built with Next.js and
           Tailwind CSS.
         </p>
@@ -33,7 +33,7 @@ export function SiteFooter() {
                 rel={
                   href.startsWith('http') ? 'noreferrer noopener' : undefined
                 }
-                className="grid size-9 place-items-center rounded-xl border border-border text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                className="border-border text-muted-foreground hover:border-primary/40 hover:text-primary focus-visible:ring-ring grid size-9 place-items-center rounded-xl border transition-all duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:outline-none"
               >
                 <Icon className="size-4" />
                 <span className="sr-only">{label}</span>

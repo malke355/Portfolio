@@ -48,7 +48,7 @@ export function Experience() {
   return (
     <section
       id="experience"
-      className="relative scroll-mt-24 border-t border-border py-24 lg:py-32"
+      className="border-border relative scroll-mt-24 border-t py-24 lg:py-32"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
@@ -58,7 +58,7 @@ export function Experience() {
         />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
-          <ol className="relative border-l border-border pl-6 sm:pl-8">
+          <ol className="border-border relative border-l pl-6 sm:pl-8">
             {roles.map((role, i) => (
               <Reveal
                 as="li"
@@ -68,26 +68,26 @@ export function Experience() {
               >
                 <span
                   aria-hidden
-                  className="absolute top-2 -left-[calc(1.5rem+5px)] size-2.5 rounded-full bg-primary ring-4 ring-primary/15 transition-transform duration-300 group-hover:scale-125 sm:-left-[calc(2rem+5px)]"
+                  className="bg-primary ring-primary/15 absolute top-2 -left-[calc(1.5rem+5px)] size-2.5 rounded-full ring-4 transition-transform duration-300 group-hover:scale-125 sm:-left-[calc(2rem+5px)]"
                 />
-                <div className="glass rounded-2xl p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/40 sm:p-6">
-                  <p className="font-mono text-xs tracking-widest text-primary">
+                <div className="glass group-hover:border-primary/40 rounded-2xl p-5 transition-all duration-300 group-hover:-translate-y-1 sm:p-6">
+                  <p className="text-primary font-mono text-xs tracking-widest">
                     {role.period}
                   </p>
                   <h3 className="mt-2 text-lg font-medium">{role.role}</h3>
-                  <p className="text-sm text-muted-foreground">{role.org}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">{role.org}</p>
+                  <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
                     {role.body}
                   </p>
                   <ul className="mt-4 flex flex-col gap-2">
                     {role.points.map((point) => (
                       <li
                         key={point}
-                        className="flex gap-2.5 text-sm text-foreground/85"
+                        className="text-foreground/85 flex gap-2.5 text-sm"
                       >
                         <span
                           aria-hidden
-                          className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary"
+                          className="bg-primary mt-1.5 size-1.5 shrink-0 rounded-full"
                         />
                         {point}
                       </li>
@@ -100,28 +100,28 @@ export function Experience() {
 
           <Reveal delay={120} className="lg:sticky lg:top-28 lg:self-start">
             <div className="glass overflow-hidden rounded-3xl p-6 sm:p-8">
-              <span className="grid size-12 place-items-center rounded-2xl bg-primary/12 text-primary ring-1 ring-primary/25">
+              <span className="bg-primary/12 text-primary ring-primary/25 grid size-12 place-items-center rounded-2xl ring-1">
                 <GraduationCap className="size-6" />
               </span>
-              <p className="mt-5 font-mono text-xs tracking-widest text-primary uppercase">
+              <p className="text-primary mt-5 font-mono text-xs tracking-widest uppercase">
                 Education
               </p>
               <h3 className="mt-2 text-xl font-semibold tracking-tight">
                 BSc in Software Engineering
               </h3>
-              <p className="mt-1 text-sm text-muted-foreground">
+              <p className="text-muted-foreground mt-1 text-sm">
                 Bahir Dar University · Institute of Technology
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
                 Studied software design, data structures, databases and
                 distributed systems, with a final-year focus on applied machine
                 learning for web products.
               </p>
 
-              <ul className="mt-6 flex flex-col gap-3 border-t border-border pt-6">
+              <ul className="border-border mt-6 flex flex-col gap-3 border-t pt-6">
                 {achievements.map((item) => (
                   <li key={item} className="flex gap-3 text-sm">
-                    <Star className="mt-0.5 size-4 shrink-0 text-primary" />
+                    <Star className="text-primary mt-0.5 size-4 shrink-0" />
                     <span className="text-muted-foreground">{item}</span>
                   </li>
                 ))}

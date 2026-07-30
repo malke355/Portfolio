@@ -27,7 +27,7 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="relative scroll-mt-24 border-y border-border py-24 lg:py-32"
+      className="border-border relative scroll-mt-24 border-y py-24 lg:py-32"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
@@ -41,25 +41,25 @@ export function Skills() {
             <Reveal
               key={group.title}
               delay={i * 110}
-              className="group glass relative overflow-hidden rounded-3xl p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/40"
+              className="group glass hover:border-primary/40 relative overflow-hidden rounded-3xl p-6 transition-all duration-500 hover:-translate-y-1.5"
             >
               <div
                 aria-hidden
-                className="absolute -top-16 -right-16 size-40 rounded-full bg-primary/10 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+                className="bg-primary/10 absolute -top-16 -right-16 size-40 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
               />
               <div className="flex items-center gap-3">
-                <span className="grid size-11 place-items-center rounded-2xl bg-primary/12 text-primary ring-1 ring-primary/25 transition-transform duration-500 group-hover:scale-110">
+                <span className="bg-primary/12 text-primary ring-primary/25 grid size-11 place-items-center rounded-2xl ring-1 transition-transform duration-500 group-hover:scale-110">
                   <group.Icon className="size-5" />
                 </span>
                 <div>
                   <h3 className="text-lg font-medium">{group.title}</h3>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-muted-foreground text-xs">
                     {group.items.length} technologies
                   </p>
                 </div>
               </div>
 
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
                 {group.blurb}
               </p>
 
@@ -67,7 +67,7 @@ export function Skills() {
                 {group.items.map((item) => (
                   <li
                     key={item}
-                    className="rounded-lg border border-border bg-secondary/50 px-2.5 py-1.5 text-xs text-foreground/90 transition-colors duration-300 hover:border-primary/40 hover:text-primary"
+                    className="border-border bg-secondary/50 text-foreground/90 hover:border-primary/40 hover:text-primary rounded-lg border px-2.5 py-1.5 text-xs transition-colors duration-300"
                   >
                     {item}
                   </li>

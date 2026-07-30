@@ -21,22 +21,22 @@ export function PageLoader() {
   return (
     <div
       aria-hidden={done}
-      className={`pointer-events-none fixed inset-0 z-100 flex items-center justify-center bg-background transition-opacity duration-500 ${
+      className={`bg-background pointer-events-none fixed inset-0 z-100 flex items-center justify-center transition-opacity duration-500 ${
         done ? 'opacity-0' : 'opacity-100'
       }`}
       style={{ visibility: done ? 'hidden' : 'visible' }}
     >
       <div className="flex w-56 flex-col items-center gap-4">
-        <span className="font-mono text-xs tracking-[0.35em] text-muted-foreground uppercase">
+        <span className="text-muted-foreground font-mono text-xs tracking-[0.35em] uppercase">
           MT
         </span>
-        <div className="h-px w-full overflow-hidden bg-border">
+        <div className="bg-border h-px w-full overflow-hidden">
           <div
-            className="h-full bg-primary transition-[width] duration-500 ease-out"
+            className="bg-primary h-full transition-[width] duration-500 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
-        <span className="font-mono text-[11px] text-muted-foreground">
+        <span className="text-muted-foreground font-mono text-[11px]">
           loading portfolio…
         </span>
       </div>

@@ -64,9 +64,9 @@ export function SiteNav() {
       >
         <a
           href="#home"
-          className="group flex items-center gap-2.5 rounded-lg px-1 py-1 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+          className="group focus-visible:ring-ring flex items-center gap-2.5 rounded-lg px-1 py-1 focus-visible:ring-2 focus-visible:outline-none"
         >
-          <span className="grid size-8 place-items-center rounded-lg bg-primary/15 font-mono text-xs font-semibold text-primary ring-1 ring-primary/30 transition-transform duration-300 group-hover:scale-105">
+          <span className="bg-primary/15 text-primary ring-primary/30 grid size-8 place-items-center rounded-lg font-mono text-xs font-semibold ring-1 transition-transform duration-300 group-hover:scale-105">
             MT
           </span>
           <span className="text-sm font-medium tracking-tight">
@@ -81,7 +81,7 @@ export function SiteNav() {
                 href={`#${link.id}`}
                 aria-current={active === link.id ? 'page' : undefined}
                 className={cn(
-                  'relative rounded-lg px-3 py-2 text-sm transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none',
+                  'focus-visible:ring-ring relative rounded-lg px-3 py-2 text-sm transition-colors focus-visible:ring-2 focus-visible:outline-none',
                   active === link.id
                     ? 'text-foreground'
                     : 'text-muted-foreground hover:text-foreground',
@@ -90,7 +90,7 @@ export function SiteNav() {
                 {link.label}
                 <span
                   className={cn(
-                    'absolute inset-x-3 -bottom-0.5 h-px bg-primary transition-transform duration-300 ease-out',
+                    'bg-primary absolute inset-x-3 -bottom-0.5 h-px transition-transform duration-300 ease-out',
                     active === link.id ? 'scale-x-100' : 'scale-x-0',
                   )}
                 />
@@ -102,7 +102,7 @@ export function SiteNav() {
         <div className="flex items-center gap-2">
           <a
             href="#contact"
-            className="hidden rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-10px_var(--primary)] focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none sm:inline-flex"
+            className="bg-primary text-primary-foreground focus-visible:ring-ring hidden rounded-xl px-4 py-2 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-10px_var(--primary)] focus-visible:ring-2 focus-visible:outline-none sm:inline-flex"
           >
             Let&apos;s talk
           </a>
@@ -111,7 +111,7 @@ export function SiteNav() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? 'Close menu' : 'Open menu'}
-            className="grid size-9 place-items-center rounded-xl border border-border text-foreground transition-colors hover:bg-secondary md:hidden"
+            className="border-border text-foreground hover:bg-secondary grid size-9 place-items-center rounded-xl border transition-colors md:hidden"
           >
             {open ? <X className="size-4" /> : <Menu className="size-4" />}
           </button>
@@ -134,7 +134,7 @@ export function SiteNav() {
                   )}
                 >
                   {link.label}
-                  <span className="font-mono text-[10px] text-muted-foreground">
+                  <span className="text-muted-foreground font-mono text-[10px]">
                     0{links.indexOf(link) + 1}
                   </span>
                 </a>

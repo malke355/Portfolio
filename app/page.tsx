@@ -13,7 +13,7 @@ export default function Page() {
     <>
       <PageLoader />
       <SiteNav />
-      <main>
+      <main id="main">
         <Hero />
         <About />
         <Skills />

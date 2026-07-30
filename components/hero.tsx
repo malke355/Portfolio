@@ -40,19 +40,19 @@ export function Hero() {
     >
       {/* ambient background */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="grid-bg absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
-        <div className="animate-float-slow absolute -top-32 -left-24 size-[26rem] rounded-full bg-primary/12 blur-[110px]" />
-        <div className="animate-float-slower absolute top-24 -right-20 size-[22rem] rounded-full bg-primary/8 blur-[120px]" />
+        <div className="grid-bg absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)] opacity-40" />
+        <div className="animate-float-slow bg-primary/12 absolute -top-32 -left-24 size-[26rem] rounded-full blur-[110px]" />
+        <div className="animate-float-slower bg-primary/8 absolute top-24 -right-20 size-[22rem] rounded-full blur-[120px]" />
       </div>
 
       <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
         <div>
           <Reveal>
-            <span className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs text-muted-foreground">
-              <Sparkles className="size-3.5 text-primary" />
+            <span className="glass text-muted-foreground inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs">
+              <Sparkles className="text-primary size-3.5" />
               Full-Stack Developer &amp; AI enthusiast
-              <span className="ml-1 flex items-center gap-1.5 border-l border-border pl-2 text-primary">
-                <span className="size-1.5 animate-pulse rounded-full bg-primary" />
+              <span className="border-border text-primary ml-1 flex items-center gap-1.5 border-l pl-2">
+                <span className="bg-primary size-1.5 animate-pulse rounded-full" />
                 Open to work
               </span>
             </span>
@@ -66,7 +66,7 @@ export function Hero() {
           </Reveal>
 
           <Reveal delay={150}>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="text-muted-foreground mt-5 max-w-xl text-base leading-relaxed sm:text-lg">
               Full-Stack Developer building modern web and mobile applications —
               from pixel-precise interfaces to reliable APIs, shipped with clean
               architecture and a product mindset.
@@ -77,14 +77,14 @@ export function Hero() {
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
                 href="#projects"
-                className="group inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_-12px_var(--primary)] focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                className="group bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_-12px_var(--primary)] focus-visible:ring-2 focus-visible:outline-none"
               >
                 View Projects
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
               <a
                 href="#contact"
-                className="glass inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                className="glass hover:border-primary/40 hover:text-primary focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:outline-none"
               >
                 Contact Me
                 <Mail className="size-4" />
@@ -105,7 +105,7 @@ export function Hero() {
                           ? 'noreferrer noopener'
                           : undefined
                       }
-                      className="glass grid size-10 place-items-center rounded-xl text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                      className="glass text-muted-foreground hover:border-primary/40 hover:text-primary focus-visible:ring-ring grid size-10 place-items-center rounded-xl transition-all duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:outline-none"
                     >
                       <Icon className="size-4.5" />
                       <span className="sr-only">{label}</span>
@@ -113,8 +113,8 @@ export function Hero() {
                   </li>
                 ))}
               </ul>
-              <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
-                <MapPin className="size-3.5 text-primary" />
+              <span className="text-muted-foreground inline-flex items-center gap-1.5 text-xs">
+                <MapPin className="text-primary size-3.5" />
                 Addis Ababa, Ethiopia · Remote friendly
               </span>
             </div>
@@ -125,7 +125,7 @@ export function Hero() {
           <div className="relative mx-auto max-w-sm lg:max-w-none">
             <div
               aria-hidden
-              className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-primary/10 blur-3xl"
+              className="bg-primary/10 absolute -inset-6 -z-10 rounded-[2.5rem] blur-3xl"
             />
             <div className="glass relative overflow-hidden rounded-[2rem] p-2">
               <div className="relative aspect-4/5 overflow-hidden rounded-[1.6rem]">
@@ -139,12 +139,12 @@ export function Hero() {
                 />
                 <div
                   aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent"
+                  className="from-background via-background/10 absolute inset-0 bg-gradient-to-t to-transparent"
                 />
               </div>
 
               <div className="glass absolute bottom-5 left-5 rounded-2xl px-4 py-3">
-                <p className="font-mono text-[11px] tracking-widest text-primary uppercase">
+                <p className="text-primary font-mono text-[11px] tracking-widest uppercase">
                   currently
                 </p>
                 <p className="mt-1 text-sm font-medium">
@@ -158,20 +158,20 @@ export function Hero() {
 
       {/* tech marquee */}
       <Reveal delay={340} className="mt-16">
-        <div className="relative overflow-hidden border-y border-border py-4">
+        <div className="border-border relative overflow-hidden border-y py-4">
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-background to-transparent"
+            className="from-background pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r to-transparent"
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-background to-transparent"
+            className="from-background pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l to-transparent"
           />
           <div className="animate-marquee flex w-max items-center gap-10 pr-10">
             {[...stack, ...stack].map((item, i) => (
               <span
                 key={`${item}-${i}`}
-                className="font-mono text-xs tracking-[0.2em] whitespace-nowrap text-muted-foreground uppercase"
+                className="text-muted-foreground font-mono text-xs tracking-[0.2em] whitespace-nowrap uppercase"
               >
                 {item}
               </span>

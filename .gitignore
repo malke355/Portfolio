@@ -1,15 +1,37 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# build output
+.next/
+out/
+build/
+dist/
+
+# environment
+.env
+.env*.local
+
+# editor / OS
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# tooling caches
+*.tsbuildinfo
+next-env.d.ts
+.eslintcache
+
+# deploy
+.vercel/
+
 # v0 sandbox internal files
 __v0_runtime_loader.js
 __v0_devtools.tsx
 __v0_jsx-dev-runtime.ts
 .snowflake/
 .v0-trash/
-.vercel/
-
-# Environment variables
-.env*.local
-
-# Common ignores
-node_modules
-.next/
-.DS_Store
