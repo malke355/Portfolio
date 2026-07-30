@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
-@import 'shadcn/tailwind.css';
 
 /* Theme is driven by a class on <html>, set before first paint by the
    inline script in the root layout, so there is no flash of wrong theme. */
