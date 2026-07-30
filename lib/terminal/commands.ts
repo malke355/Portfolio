@@ -1,5 +1,5 @@
-import { education, roles } from '@/content/experience'
-import { bio, currentFocus, stats, timeline } from '@/content/profile'
+import { education } from '@/content/experience'
+import { bio, currentFocus } from '@/content/profile'
 import { findProject, projects } from '@/content/projects'
 import { skillGroups } from '@/content/skills'
 import { navLinks, site, socials } from '@/lib/site'
@@ -62,13 +62,6 @@ const about: Command = {
       { kind: 'divider' },
       ...bio.map((text): Block => ({ kind: 'text', text })),
       { kind: 'divider' },
-      {
-        kind: 'pairs',
-        items: stats.map((stat) => ({
-          label: stat.value,
-          value: `${stat.label} — ${stat.hint}`,
-        })),
-      },
       { kind: 'text', text: `Currently: ${currentFocus}`, tone: 'primary' },
     )
   },
@@ -161,47 +154,17 @@ const projectsCommand: Command = {
   },
 }
 
-const experience: Command = {
-  name: 'experience',
-  aliases: ['work-history'],
-  summary: 'Where I have been building',
-  run: (_args, ctx) => {
-    for (const role of roles) {
-      ctx.print(
-        { kind: 'heading', text: `${role.role} · ${role.org}` },
-        { kind: 'text', text: role.period, tone: 'primary' },
-        { kind: 'text', text: role.body },
-        { kind: 'bullets', items: role.points },
-        { kind: 'divider' },
-      )
-    }
-  },
-}
-
 const educationCommand: Command = {
   name: 'education',
-  summary: 'Degree and academic background',
+  aliases: ['study'],
+  summary: 'What and where I am studying',
   run: (_args, ctx) => {
     ctx.print(
-      { kind: 'heading', text: education.degree },
+      { kind: 'heading', text: education.field },
       { kind: 'text', text: education.institution, tone: 'primary' },
+      { kind: 'text', text: education.status, tone: 'muted' },
       { kind: 'text', text: education.body },
-      { kind: 'bullets', items: education.achievements },
     )
-  },
-}
-
-const timelineCommand: Command = {
-  name: 'timeline',
-  summary: 'How I got here, year by year',
-  run: (_args, ctx) => {
-    ctx.print({
-      kind: 'pairs',
-      items: timeline.map((entry) => ({
-        label: entry.year,
-        value: `${entry.title} — ${entry.body}`,
-      })),
-    })
   },
 }
 
@@ -298,16 +261,6 @@ const ask: Command = {
         tone: 'error',
       })
     }
-  },
-}
-
-const github: Command = {
-  name: 'gh',
-  aliases: ['github'],
-  summary: 'Live GitHub activity',
-  run: (_args, ctx) => {
-    // The rich renderer owns fetching and its own loading state.
-    ctx.print({ kind: 'github' })
   },
 }
 
@@ -415,10 +368,7 @@ export const commands: readonly Command[] = [
   about,
   skillsCommand,
   projectsCommand,
-  experience,
   educationCommand,
-  timelineCommand,
-  github,
   contact,
   resume,
   goto,

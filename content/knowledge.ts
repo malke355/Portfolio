@@ -1,5 +1,5 @@
-import { education, roles } from '@/content/experience'
-import { bio, remoteNote, stats, timeline } from '@/content/profile'
+import { education } from '@/content/experience'
+import { bio, currentFocus, remoteNote } from '@/content/profile'
 import { projects } from '@/content/projects'
 import { skillGroups } from '@/content/skills'
 import { site, socials } from '@/lib/site'
@@ -51,7 +51,7 @@ export const knowledge: readonly KnowledgeDoc[] = [
     id: 'availability',
     title: 'Availability',
     section: 'contact',
-    body: `${site.availability}. Open to full-stack roles, freelance projects and AI product collaborations. ${remoteNote} I usually reply within a day.`,
+    body: `${site.availability}. Open to full-stack roles, internships and freelance projects. ${remoteNote} I usually reply within a day.`,
     keywords: [
       'available',
       'availability',
@@ -158,67 +158,39 @@ export const knowledge: readonly KnowledgeDoc[] = [
     ],
     anchor: `/projects/${project.slug}`,
   })),
-  ...roles.map((role, index) => ({
-    id: `role-${index + 1}`,
-    title: `${role.role} · ${role.org} (${role.period})`,
-    section: 'experience' as const,
-    body: `${role.period} — ${role.role} at ${role.org}. ${role.body} ${role.points.join('. ')}.`,
-    keywords: [
-      'experience',
-      'job',
-      'role',
-      'career',
-      'employment',
-      'history',
-      'worked',
-      role.role.toLowerCase(),
-      role.org.toLowerCase(),
-    ],
-    anchor: '#experience',
-  })),
   {
     id: 'education',
     title: 'Education',
     section: 'education',
-    body: `${education.degree}, ${education.institution}. ${education.body} ${education.achievements.join('. ')}.`,
+    body: `${education.field} at ${education.institution}. ${education.status}. ${education.body}`,
     keywords: [
       'education',
       'degree',
       'university',
       'study',
       'studied',
+      'studying',
       'school',
       'graduate',
-      'bsc',
+      'graduated',
       'college',
+      'jimma',
     ],
-    anchor: '#experience',
+    anchor: '#education',
   },
   {
-    id: 'timeline',
-    title: 'How I got here',
+    id: 'focus',
+    title: 'What I am working on',
     section: 'about',
-    body: timeline
-      .map((entry) => `${entry.year}: ${entry.title} — ${entry.body}`)
-      .join(' '),
-    keywords: ['timeline', 'journey', 'started', 'learning', 'progress'],
-    anchor: '#about',
-  },
-  {
-    id: 'stats',
-    title: 'By the numbers',
-    section: 'about',
-    body: stats
-      .map((stat) => `${stat.value} ${stat.label} (${stat.hint})`)
-      .join(', '),
+    body: `${currentFocus}. ${bio[1] ?? ''}`,
     keywords: [
-      'stats',
-      'numbers',
-      'how many',
-      'years',
-      'experience',
-      'count',
-      'projects',
+      'currently',
+      'now',
+      'focus',
+      'working',
+      'learning',
+      'next',
+      'goal',
     ],
     anchor: '#about',
   },
@@ -226,7 +198,7 @@ export const knowledge: readonly KnowledgeDoc[] = [
     id: 'this-site',
     title: 'How this site is built',
     section: 'meta',
-    body: 'This portfolio runs on Next.js 16 with the App Router, React 19 server components and Tailwind CSS v4 driven by OKLCH design tokens. The terminal you are using searches a knowledge base built from the same typed content that renders the page, using a BM25 ranking function implemented from scratch — no third-party search service and no language model, so it cannot invent an answer. It ships a Content-Security-Policy, Person JSON-LD, a generated OG image, and CI that blocks a merge on a formatting, lint, type or build failure.',
+    body: 'This portfolio runs on Next.js 16 with the App Router, React 19 server components and Tailwind CSS v4 driven by OKLCH design tokens. The terminal you are using searches a knowledge base built from the same typed content that renders the page, using a BM25 ranking function I implemented from scratch — no third-party search service and no language model, so it cannot invent an answer. It ships a Content-Security-Policy, Person JSON-LD, a generated OG image, and CI that blocks a merge on a formatting, lint, type or build failure.',
     keywords: [
       'site',
       'website',

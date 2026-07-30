@@ -3,8 +3,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { GithubIcon, LinkedinIcon } from '@/components/brand-icons'
 import { PrintButton } from '@/components/print-button'
-import { education, roles } from '@/content/experience'
-import { bio, stats } from '@/content/profile'
+import { education } from '@/content/experience'
+import { bio, currentFocus } from '@/content/profile'
 import { projects } from '@/content/projects'
 import { skillGroups } from '@/content/skills'
 import { site, socials } from '@/lib/site'
@@ -89,16 +89,9 @@ export default function ResumePage() {
             <p className="text-foreground/85 text-sm leading-relaxed print:text-black">
               {summary}
             </p>
-            <ul className="text-muted-foreground mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm print:text-black">
-              {stats.map((stat) => (
-                <li key={stat.label}>
-                  <span className="text-foreground font-medium print:text-black">
-                    {stat.value}
-                  </span>{' '}
-                  {stat.label.toLowerCase()}
-                </li>
-              ))}
-            </ul>
+            <p className="text-muted-foreground mt-2 text-sm print:text-black">
+              Currently: {currentFocus.toLowerCase()}.
+            </p>
           </section>
 
           <section>
@@ -118,44 +111,6 @@ export default function ResumePage() {
                 </div>
               ))}
             </dl>
-          </section>
-
-          <section>
-            <SectionTitle>Experience</SectionTitle>
-            <div className="flex flex-col gap-6">
-              {roles.map((role) => (
-                <div key={role.role} className="break-inside-avoid">
-                  <div className="flex flex-wrap items-baseline justify-between gap-x-4">
-                    <h3 className="text-sm font-semibold print:text-black">
-                      {role.role}
-                      <span className="text-muted-foreground font-normal print:text-black">
-                        {' '}
-                        · {role.org}
-                      </span>
-                    </h3>
-                    <p className="text-muted-foreground font-mono text-xs print:text-black">
-                      {role.period}
-                    </p>
-                  </div>
-                  <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed print:text-black">
-                    {role.body}
-                  </p>
-                  <ul className="mt-2 flex flex-col gap-1">
-                    {role.points.map((point) => (
-                      <li
-                        key={point}
-                        className="text-foreground/85 flex gap-2 text-sm leading-relaxed print:text-black"
-                      >
-                        <span aria-hidden className="shrink-0">
-                          –
-                        </span>
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
           </section>
 
           <section>
@@ -183,28 +138,21 @@ export default function ResumePage() {
 
           <section className="break-inside-avoid">
             <SectionTitle>Education</SectionTitle>
-            <h3 className="text-sm font-semibold print:text-black">
-              {education.degree}
-            </h3>
-            <p className="text-muted-foreground text-sm print:text-black">
-              {education.institution}
-            </p>
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+              <h3 className="text-sm font-semibold print:text-black">
+                {education.field}
+                <span className="text-muted-foreground font-normal print:text-black">
+                  {' '}
+                  · {education.institution}
+                </span>
+              </h3>
+              <p className="text-muted-foreground font-mono text-xs print:text-black">
+                {education.status}
+              </p>
+            </div>
             <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed print:text-black">
               {education.body}
             </p>
-            <ul className="mt-2 flex flex-col gap-1">
-              {education.achievements.map((item) => (
-                <li
-                  key={item}
-                  className="text-foreground/85 flex gap-2 text-sm leading-relaxed print:text-black"
-                >
-                  <span aria-hidden className="shrink-0">
-                    –
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
           </section>
 
           <footer className="text-muted-foreground border-border border-t pt-4 text-xs print:text-black">
