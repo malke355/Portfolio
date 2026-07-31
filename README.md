@@ -1,9 +1,24 @@
 # Melkamu Teshome — Portfolio
 
-Personal portfolio of a full-stack developer, built with Next.js 16 and Tailwind CSS v4.
+[![Live Portfolio](https://img.shields.io/badge/🌐_Portfolio-Live_Interactive_Site-007ACC?style=for-the-badge&logo=vercel&logoColor=white)](https://github.com/malke355/Portfolio)
+[![GitHub Profile](https://img.shields.io/badge/GitHub-malke355-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/malke355)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Melkamu_Teshome-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/melkamu-teshome-03587830a/)
 
-The centrepiece is **`melkamu.sh`**, an interactive terminal that answers questions
-about my work — with no language model involved.
+Personal portfolio of Melkamu Teshome — 3rd year Information Technology student at Jimma University & Full-Stack Developer (React, Next.js, React Native, Node.js, Express, MongoDB, Tailwind CSS).
+
+The centrepiece is **`melkamu.sh`**, an interactive terminal that answers questions about my work — with no language model involved.
+
+---
+
+## 🌟 GitHub Profile Integration (`malke355/malke355`)
+
+This repository includes a ready-to-use GitHub Profile README file: **[`PROFILE_README.md`](./PROFILE_README.md)**.
+
+To display your portfolio link prominently on your main GitHub profile (`https://github.com/malke355`):
+
+1. Create a repository on GitHub named **`malke355`** (matching your username).
+2. Copy the contents of [`PROFILE_README.md`](./PROFILE_README.md) into the `README.md` file of that repository.
+3. When visitors visit your GitHub profile ([`@malke355`](https://github.com/malke355)), they will see an interactive badge and direct button leading straight to your portfolio!
 
 ---
 
