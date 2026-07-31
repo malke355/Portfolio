@@ -36,7 +36,7 @@ export const projects: readonly Project[] = [
     alt: 'GebetaGo food delivery dashboard and mobile app interface',
     links: {
       github: repo('Food_delivery_platform'),
-      demo: 'https://food-delivery-platform-sable.vercel.app',
+      demo: 'https://food-delivery-platform-sable.vercel.app/',
     },
   },
   {
@@ -51,7 +51,7 @@ export const projects: readonly Project[] = [
     alt: 'Expense manager dashboard with spending charts',
     links: {
       github: repo('Expense-manager'),
-      demo: 'https://expense-tracker-u6mq.vercel.app',
+      demo: 'https://expense-tracker-u6mq.vercel.app/',
     },
   },
 ] as const

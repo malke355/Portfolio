@@ -103,7 +103,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 rel="noreferrer noopener"
                 className="bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_-12px_var(--primary)] focus-visible:ring-2 focus-visible:outline-none"
               >
-                Live demo
+                Live Demo
                 <ArrowUpRight className="size-4" />
               </a>
             )}
