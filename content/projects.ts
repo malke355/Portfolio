@@ -33,7 +33,7 @@ export const projects: readonly Project[] = [
     highlights: ['Live order tracking', 'Multi-vendor', 'Role-based access'],
     stack: ['Next.js', 'React Native', 'Node.js', 'Express', 'MongoDB'],
     image: '/images/project-gebetago.png',
-    alt: 'GebetaGo food delivery dashboard and mobile app interface',
+    alt: 'GebetaGo food delivery landing page with Ethiopian cuisine',
     links: {
       github: repo('Food_delivery_platform'),
       demo: 'https://food-delivery-platform-sable.vercel.app/',
@@ -48,7 +48,7 @@ export const projects: readonly Project[] = [
     highlights: ['Budget analytics', 'Recurring detection', 'CSV export'],
     stack: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'MongoDB'],
     image: '/images/project-expense.png',
-    alt: 'Expense manager dashboard with spending charts',
+    alt: 'Yenecash expense tracking landing page',
     links: {
       github: repo('Expense-manager'),
       demo: 'https://expense-tracker-u6mq.vercel.app/',
