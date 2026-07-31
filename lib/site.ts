@@ -76,6 +76,12 @@ export const navLinks = [
   { id: 'contact', label: 'Contact' },
 ] as const
 
+/**
+ * The leading slash is stripped deliberately. When the site is served from a
+ * subdirectory (GitHub Pages project pages live at /Portfolio), a root-relative
+ * path would resolve against the origin and silently drop the prefix, pointing
+ * every canonical URL and sitemap entry at a 404.
+ */
 export function absoluteUrl(path = '/') {
-  return new URL(path, `${siteUrl}/`).toString()
+  return new URL(path.replace(/^\//, ''), `${siteUrl}/`).toString()
 }

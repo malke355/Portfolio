@@ -2,15 +2,9 @@ import { education } from '@/content/experience'
 import { bio, currentFocus } from '@/content/profile'
 import { findProject, projects } from '@/content/projects'
 import { skillGroups } from '@/content/skills'
+import { answerQuestion } from '@/lib/answer'
 import { navLinks, site, socials } from '@/lib/site'
 import type { Block, Command, CommandContext } from '@/lib/terminal/types'
-
-type AskResponse = {
-  answer: string
-  confidence: 'high' | 'medium' | 'none'
-  sources: { title: string; anchor: string | null }[]
-  suggestions: string[]
-}
 
 const help: Command = {
   name: 'help',
@@ -221,26 +215,8 @@ const ask: Command = {
     ctx.print({ kind: 'spinner', text: 'Searching…' })
 
     try {
-      const response = await fetch('/api/ask', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question }),
-        signal: ctx.signal,
-      })
-
-      if (!response.ok) {
-        const problem = (await response.json().catch(() => null)) as {
-          error?: string
-        } | null
-        ctx.replace({
-          kind: 'text',
-          text: problem?.error ?? `Request failed (${response.status}).`,
-          tone: 'error',
-        })
-        return
-      }
-
-      const data = (await response.json()) as AskResponse
+      const data = answerQuestion(question)
+      if (ctx.signal.aborted) return
 
       const blocks: Block[] = [{ kind: 'text', text: data.answer }]
 

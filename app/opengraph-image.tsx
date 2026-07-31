@@ -5,6 +5,9 @@ export const alt = site.title
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
+/** Rendered once at build time so the card ships as a file in the export. */
+export const dynamic = 'force-static'
+
 const stack = ['React', 'Next.js', 'TypeScript', 'Node.js', 'React Native']
 
 export default function OpengraphImage() {

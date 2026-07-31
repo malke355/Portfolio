@@ -1,6 +1,14 @@
 const isDev = process.env.NODE_ENV === 'development'
 
 /**
+ * GitHub Pages serves a project repo from a subdirectory and cannot run a Node
+ * server, so the Pages build is a fully static export mounted under /Portfolio.
+ * Local dev and other hosts leave this off and behave normally.
+ */
+const isGithubPages = process.env.GITHUB_PAGES === 'true'
+const basePath = isGithubPages ? '/Portfolio' : ''
+
+/**
  * Next.js inlines a bootstrap script and Tailwind injects style tags, so
  * 'unsafe-inline' is unavoidable here. The value of this policy is the
  * allowlist: it pins every origin the page may talk to.
@@ -41,14 +49,25 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   images: {
-    // Set NEXT_PUBLIC_UNOPTIMIZED_IMAGES=1 when deploying somewhere without
-    // the Next image optimizer (GitHub Pages, plain static hosting).
-    unoptimized: process.env.NEXT_PUBLIC_UNOPTIMIZED_IMAGES === '1',
+    // Static hosts have no image optimizer, so the export ships the originals.
+    unoptimized: isGithubPages || process.env.NEXT_PUBLIC_UNOPTIMIZED_IMAGES === '1',
     formats: ['image/avif', 'image/webp'],
   },
-  async headers() {
-    return [{ source: '/(.*)', headers: securityHeaders }]
-  },
+  ...(isGithubPages
+    ? {
+        output: 'export',
+        basePath,
+        // Emits every route as a directory with an index.html. Without it a
+        // static host has no file to serve for /resume.
+        trailingSlash: true,
+      }
+    : {
+        // A static export is a bag of files with no server to set headers on;
+        // these only apply where something is actually serving the site.
+        async headers() {
+          return [{ source: '/(.*)', headers: securityHeaders }]
+        },
+      }),
 }
 
 export default nextConfig
