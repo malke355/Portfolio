@@ -34,7 +34,10 @@ export const projects: readonly Project[] = [
     stack: ['Next.js', 'React Native', 'Node.js', 'Express', 'MongoDB'],
     image: '/images/project-gebetago.png',
     alt: 'GebetaGo food delivery dashboard and mobile app interface',
-    links: { github: repo('Food_delivery_platform') },
+    links: {
+      github: repo('Food_delivery_platform'),
+      demo: 'https://food-delivery-platform-sable.vercel.app',
+    },
   },
   {
     slug: 'expense-manager',
@@ -46,7 +49,10 @@ export const projects: readonly Project[] = [
     stack: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'MongoDB'],
     image: '/images/project-expense.png',
     alt: 'Expense manager dashboard with spending charts',
-    links: { github: repo('Expense-manager') },
+    links: {
+      github: repo('Expense-manager'),
+      demo: 'https://expense-tracker-u6mq.vercel.app',
+    },
   },
 ] as const
 
