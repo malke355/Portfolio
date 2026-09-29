@@ -107,7 +107,6 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
-        <div aria-hidden className="grain" />
         <a
           href="#main"
           className="focus:bg-primary focus:text-primary-foreground sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-200 focus:rounded-xl focus:px-4 focus:py-2.5 focus:text-sm focus:font-medium"

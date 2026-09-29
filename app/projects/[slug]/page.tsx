@@ -66,10 +66,9 @@ export default async function ProjectPage({ params }: PageProps) {
       <main id="main" className="pt-24 pb-24 sm:pt-32">
         <div
           aria-hidden
-          className="ambient-layer pointer-events-none absolute inset-x-0 top-0 -z-10 h-[32rem]"
+          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[28rem]"
         >
           <div className="grid-bg absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)] opacity-40" />
-          <div className="bg-primary/10 absolute -top-24 left-1/4 size-[24rem] rounded-full blur-[120px]" />
         </div>
 
         <article className="mx-auto max-w-4xl px-4 sm:px-6">
@@ -101,7 +100,7 @@ export default async function ProjectPage({ params }: PageProps) {
                 href={project.links.demo}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_-12px_var(--primary)] focus-visible:ring-2 focus-visible:outline-none"
+                className="bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:outline-none"
               >
                 Live Demo
                 <ArrowUpRight className="size-4" />
@@ -112,12 +111,10 @@ export default async function ProjectPage({ params }: PageProps) {
               target="_blank"
               rel="noreferrer noopener"
               className={cn(
-                'focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:outline-none',
-                // Promote Source to the primary action when there is no demo,
-                // so the page never presents only a secondary button.
+                'focus-visible:ring-ring inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none',
                 project.links.demo
-                  ? 'border-border hover:border-primary/50 hover:text-primary border'
-                  : 'bg-primary text-primary-foreground hover:shadow-[0_12px_32px_-12px_var(--primary)]',
+                  ? 'border-border hover:bg-secondary border'
+                  : 'bg-primary text-primary-foreground hover:opacity-90',
               )}
             >
               <GithubIcon className="size-4" />
@@ -127,23 +124,25 @@ export default async function ProjectPage({ params }: PageProps) {
 
           <Reveal
             delay={160}
-            className="glass mt-12 overflow-hidden rounded-3xl p-2"
+            className="surface mt-12 overflow-hidden rounded-2xl p-2 shadow-sm"
           >
-            <div className="relative aspect-16/10 overflow-hidden rounded-[1.4rem]">
+            <div className="relative aspect-16/10 overflow-hidden rounded-xl">
               <Image
                 src={project.image}
                 alt={project.alt}
                 fill
                 priority
                 sizes="(max-width: 896px) 100vw, 896px"
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
           </Reveal>
 
-          <div className="mt-12 grid gap-8 sm:grid-cols-2">
-            <Reveal className="glass rounded-3xl p-6 sm:p-8" spotlight>
-              <h2 className="text-lg font-medium">What it does</h2>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-5">
+            <Reveal className="surface rounded-2xl p-6 shadow-sm sm:p-8">
+              <h2 className="text-lg font-medium tracking-tight">
+                What it does
+              </h2>
               <ul className="mt-5 flex flex-col gap-3">
                 {project.highlights.map((highlight) => (
                   <li
@@ -162,15 +161,14 @@ export default async function ProjectPage({ params }: PageProps) {
 
             <Reveal
               delay={80}
-              className="glass rounded-3xl p-6 sm:p-8"
-              spotlight
+              className="surface rounded-2xl p-6 shadow-sm sm:p-8"
             >
-              <h2 className="text-lg font-medium">Built with</h2>
+              <h2 className="text-lg font-medium tracking-tight">Built with</h2>
               <ul className="mt-5 flex flex-wrap gap-2">
                 {project.stack.map((tech) => (
                   <li
                     key={tech}
-                    className="border-border bg-secondary/50 text-foreground/90 rounded-lg border px-2.5 py-1.5 text-xs"
+                    className="border-border bg-secondary/60 text-foreground/90 rounded-full border px-2.5 py-1.5 text-xs"
                   >
                     {tech}
                   </li>
@@ -186,9 +184,9 @@ export default async function ProjectPage({ params }: PageProps) {
             {previous ? (
               <Link
                 href={`/projects/${previous.slug}`}
-                className="glass hover:border-primary/40 focus-visible:ring-ring group rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 focus-visible:ring-2 focus-visible:outline-none"
+                className="surface focus-visible:ring-ring group rounded-2xl p-5 transition-shadow hover:shadow-md focus-visible:ring-2 focus-visible:outline-none"
               >
-                <span className="text-muted-foreground flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase">
+                <span className="text-muted-foreground flex items-center gap-2 text-[11px] font-medium tracking-wide uppercase">
                   <ArrowLeft className="size-3" />
                   Previous
                 </span>
@@ -203,9 +201,9 @@ export default async function ProjectPage({ params }: PageProps) {
             {next && (
               <Link
                 href={`/projects/${next.slug}`}
-                className="glass hover:border-primary/40 focus-visible:ring-ring group rounded-2xl p-5 text-right transition-all duration-300 hover:-translate-y-1 focus-visible:ring-2 focus-visible:outline-none sm:col-start-2"
+                className="surface focus-visible:ring-ring group rounded-2xl p-5 text-right transition-shadow hover:shadow-md focus-visible:ring-2 focus-visible:outline-none sm:col-start-2"
               >
-                <span className="text-muted-foreground flex items-center justify-end gap-2 font-mono text-[10px] tracking-widest uppercase">
+                <span className="text-muted-foreground flex items-center justify-end gap-2 text-[11px] font-medium tracking-wide uppercase">
                   Next
                   <ArrowRight className="size-3" />
                 </span>

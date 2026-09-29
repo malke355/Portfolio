@@ -16,7 +16,7 @@ const channels = [
 ] as (typeof socialLinks)[number][]
 
 const inputClass =
-  'w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 transition-colors duration-300 focus:border-primary/60 focus:ring-2 focus:ring-ring focus:outline-none'
+  'w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/70 transition-colors duration-200 focus:border-primary/50 focus:ring-2 focus:ring-ring focus:outline-none'
 
 export function Contact() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle')
@@ -46,12 +46,8 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="border-border relative scroll-mt-24 border-t py-24 lg:py-32"
+      className="border-border bg-surface relative scroll-mt-24 border-t py-20 lg:py-28"
     >
-      <div
-        aria-hidden
-        className="animate-float-slow bg-primary/8 ambient-layer pointer-events-none absolute bottom-0 left-1/4 -z-10 size-[24rem] rounded-full blur-[130px]"
-      />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Contact"
@@ -59,14 +55,14 @@ export function Contact() {
           description="Open to full-stack roles, internships and freelance projects. I usually reply within a day."
         />
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1fr_0.8fr]">
-          <Reveal className="glass rounded-3xl p-6 sm:p-8">
+        <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
+          <Reveal className="surface rounded-2xl p-6 shadow-sm sm:p-8">
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="flex flex-col gap-2">
                   <label
                     htmlFor="name"
-                    className="text-muted-foreground text-xs font-medium tracking-wide"
+                    className="text-foreground text-xs font-medium"
                   >
                     Name
                   </label>
@@ -82,7 +78,7 @@ export function Contact() {
                 <div className="flex flex-col gap-2">
                   <label
                     htmlFor="email"
-                    className="text-muted-foreground text-xs font-medium tracking-wide"
+                    className="text-foreground text-xs font-medium"
                   >
                     Email
                   </label>
@@ -101,7 +97,7 @@ export function Contact() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="subject"
-                  className="text-muted-foreground text-xs font-medium tracking-wide"
+                  className="text-foreground text-xs font-medium"
                 >
                   Subject
                 </label>
@@ -116,7 +112,7 @@ export function Contact() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="message"
-                  className="text-muted-foreground text-xs font-medium tracking-wide"
+                  className="text-foreground text-xs font-medium"
                 >
                   Message
                 </label>
@@ -134,32 +130,32 @@ export function Contact() {
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="group bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_-12px_var(--primary)] focus-visible:ring-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-60"
+                  className="group bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-60"
                 >
                   {status === 'sending' ? 'Opening mail…' : 'Send message'}
-                  <Send className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <Send className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                 </button>
                 <p aria-live="polite" className="text-muted-foreground text-xs">
                   {status === 'sent'
                     ? "Thanks! Your mail client should be open — I'll reply shortly."
-                    : 'Your message opens in your mail app, pre-filled and ready to send.'}
+                    : 'Opens your mail app with a pre-filled message.'}
                 </p>
               </div>
             </form>
           </Reveal>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3">
             {channels.map((channel, i) => (
-              <Reveal key={channel.label} delay={i * 90}>
+              <Reveal key={channel.label} delay={i * 70}>
                 <a
                   href={channel.href}
                   target={isExternal(channel.href) ? '_blank' : undefined}
                   rel={
                     isExternal(channel.href) ? 'noreferrer noopener' : undefined
                   }
-                  className="glass hover:border-primary/40 focus-visible:ring-ring flex items-center gap-4 rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 focus-visible:ring-2 focus-visible:outline-none"
+                  className="surface focus-visible:ring-ring flex items-center gap-4 rounded-2xl p-4 shadow-sm transition-shadow hover:shadow-md focus-visible:ring-2 focus-visible:outline-none sm:p-5"
                 >
-                  <span className="bg-primary/12 text-primary ring-primary/25 grid size-11 shrink-0 place-items-center rounded-xl ring-1">
+                  <span className="bg-accent text-accent-foreground grid size-10 shrink-0 place-items-center rounded-xl">
                     <channel.Icon className="size-5" />
                   </span>
                   <span className="min-w-0">
@@ -174,7 +170,7 @@ export function Contact() {
               </Reveal>
             ))}
 
-            <Reveal delay={280} className="glass rounded-2xl p-5">
+            <Reveal delay={220} className="surface-muted rounded-2xl p-5">
               <p className="flex items-center gap-2 text-sm font-medium">
                 <MapPin className="text-primary size-4" />
                 {site.location}

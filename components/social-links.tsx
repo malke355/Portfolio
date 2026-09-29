@@ -14,7 +14,7 @@ export function isExternal(href: string) {
 }
 
 const variants = {
-  glass: 'glass size-10',
+  glass: 'border-border bg-background size-10 border',
   outline: 'size-9 border border-border',
 } as const
 
@@ -36,7 +36,7 @@ export function SocialLinks({
             target={isExternal(href) ? '_blank' : undefined}
             rel={isExternal(href) ? 'noreferrer noopener' : undefined}
             className={cn(
-              'text-muted-foreground hover:border-primary/40 hover:text-primary focus-visible:ring-ring grid place-items-center rounded-xl transition-all duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:outline-none',
+              'text-muted-foreground hover:bg-secondary hover:text-foreground focus-visible:ring-ring grid place-items-center rounded-full transition-colors focus-visible:ring-2 focus-visible:outline-none',
               variants[variant],
             )}
           >

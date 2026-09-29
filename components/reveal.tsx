@@ -87,11 +87,8 @@ export function Reveal({
       onPointerMove={onPointerMove}
       style={{ transitionDelay: `${delay}ms` }}
       className={cn(
-        'transition-all duration-700 ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:blur-none motion-reduce:transition-none',
-        visible
-          ? 'translate-y-0 opacity-100 blur-none'
-          : 'translate-y-6 opacity-0 blur-[2px]',
-        spotlight && 'spotlight',
+        'transition-[opacity,transform] duration-600 ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none',
+        visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0',
         className,
       )}
     >

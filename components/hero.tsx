@@ -1,4 +1,4 @@
-import { ArrowRight, Mail, MapPin, Sparkles } from 'lucide-react'
+import { ArrowRight, Mail, MapPin } from 'lucide-react'
 import Image from 'next/image'
 import { Reveal } from '@/components/reveal'
 import { SocialLinks } from '@/components/social-links'
@@ -11,105 +11,84 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden pt-32 pb-20 sm:pt-40 lg:pb-28"
+      className="relative overflow-hidden pt-28 pb-16 sm:pt-36 lg:pb-24"
     >
-      {/* ambient background */}
-      <div
-        aria-hidden
-        className="ambient-layer pointer-events-none absolute inset-0 -z-10"
-      >
-        <div className="grid-bg absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)] opacity-40" />
-        <div className="animate-float-slow bg-primary/12 absolute -top-32 -left-24 size-[26rem] rounded-full blur-[110px]" />
-        <div className="animate-float-slower bg-primary/8 absolute top-24 -right-20 size-[22rem] rounded-full blur-[120px]" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="grid-bg absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_65%)] opacity-50" />
       </div>
 
-      <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
         <div>
           <Reveal>
-            <span className="glass text-muted-foreground inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs">
-              <Sparkles className="text-primary size-3.5" />
-              {site.tagline}
-              <span className="border-border text-primary ml-1 flex items-center gap-1.5 border-l pl-2">
-                <span className="bg-primary size-1.5 animate-pulse rounded-full" />
-                {site.availability}
+            <div className="border-border bg-surface-elevated text-muted-foreground inline-flex flex-wrap items-center gap-2 rounded-full border px-3 py-1.5 text-xs">
+              <span className="bg-primary size-1.5 rounded-full" />
+              {site.availability}
+              <span className="border-border hidden border-l pl-2 sm:inline">
+                {site.role}
               </span>
-            </span>
+            </div>
           </Reveal>
 
-          <Reveal delay={80}>
-            <h1 className="mt-6 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-              <span className="text-gradient">Hi, I&apos;m </span>
-              <span className="text-primary">{site.name}.</span>
+          <Reveal delay={60}>
+            <h1 className="mt-6 text-4xl tracking-tight text-balance sm:text-5xl lg:text-6xl lg:leading-[1.05]">
+              Hi, I&apos;m <span className="text-primary">{site.name}</span>
             </h1>
           </Reveal>
 
-          <Reveal delay={150}>
+          <Reveal delay={120}>
             <p className="text-muted-foreground mt-5 max-w-xl text-base leading-relaxed sm:text-lg">
               {site.summary}
             </p>
           </Reveal>
 
-          <Reveal delay={220}>
+          <Reveal delay={180}>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
                 href="#projects"
-                className="group bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_40px_-12px_var(--primary)] focus-visible:ring-2 focus-visible:outline-none"
+                className="group bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:outline-none"
               >
-                View Projects
-                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                View projects
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
               </a>
               <TerminalTrigger variant="full" />
               <a
                 href="#contact"
-                className="text-muted-foreground hover:text-primary focus-visible:ring-ring inline-flex items-center gap-2 rounded-xl px-3 py-3 text-sm font-medium transition-colors duration-300 focus-visible:ring-2 focus-visible:outline-none"
+                className="border-border hover:bg-secondary focus-visible:ring-ring inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none"
               >
-                Contact Me
+                Contact
                 <Mail className="size-4" />
               </a>
             </div>
           </Reveal>
 
-          <Reveal delay={290}>
-            <div className="mt-9 flex flex-wrap items-center gap-5">
+          <Reveal delay={240}>
+            <div className="mt-8 flex flex-wrap items-center gap-5">
               <SocialLinks />
               <span className="text-muted-foreground inline-flex items-center gap-1.5 text-xs">
-                <MapPin className="text-primary size-3.5" />
+                <MapPin className="size-3.5" />
                 {site.locationNote}
               </span>
             </div>
           </Reveal>
         </div>
 
-        <Reveal delay={140} className="relative">
+        <Reveal delay={100} className="relative">
           <div className="relative mx-auto max-w-sm lg:max-w-none">
-            <div
-              aria-hidden
-              className="bg-primary/10 absolute -inset-6 -z-10 rounded-[2.5rem] blur-3xl"
-            />
-            <div className="glass relative overflow-hidden rounded-[2rem] p-2">
-              {/* Matches the photo's own 3:4 ratio so object-cover has nothing
-                  to crop. */}
-              <div className="relative aspect-3/4 overflow-hidden rounded-[1.6rem]">
+            <div className="surface relative overflow-hidden rounded-2xl p-2 shadow-md">
+              <div className="relative aspect-3/4 overflow-hidden rounded-xl">
                 <Image
                   src="/images/hero-portrait.png"
                   alt={`Portrait of ${site.name}, full-stack developer`}
                   fill
                   priority
                   sizes="(max-width: 1024px) 90vw, 420px"
-                  className="object-cover object-top transition-transform duration-700 hover:scale-[1.03]"
-                />
-                {/* Fades the bottom of the photo into the panel so the
-                    "currently" card sits on a calm surface. Kept shallow so it
-                    does not wash out the subject. */}
-                <div
-                  aria-hidden
-                  className="from-background/95 via-background/20 absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t to-transparent"
+                  className="object-cover object-top"
                 />
               </div>
 
-              <div className="glass absolute bottom-5 left-5 rounded-2xl px-4 py-3">
-                <p className="text-primary font-mono text-[11px] tracking-widest uppercase">
-                  currently
+              <div className="border-border bg-background/95 absolute inset-x-3 bottom-3 rounded-xl border px-4 py-3 backdrop-blur-sm">
+                <p className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
+                  Currently
                 </p>
                 <p className="mt-1 text-sm font-medium">{currentFocus}</p>
               </div>
@@ -118,28 +97,24 @@ export function Hero() {
         </Reveal>
       </div>
 
-      {/* Tech marquee. The list is duplicated to make the scroll seamless, so
-          it is hidden from assistive tech — otherwise the whole stack is
-          announced twice. The Skills section covers the same ground in a
-          structured, readable form. */}
-      <Reveal delay={340} className="mt-16">
+      <Reveal delay={280} className="mt-16 sm:mt-20">
         <div
           aria-hidden
           className="border-border relative overflow-hidden border-y py-4"
         >
           <div
             aria-hidden
-            className="from-background pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r to-transparent"
+            className="from-background pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r to-transparent sm:w-24"
           />
           <div
             aria-hidden
-            className="from-background pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l to-transparent"
+            className="from-background pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l to-transparent sm:w-24"
           />
           <div className="animate-marquee flex w-max items-center gap-10 pr-10">
             {[...heroStack, ...heroStack].map((item, i) => (
               <span
                 key={`${item}-${i}`}
-                className="text-muted-foreground font-mono text-xs tracking-[0.2em] whitespace-nowrap uppercase"
+                className="text-muted-foreground text-xs font-medium tracking-[0.18em] whitespace-nowrap uppercase"
               >
                 {item}
               </span>

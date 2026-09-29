@@ -16,15 +16,14 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <Reveal className={cn('max-w-2xl', className)}>
-      <span className="text-primary inline-flex items-center gap-2 font-mono text-xs tracking-[0.25em] uppercase">
-        <span aria-hidden className="bg-primary/50 h-px w-8" />
+      <p className="text-primary text-sm font-medium tracking-wide">
         {eyebrow}
-      </span>
-      <h2 className="mt-4 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+      </p>
+      <h2 className="mt-3 text-3xl tracking-tight text-balance sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15]">
         {title}
       </h2>
       {description ? (
-        <p className="text-muted-foreground mt-4 leading-relaxed text-pretty">
+        <p className="text-muted-foreground mt-4 max-w-xl text-base leading-relaxed text-pretty sm:text-lg">
           {description}
         </p>
       ) : null}

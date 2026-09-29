@@ -53,13 +53,13 @@ export function TerminalTrigger({
       type="button"
       onClick={openTerminal}
       className={cn(
-        'glass hover:border-primary/40 focus-visible:ring-ring group inline-flex items-center gap-2.5 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:outline-none',
+        'border-border hover:bg-secondary focus-visible:ring-ring group inline-flex items-center gap-2.5 rounded-full border px-4 py-2.5 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none',
         className,
       )}
     >
-      <TerminalSquare className="text-primary size-4" />
+      <TerminalSquare className="size-4" />
       Ask my terminal
-      <kbd className="border-border text-muted-foreground group-hover:text-primary ml-1 rounded-md border px-1.5 py-0.5 font-mono text-[10px]">
+      <kbd className="border-border text-muted-foreground ml-0.5 rounded-md border px-1.5 py-0.5 font-mono text-[10px]">
         {modifier} K
       </kbd>
     </button>
