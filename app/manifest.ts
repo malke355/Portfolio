@@ -5,6 +5,9 @@ import { absoluteUrl, site } from '@/lib/site'
  * Manifest paths are not rewritten by basePath the way metadata icons are, so
  * these are absolute — otherwise they break when served from a subdirectory.
  */
+/** Written out as a file at build time so the static export can serve it. */
+export const dynamic = 'force-static'
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: site.title,
