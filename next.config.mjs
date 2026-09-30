@@ -8,6 +8,9 @@ const isDev = process.env.NODE_ENV === 'development'
 const isGithubPages = process.env.GITHUB_PAGES === 'true'
 const basePath = isGithubPages ? '/Portfolio' : ''
 
+// Exposed to the client bundle so the image loader can prefix asset URLs.
+process.env.NEXT_PUBLIC_BASE_PATH = basePath
+
 /**
  * Next.js inlines a bootstrap script and Tailwind injects style tags, so
  * 'unsafe-inline' is unavoidable here. The value of this policy is the
@@ -49,10 +52,17 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   images: {
-    // Static hosts have no image optimizer, so the export ships the originals.
-    unoptimized:
-      isGithubPages || process.env.NEXT_PUBLIC_UNOPTIMIZED_IMAGES === '1',
     formats: ['image/avif', 'image/webp'],
+    ...(isGithubPages
+      ? {
+          // Custom loader returns the public file URL with /Portfolio prefixed.
+          // Required for static export (no /_next/image optimizer on Pages).
+          loader: 'custom',
+          loaderFile: './lib/image-loader.js',
+        }
+      : {
+          unoptimized: process.env.NEXT_PUBLIC_UNOPTIMIZED_IMAGES === '1',
+        }),
   },
   ...(isGithubPages
     ? {
