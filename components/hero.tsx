@@ -26,7 +26,7 @@ export function Hero() {
 
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
         <div>
-          <Reveal variant="blur">
+          <Reveal eager variant="blur">
             <div className="border-border bg-surface-elevated text-muted-foreground inline-flex flex-wrap items-center gap-2 rounded-full border px-3 py-1.5 text-xs shadow-sm">
               <span className="bg-primary animate-pulse-dot size-1.5 rounded-full" />
               {site.availability}
@@ -36,14 +36,14 @@ export function Hero() {
             </div>
           </Reveal>
 
-          <Reveal delay={70} variant="blur">
+          <Reveal eager delay={70} variant="blur">
             <h1 className="mt-6 text-4xl tracking-tight text-balance sm:text-5xl lg:text-6xl lg:leading-[1.05]">
               Hi, I&apos;m{' '}
               <span className="text-shimmer font-medium">{site.name}</span>
             </h1>
           </Reveal>
 
-          <Reveal delay={110}>
+          <Reveal eager delay={110}>
             <RotatingPhrase
               phrases={heroPhrases}
               intervalMs={2800}
@@ -51,13 +51,13 @@ export function Hero() {
             />
           </Reveal>
 
-          <Reveal delay={160}>
+          <Reveal eager delay={160}>
             <p className="text-muted-foreground mt-5 max-w-xl text-base leading-relaxed sm:text-lg">
               {site.summary}
             </p>
           </Reveal>
 
-          <Reveal delay={200}>
+          <Reveal eager delay={200}>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
                 href="#projects"
@@ -77,7 +77,7 @@ export function Hero() {
             </div>
           </Reveal>
 
-          <Reveal delay={260}>
+          <Reveal eager delay={260}>
             <div className="mt-8 flex flex-wrap items-center gap-5">
               <SocialLinks />
               <span className="text-muted-foreground inline-flex items-center gap-1.5 text-xs">
@@ -88,7 +88,7 @@ export function Hero() {
           </Reveal>
         </div>
 
-        <Reveal delay={120} variant="scale" className="relative">
+        <Reveal eager delay={120} variant="scale" className="relative">
           <div className="animate-float-slow relative mx-auto max-w-sm lg:max-w-none">
             <TiltCard className="surface relative overflow-hidden rounded-2xl p-2 shadow-lg">
               <div className="relative aspect-3/4 overflow-hidden rounded-xl">

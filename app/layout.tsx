@@ -52,11 +52,17 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
-      { url: '/icon-dark-32x32.png', media: '(prefers-color-scheme: dark)' },
-      { url: '/icon.svg', type: 'image/svg+xml' },
+      {
+        url: absoluteUrl('/icon-light-32x32.png'),
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: absoluteUrl('/icon-dark-32x32.png'),
+        media: '(prefers-color-scheme: dark)',
+      },
+      { url: absoluteUrl('/icon.svg'), type: 'image/svg+xml' },
     ],
-    apple: '/apple-icon.png',
+    apple: absoluteUrl('/apple-icon.png'),
   },
 }
 
@@ -120,7 +126,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        {/* Vercel Analytics 404s on GitHub Pages — only load when not under basePath. */}
+        {process.env.NODE_ENV === 'production' &&
+          !process.env.NEXT_PUBLIC_BASE_PATH && <Analytics />}
       </body>
     </html>
   )
