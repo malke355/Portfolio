@@ -510,6 +510,11 @@
 /* ——— Hero rotating phrase ——— */
 
 .phrase-accent {
+  /* Marker class — gradient is applied on each reel slot so text stays visible. */
+  color: var(--phrase-accent);
+}
+
+.phrase-accent .rotating-phrase-slot {
   background-image: linear-gradient(
     115deg,
     var(--phrase-accent-deep) 0%,
@@ -533,86 +538,53 @@
 .rotating-phrase-sizer,
 .rotating-phrase-viewport {
   grid-area: 1 / 1;
-  display: grid;
 }
 
-.rotating-phrase-measure,
-.rotating-phrase-item {
-  grid-area: 1 / 1;
+.rotating-phrase-sizer {
+  display: grid;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .rotating-phrase-measure {
-  visibility: hidden;
-  pointer-events: none;
+  grid-area: 1 / 1;
 }
 
 .rotating-phrase-viewport {
   position: relative;
   overflow: hidden;
-  /* Soft clip so lines feel like they scroll through a window. */
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    #000 12%,
-    #000 88%,
+    #000 14%,
+    #000 86%,
     transparent 100%
   );
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    #000 12%,
-    #000 88%,
+    #000 14%,
+    #000 86%,
     transparent 100%
   );
 }
 
-.rotating-phrase-item {
-  display: block;
+.rotating-phrase-track {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+.rotating-phrase-track-animate {
+  transition: transform 850ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rotating-phrase-slot {
+  display: flex;
   width: 100%;
-  backface-visibility: hidden;
-  will-change: transform, opacity, filter;
-}
-
-.rotating-phrase-enter {
-  animation: phrase-scroll-in 780ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.rotating-phrase-exit {
-  animation: phrase-scroll-out 780ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes phrase-scroll-in {
-  0% {
-    opacity: 0;
-    filter: blur(4px);
-    transform: translate3d(0, 115%, 0);
-  }
-  35% {
-    opacity: 0.55;
-    filter: blur(1.5px);
-  }
-  100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes phrase-scroll-out {
-  0% {
-    opacity: 1;
-    filter: blur(0);
-    transform: translate3d(0, 0, 0);
-  }
-  45% {
-    opacity: 0.45;
-    filter: blur(1.5px);
-  }
-  100% {
-    opacity: 0;
-    filter: blur(4px);
-    transform: translate3d(0, -115%, 0);
-  }
+  flex: 0 0 auto;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 /* ——— Custom cursor mood ——— */
@@ -718,15 +690,15 @@
   .aurora-wash,
   .skill-chip,
   .loader-mark,
-  .rotating-phrase-enter,
-  .rotating-phrase-exit {
-    animation: none !important;
+  .rotating-phrase-track-animate {
+    transition: none !important;
   }
-  .phrase-accent {
+  .phrase-accent .rotating-phrase-slot {
     color: var(--phrase-accent);
     background: none;
     -webkit-background-clip: unset;
     background-clip: unset;
+    animation: none !important;
   }
   .skill-chip {
     opacity: 1;
