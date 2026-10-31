@@ -75,10 +75,10 @@ const personSchema = {
   description: site.description,
   url: absoluteUrl('/'),
   email: `mailto:${site.email}`,
-  image: absoluteUrl('/images/hero-portrait.png'),
+  image: absoluteUrl('/images/hero-portrait.jpg'),
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Addis Ababa',
+    addressLocality: 'Jimma',
     addressCountry: 'ET',
   },
   sameAs: [socials.github.href, socials.linkedin.href],

@@ -162,7 +162,7 @@ export const knowledge: readonly KnowledgeDoc[] = [
     id: 'education',
     title: 'Education',
     section: 'education',
-    body: `${education.year} ${education.field} at ${education.institution}. ${education.status}. ${education.body}`,
+    body: `${education.year} ${education.field} at ${education.institution}. ${education.body}`,
     keywords: [
       'education',
       'degree',
