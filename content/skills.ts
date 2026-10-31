@@ -11,22 +11,22 @@ export const skillGroups: readonly SkillGroup[] = [
     id: 'frontend',
     title: 'Frontend',
     icon: 'code',
-    blurb: 'Interfaces that feel instant and accessible.',
-    items: ['React', 'Next.js', 'React Native', 'TypeScript', 'Tailwind CSS'],
+    blurb: 'Modern, responsive user experiences.',
+    items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'React Native'],
   },
   {
     id: 'backend',
     title: 'Backend',
     icon: 'server',
-    blurb: 'APIs and data models built to scale.',
-    items: ['Node.js', 'Express', 'MongoDB', 'REST APIs'],
+    blurb: 'APIs, data, and scalable server-side systems.',
+    items: ['Node.js', 'Express', 'NestJS', 'REST APIs', 'SQL', 'MongoDB'],
   },
   {
     id: 'tools',
-    title: 'Tools',
+    title: 'Tools & AI',
     icon: 'wrench',
-    blurb: 'The workflow around shipping software.',
-    items: ['Git', 'GitHub Actions', 'Firebase', 'Figma'],
+    blurb: 'The workflow around building and shipping software.',
+    items: ['Git', 'GitHub', 'Docker', 'Figma', 'AI APIs'],
   },
 ] as const
 
@@ -34,10 +34,11 @@ export const skillGroups: readonly SkillGroup[] = [
 export const heroStack = [
   'React',
   'Next.js',
-  'React Native',
   'TypeScript',
+  'React Native',
   'Node.js',
   'Express',
+  'NestJS',
   'MongoDB',
   'Tailwind CSS',
 ] as const
