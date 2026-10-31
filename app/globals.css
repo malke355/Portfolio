@@ -74,6 +74,11 @@
   --elevation-md: 0 4px 16px oklch(0.22 0.02 160 / 6%);
   --elevation-lg: 0 12px 40px oklch(0.22 0.02 160 / 8%);
 
+  /* Hero rotating phrases — warm amber that pulls the eye vs green primary. */
+  --phrase-accent: oklch(0.55 0.16 55);
+  --phrase-accent-bright: oklch(0.72 0.17 75);
+  --phrase-accent-deep: oklch(0.42 0.14 45);
+
   --radius: 0.75rem;
 }
 
@@ -106,6 +111,10 @@
   --elevation-sm: 0 1px 2px oklch(0 0 0 / 25%);
   --elevation-md: 0 4px 20px oklch(0 0 0 / 30%);
   --elevation-lg: 0 16px 48px oklch(0 0 0 / 40%);
+
+  --phrase-accent: oklch(0.86 0.16 75);
+  --phrase-accent-bright: oklch(0.94 0.12 95);
+  --phrase-accent-deep: oklch(0.78 0.17 55);
 }
 
 @layer base {
@@ -500,6 +509,22 @@
 
 /* ——— Hero rotating phrase ——— */
 
+.phrase-accent {
+  background-image: linear-gradient(
+    115deg,
+    var(--phrase-accent-deep) 0%,
+    var(--phrase-accent) 28%,
+    var(--phrase-accent-bright) 52%,
+    var(--phrase-accent) 76%,
+    var(--phrase-accent-deep) 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-shimmer 3.2s linear infinite;
+}
+
 .rotating-phrase {
   display: grid;
   width: 100%;
@@ -661,12 +686,19 @@
   .animate-float-slow,
   .animate-pulse-dot,
   .text-shimmer,
+  .phrase-accent,
   .aurora-wash,
   .skill-chip,
   .loader-mark,
   .rotating-phrase-enter,
   .rotating-phrase-exit {
     animation: none !important;
+  }
+  .phrase-accent {
+    color: var(--phrase-accent);
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
   }
   .skill-chip {
     opacity: 1;
