@@ -158,7 +158,7 @@ const educationCommand: Command = {
       { kind: 'text', text: education.institution, tone: 'primary' },
       {
         kind: 'text',
-        text: `${education.year} · ${education.status}`,
+        text: education.year,
         tone: 'muted',
       },
       { kind: 'text', text: education.body },

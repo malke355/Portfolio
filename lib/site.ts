@@ -30,8 +30,8 @@ export const site = {
     'Full-stack developer building modern web and mobile applications with React, Next.js, React Native and Node.js.',
   summary:
     'Full-stack developer building modern web and mobile applications — from pixel-precise interfaces to reliable APIs, shipped with clean architecture and a product mindset.',
-  location: 'Addis Ababa, Ethiopia',
-  locationNote: 'Addis Ababa, Ethiopia · Remote friendly',
+  location: 'Jimma, Ethiopia',
+  locationNote: 'Jimma, Ethiopia · Remote friendly',
   availability: 'Open to work',
   email: 'melkamut789@gmail.com',
   keywords: [

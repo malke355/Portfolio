@@ -77,7 +77,7 @@ export function Hero() {
             <div className="surface relative overflow-hidden rounded-2xl p-2 shadow-md">
               <div className="relative aspect-3/4 overflow-hidden rounded-xl">
                 <Image
-                  src="/images/hero-portrait.png"
+                  src="/images/hero-portrait.jpg"
                   alt={`Portrait of ${site.name}, full-stack developer`}
                   fill
                   priority

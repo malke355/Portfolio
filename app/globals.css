@@ -196,7 +196,8 @@
 }
 
 .animate-marquee {
-  animation: marquee-x 36s linear infinite;
+  /* Longer list (all Frontend + Backend + Tools & AI) needs more time to stay readable. */
+  animation: marquee-x 48s linear infinite;
 }
 
 .skip-intro .page-loader {

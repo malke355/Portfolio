@@ -29,7 +29,7 @@ export function Education() {
                 {education.institution}
               </p>
               <p className="text-muted-foreground mt-1 text-xs">
-                {education.year} · {education.status}
+                {education.year}
               </p>
             </div>
           </div>
