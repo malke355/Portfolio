@@ -12,23 +12,13 @@ export function Hero() {
   return (
     <section
       id="home"
-      data-scroll-scene
       className="relative overflow-hidden pt-28 pb-16 sm:pt-36 lg:pb-24"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="grid-bg absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_65%)] opacity-50" />
-        <div
-          data-parallax="0.35"
-          className="ambient-orb ambient-orb-a -top-16 left-[8%] size-[22rem] sm:size-[28rem]"
-        />
-        <div
-          data-parallax="0.55"
-          className="ambient-orb ambient-orb-b top-[30%] right-[-6%] size-[18rem] sm:size-[24rem]"
-        />
-        <div
-          data-parallax="0.25"
-          className="ambient-orb ambient-orb-c bottom-[-4%] left-[35%] size-[16rem] opacity-70"
-        />
+        <div className="ambient-orb ambient-orb-a -top-16 left-[8%] size-[22rem] sm:size-[28rem]" />
+        <div className="ambient-orb ambient-orb-b top-[30%] right-[-6%] size-[18rem] sm:size-[24rem]" />
+        <div className="ambient-orb ambient-orb-c bottom-[-4%] left-[35%] size-[16rem] opacity-70" />
         <div className="aurora-wash from-primary/10 to-primary/5 absolute inset-x-0 top-0 h-[70%] bg-gradient-to-b via-transparent" />
       </div>
 

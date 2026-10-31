@@ -42,17 +42,14 @@ export function ScrollProgress() {
   }, [])
 
   return (
-    <>
-      <div aria-hidden className="scroll-velocity-wash scroll-fx-only" />
+    <div
+      aria-hidden
+      className="pointer-events-none fixed inset-x-0 top-0 z-100 h-0.5"
+    >
       <div
-        aria-hidden
-        className="scroll-progress-track pointer-events-none fixed inset-x-0 top-0 z-100"
-      >
-        <div
-          ref={barRef}
-          className="scroll-progress-bar from-primary/50 via-primary to-primary/70 h-full origin-left scale-x-0 bg-gradient-to-r"
-        />
-      </div>
-    </>
+        ref={barRef}
+        className="from-primary/40 via-primary to-primary/40 h-full origin-left scale-x-0 bg-gradient-to-r"
+      />
+    </div>
   )
 }

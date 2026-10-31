@@ -4,7 +4,6 @@ import { Education } from '@/components/education'
 import { Hero } from '@/components/hero'
 import { PageLoader } from '@/components/page-loader'
 import { Projects } from '@/components/projects'
-import { ScrollFx } from '@/components/scroll-fx'
 import { ScrollProgress } from '@/components/scroll-progress'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteNav } from '@/components/site-nav'
@@ -14,7 +13,6 @@ export default function Page() {
   return (
     <>
       <PageLoader />
-      <ScrollFx />
       <ScrollProgress />
       <SiteNav />
       <main id="main">

@@ -46,8 +46,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      data-scroll-scene
-      className="border-border bg-surface relative scroll-mt-24 overflow-hidden border-t py-20 lg:py-28"
+      className="border-border bg-surface relative scroll-mt-24 border-t py-20 lg:py-28"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading

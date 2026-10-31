@@ -16,11 +16,7 @@ export function About() {
   ]
 
   return (
-    <section
-      id="about"
-      data-scroll-scene
-      className="relative scroll-mt-24 py-20 lg:py-28"
-    >
+    <section id="about" className="relative scroll-mt-24 py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="About"

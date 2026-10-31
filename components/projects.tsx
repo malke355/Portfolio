@@ -7,11 +7,7 @@ import { projects } from '@/content/projects'
 
 export function Projects() {
   return (
-    <section
-      id="projects"
-      data-scroll-scene
-      className="relative scroll-mt-24 overflow-hidden py-20 lg:py-28"
-    >
+    <section id="projects" className="relative scroll-mt-24 py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Projects"
