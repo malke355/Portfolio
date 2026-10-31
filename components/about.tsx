@@ -25,7 +25,11 @@ export function About() {
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
-          <Reveal className="surface flex flex-col gap-5 rounded-2xl p-6 shadow-sm sm:p-8">
+          <Reveal
+            variant="blur"
+            spotlight
+            className="surface card-lift flex flex-col gap-5 rounded-2xl p-6 shadow-sm sm:p-8"
+          >
             {bio.map((paragraph) => (
               <p
                 key={paragraph.slice(0, 32)}
@@ -37,8 +41,10 @@ export function About() {
           </Reveal>
 
           <Reveal
-            delay={80}
-            className="surface-muted flex flex-col rounded-2xl p-6 sm:p-8"
+            delay={100}
+            variant="scale"
+            spotlight
+            className="surface-muted card-lift flex flex-col rounded-2xl p-6 sm:p-8"
           >
             <h3 className="text-sm font-medium tracking-tight">At a glance</h3>
 

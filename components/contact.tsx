@@ -56,7 +56,11 @@ export function Contact() {
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
-          <Reveal className="surface rounded-2xl p-6 shadow-sm sm:p-8">
+          <Reveal
+            variant="left"
+            spotlight
+            className="surface card-lift rounded-2xl p-6 shadow-sm sm:p-8"
+          >
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="flex flex-col gap-2">
@@ -146,14 +150,14 @@ export function Contact() {
 
           <div className="flex flex-col gap-3">
             {channels.map((channel, i) => (
-              <Reveal key={channel.label} delay={i * 70}>
+              <Reveal key={channel.label} delay={i * 70} variant="right">
                 <a
                   href={channel.href}
                   target={isExternal(channel.href) ? '_blank' : undefined}
                   rel={
                     isExternal(channel.href) ? 'noreferrer noopener' : undefined
                   }
-                  className="surface focus-visible:ring-ring flex items-center gap-4 rounded-2xl p-4 shadow-sm transition-shadow hover:shadow-md focus-visible:ring-2 focus-visible:outline-none sm:p-5"
+                  className="surface card-lift focus-visible:ring-ring flex items-center gap-4 rounded-2xl p-4 shadow-sm focus-visible:ring-2 focus-visible:outline-none sm:p-5"
                 >
                   <span className="bg-accent text-accent-foreground grid size-10 shrink-0 place-items-center rounded-xl">
                     <channel.Icon className="size-5" />

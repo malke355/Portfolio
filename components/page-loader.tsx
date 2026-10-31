@@ -39,12 +39,12 @@ export function PageLoader() {
       style={{ visibility: done ? 'hidden' : 'visible' }}
     >
       <div className="flex w-56 flex-col items-center gap-4">
-        <span className="text-muted-foreground font-mono text-xs tracking-[0.35em] uppercase">
+        <span className="loader-mark text-muted-foreground font-mono text-xs tracking-[0.35em] uppercase">
           {site.initials}
         </span>
-        <div className="bg-border h-px w-full overflow-hidden">
+        <div className="bg-border h-px w-full overflow-hidden rounded-full">
           <div
-            className="bg-primary h-full transition-[width] duration-500 ease-out"
+            className="from-primary/50 via-primary to-primary/70 h-full bg-gradient-to-r transition-[width] duration-500 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>

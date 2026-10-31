@@ -12,15 +12,22 @@ const icons = {
 
 function SkillIcon({ name }: { name: SkillGroup['icon'] }) {
   const Icon = icons[name]
-  return <Icon className="size-5" />
+  return (
+    <Icon className="size-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
+  )
 }
 
 export function Skills() {
   return (
     <section
       id="skills"
-      className="border-border bg-surface relative scroll-mt-24 border-y py-20 lg:py-28"
+      className="border-border bg-surface relative scroll-mt-24 overflow-hidden border-y py-20 lg:py-28"
     >
+      <div
+        aria-hidden
+        className="ambient-orb ambient-orb-a pointer-events-none top-[-20%] right-[-10%] size-[22rem] opacity-40"
+      />
+
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Skills"
@@ -32,11 +39,13 @@ export function Skills() {
           {skillGroups.map((group, i) => (
             <Reveal
               key={group.id}
-              delay={i * 80}
-              className="surface group flex flex-col rounded-2xl p-6 shadow-sm transition-shadow duration-300 hover:shadow-md"
+              delay={i * 90}
+              variant={i === 1 ? 'scale' : i === 2 ? 'right' : 'left'}
+              spotlight
+              className="surface card-lift group flex flex-col rounded-2xl p-6 shadow-sm"
             >
               <div className="flex items-center gap-3">
-                <span className="bg-accent text-accent-foreground grid size-10 place-items-center rounded-xl">
+                <span className="bg-accent text-accent-foreground grid size-10 place-items-center rounded-xl transition-transform duration-300 group-hover:scale-105">
                   <SkillIcon name={group.icon} />
                 </span>
                 <div>
@@ -54,10 +63,13 @@ export function Skills() {
               </p>
 
               <ul className="mt-5 flex flex-wrap gap-2">
-                {group.items.map((item) => (
+                {group.items.map((item, itemIndex) => (
                   <li
                     key={item}
-                    className="border-border bg-background text-foreground/90 rounded-full border px-2.5 py-1 text-xs"
+                    className="skill-chip border-border bg-background text-foreground/90 rounded-full border px-2.5 py-1 text-xs"
+                    style={{
+                      animationDelay: `${180 + i * 90 + itemIndex * 45}ms`,
+                    }}
                   >
                     {item}
                   </li>
