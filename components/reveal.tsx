@@ -14,6 +14,12 @@ type RevealProps = {
   /** Track the pointer and light the surface under it. */
   spotlight?: boolean
   variant?: RevealVariant
+  /**
+   * Show as soon as the component mounts (hero / above-the-fold).
+   * Avoids content getting stuck invisible if IntersectionObserver is flaky
+   * (some GitHub mobile webviews).
+   */
+  eager?: boolean
 }
 
 /**
@@ -34,7 +40,9 @@ function getSharedObserver() {
         sharedObserver?.unobserve(entry.target)
       }
     },
-    { threshold: 0.12, rootMargin: '0px 0px -60px 0px' },
+    // threshold 0 = any visible pixel counts. Positive bottom rootMargin was
+    // previously shrinking the hit area and could leave in-view blocks hidden.
+    { threshold: 0, rootMargin: '0px 0px -8% 0px' },
   )
   return sharedObserver
 }
@@ -54,9 +62,10 @@ export function Reveal({
   as = 'div',
   spotlight = false,
   variant = 'up',
+  eager = false,
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null)
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(eager)
 
   // Writes two custom properties so the browser only has to repaint a
   // gradient. Going through state here would re-render on every pointer move.
@@ -71,25 +80,38 @@ export function Reveal({
     : undefined
 
   useEffect(() => {
+    if (eager) {
+      setVisible(true)
+      return
+    }
+
     const node = ref.current
     if (!node) return
 
-    // Very old browsers and some embedded webviews lack the observer; showing
-    // the content on the next frame keeps the setState out of the effect body.
+    // Safety net: never leave content stuck at opacity 0.
+    const fallback = window.setTimeout(() => setVisible(true), 900)
+
     if (typeof IntersectionObserver === 'undefined') {
       const frame = requestAnimationFrame(() => setVisible(true))
-      return () => cancelAnimationFrame(frame)
+      return () => {
+        window.clearTimeout(fallback)
+        cancelAnimationFrame(frame)
+      }
     }
 
     const observer = getSharedObserver()
-    onIntersect.set(node, () => setVisible(true))
+    onIntersect.set(node, () => {
+      window.clearTimeout(fallback)
+      setVisible(true)
+    })
     observer.observe(node)
 
     return () => {
+      window.clearTimeout(fallback)
       onIntersect.delete(node)
       observer.unobserve(node)
     }
-  }, [])
+  }, [eager])
 
   const Tag = as as ElementType
 

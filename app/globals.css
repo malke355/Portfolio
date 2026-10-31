@@ -509,19 +509,26 @@
 /* ——— Hero rotating phrases ——— */
 
 .phrase-accent-text {
-  background-image: linear-gradient(
-    115deg,
-    var(--phrase-accent-deep) 0%,
-    var(--phrase-accent) 28%,
-    var(--phrase-accent-bright) 52%,
-    var(--phrase-accent) 76%,
-    var(--phrase-accent-deep) 100%
-  );
-  background-size: 220% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: text-shimmer 3.2s linear infinite;
+  /* Solid amber always — never invisible if gradient clipping fails. */
+  color: var(--phrase-accent);
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .phrase-accent-text {
+    background-image: linear-gradient(
+      115deg,
+      var(--phrase-accent-deep) 0%,
+      var(--phrase-accent) 28%,
+      var(--phrase-accent-bright) 52%,
+      var(--phrase-accent) 76%,
+      var(--phrase-accent-deep) 100%
+    );
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: text-shimmer 3.2s linear infinite;
+  }
 }
 
 .rotating-phrase {
