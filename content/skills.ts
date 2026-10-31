@@ -30,19 +30,10 @@ export const skillGroups: readonly SkillGroup[] = [
   },
 ] as const
 
-/** Rotating strip in the hero. */
-export const heroStack = [
-  'React',
-  'Next.js',
-  'TypeScript',
-  'React Native',
-  'Node.js',
-  'Express',
-  'NestJS',
-  'MongoDB',
-  'Tailwind CSS',
+/** Every skill across Frontend, Backend, and Tools & AI (source for SEO + hero). */
+export const allSkills = [
+  ...new Set(skillGroups.flatMap((group) => [...group.items])),
 ] as const
 
-export const allSkills = [
-  ...new Set(skillGroups.flatMap((group) => group.items)),
-] as const
+/** Rotating strip in the hero — mirrors allSkills so the marquee stays complete. */
+export const heroStack = allSkills
