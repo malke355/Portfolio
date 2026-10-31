@@ -10,12 +10,13 @@ type RotatingPhraseProps = {
   className?: string
 }
 
-const EXIT_MS = 480
+/** Keep in sync with CSS animation duration. */
+const TRANSITION_MS = 780
 
 /**
- * Premium vertical slide-up phrase cycle.
- * Uses a CSS-grid stack so the tallest phrase reserves height (no CLS),
- * and dual layers for overlapping out/in transitions.
+ * Vertical scroll-replace phrase cycle.
+ * Outgoing line scrolls up and out; incoming scrolls up from below into place.
+ * A CSS-grid sizer keeps height stable across unequal phrase lengths.
  */
 export function RotatingPhrase({
   phrases,
@@ -24,6 +25,7 @@ export function RotatingPhrase({
 }: RotatingPhraseProps) {
   const [index, setIndex] = useState(0)
   const [outgoing, setOutgoing] = useState<number | null>(null)
+  const [animating, setAnimating] = useState(false)
   const [reducedMotion, setReducedMotion] = useState(false)
   const indexRef = useRef(0)
   const transitioningRef = useRef(false)
@@ -54,20 +56,22 @@ export function RotatingPhrase({
       if (reducedMotion) {
         indexRef.current = next
         setOutgoing(null)
+        setAnimating(false)
         setIndex(next)
         return
       }
 
       transitioningRef.current = true
-      // Crossfade layers: outgoing keeps the old phrase, active advances now.
+      setAnimating(true)
       setOutgoing(current)
       indexRef.current = next
       setIndex(next)
 
       exitTimer = window.setTimeout(() => {
         setOutgoing(null)
+        setAnimating(false)
         transitioningRef.current = false
-      }, EXIT_MS)
+      }, TRANSITION_MS)
     }, intervalMs)
 
     return () => {
@@ -87,7 +91,6 @@ export function RotatingPhrase({
       aria-live="polite"
       aria-atomic="true"
     >
-      {/* Invisible sizers — same cell, tallest phrase owns the height. */}
       <span aria-hidden className="rotating-phrase-sizer">
         {phrases.map((phrase) => (
           <span key={phrase} className="rotating-phrase-measure">
@@ -111,7 +114,7 @@ export function RotatingPhrase({
           key={`in-${index}`}
           className={cn(
             'rotating-phrase-item',
-            !reducedMotion && 'rotating-phrase-enter',
+            !reducedMotion && animating && 'rotating-phrase-enter',
           )}
         >
           {active}

@@ -549,41 +549,69 @@
 .rotating-phrase-viewport {
   position: relative;
   overflow: hidden;
+  /* Soft clip so lines feel like they scroll through a window. */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
 }
 
 .rotating-phrase-item {
   display: block;
   width: 100%;
-  will-change: transform, opacity;
+  backface-visibility: hidden;
+  will-change: transform, opacity, filter;
 }
 
 .rotating-phrase-enter {
-  animation: phrase-slide-in 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: phrase-scroll-in 780ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .rotating-phrase-exit {
-  animation: phrase-slide-out 480ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation: phrase-scroll-out 780ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-@keyframes phrase-slide-in {
-  from {
+@keyframes phrase-scroll-in {
+  0% {
     opacity: 0;
-    transform: translate3d(0, 0.7em, 0);
+    filter: blur(4px);
+    transform: translate3d(0, 115%, 0);
   }
-  to {
+  35% {
+    opacity: 0.55;
+    filter: blur(1.5px);
+  }
+  100% {
     opacity: 1;
+    filter: blur(0);
     transform: translate3d(0, 0, 0);
   }
 }
 
-@keyframes phrase-slide-out {
-  from {
+@keyframes phrase-scroll-out {
+  0% {
     opacity: 1;
+    filter: blur(0);
     transform: translate3d(0, 0, 0);
   }
-  to {
+  45% {
+    opacity: 0.45;
+    filter: blur(1.5px);
+  }
+  100% {
     opacity: 0;
-    transform: translate3d(0, -0.55em, 0);
+    filter: blur(4px);
+    transform: translate3d(0, -115%, 0);
   }
 }
 
