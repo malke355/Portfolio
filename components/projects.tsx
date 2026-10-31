@@ -20,8 +20,9 @@ export function Projects() {
             <Reveal
               as="article"
               key={project.slug}
-              delay={i * 80}
-              className="group surface overflow-hidden rounded-2xl shadow-sm transition-shadow duration-300 hover:shadow-lg"
+              delay={i * 100}
+              variant={i % 2 === 0 ? 'left' : 'right'}
+              className="group surface card-lift overflow-hidden rounded-2xl shadow-sm"
             >
               <div
                 className={`grid lg:grid-cols-2 ${
@@ -34,16 +35,20 @@ export function Projects() {
                     alt={project.alt}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.06]"
                   />
-                  <span className="bg-background/90 text-foreground absolute top-4 left-4 rounded-full px-3 py-1 text-[11px] font-medium tracking-wide">
+                  <div
+                    aria-hidden
+                    className="from-background/0 via-background/0 to-background/35 absolute inset-0 bg-gradient-to-t opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  />
+                  <span className="bg-background/90 text-foreground absolute top-4 left-4 rounded-full px-3 py-1 text-[11px] font-medium tracking-wide shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5">
                     {project.tag}
                   </span>
                 </div>
 
                 <div className="flex flex-col justify-center gap-5 p-6 sm:p-8 lg:p-10">
                   <div>
-                    <h3 className="text-2xl tracking-tight text-balance sm:text-[1.75rem]">
+                    <h3 className="group-hover:text-primary text-2xl tracking-tight text-balance transition-colors duration-300 sm:text-[1.75rem]">
                       {project.name}
                     </h3>
                     <p className="text-muted-foreground mt-3 text-sm leading-relaxed sm:text-[15px]">
@@ -55,7 +60,7 @@ export function Projects() {
                     {project.highlights.map((h) => (
                       <li
                         key={h}
-                        className="bg-accent text-accent-foreground inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium"
+                        className="bg-accent text-accent-foreground inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium transition-transform duration-300 hover:-translate-y-0.5"
                       >
                         {h}
                       </li>
@@ -70,7 +75,7 @@ export function Projects() {
                       {project.stack.map((tech) => (
                         <li
                           key={tech}
-                          className="border-border text-foreground/85 rounded-md border px-2.5 py-1 text-xs"
+                          className="border-border text-foreground/85 hover:border-primary/40 rounded-md border px-2.5 py-1 text-xs transition-colors"
                         >
                           {tech}
                         </li>
@@ -84,17 +89,17 @@ export function Projects() {
                         href={project.links.demo}
                         target="_blank"
                         rel="noreferrer noopener"
-                        className="bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:outline-none"
+                        className="btn-sheen bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium transition-[transform,opacity] duration-300 hover:-translate-y-0.5 hover:opacity-95 focus-visible:ring-2 focus-visible:outline-none"
                       >
                         Live Demo
-                        <ArrowUpRight className="size-4" />
+                        <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </a>
                     )}
                     <a
                       href={project.links.github}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="border-border hover:bg-secondary focus-visible:ring-ring inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                      className="border-border hover:bg-secondary focus-visible:ring-ring inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium transition-[transform,colors] duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:outline-none"
                     >
                       <GithubIcon className="size-4" />
                       GitHub

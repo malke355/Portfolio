@@ -16,9 +16,13 @@ export function Education() {
           description="Currently working towards a degree while building in public."
         />
 
-        <Reveal className="surface mt-12 max-w-3xl rounded-2xl p-6 shadow-sm sm:p-8">
+        <Reveal
+          variant="scale"
+          spotlight
+          className="surface card-lift group mt-12 max-w-3xl rounded-2xl p-6 shadow-sm sm:p-8"
+        >
           <div className="flex items-start gap-4">
-            <span className="bg-accent text-accent-foreground grid size-11 shrink-0 place-items-center rounded-xl">
+            <span className="bg-accent text-accent-foreground grid size-11 shrink-0 place-items-center rounded-xl transition-transform duration-300 group-hover:scale-105 group-hover:rotate-3">
               <GraduationCap className="size-5" />
             </span>
             <div className="min-w-0">

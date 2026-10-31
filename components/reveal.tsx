@@ -4,6 +4,8 @@ import type { ElementType } from 'react'
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 
+type RevealVariant = 'up' | 'left' | 'right' | 'scale' | 'blur'
+
 type RevealProps = {
   children: React.ReactNode
   className?: string
@@ -11,6 +13,7 @@ type RevealProps = {
   as?: 'div' | 'section' | 'li' | 'article' | 'header' | 'span'
   /** Track the pointer and light the surface under it. */
   spotlight?: boolean
+  variant?: RevealVariant
 }
 
 /**
@@ -36,12 +39,21 @@ function getSharedObserver() {
   return sharedObserver
 }
 
+const hiddenByVariant: Record<RevealVariant, string> = {
+  up: 'translate-y-6 opacity-0',
+  left: '-translate-x-6 opacity-0',
+  right: 'translate-x-6 opacity-0',
+  scale: 'scale-[0.94] opacity-0',
+  blur: 'translate-y-4 scale-[0.98] opacity-0 blur-sm',
+}
+
 export function Reveal({
   children,
   className,
   delay = 0,
   as = 'div',
   spotlight = false,
+  variant = 'up',
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null)
   const [visible, setVisible] = useState(false)
@@ -87,8 +99,11 @@ export function Reveal({
       onPointerMove={onPointerMove}
       style={{ transitionDelay: `${delay}ms` }}
       className={cn(
-        'transition-[opacity,transform] duration-600 ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none',
-        visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0',
+        'reveal-base motion-reduce:!translate-x-0 motion-reduce:!translate-y-0 motion-reduce:!scale-100 motion-reduce:!opacity-100 motion-reduce:!blur-none motion-reduce:transition-none',
+        spotlight && 'spotlight-surface',
+        visible
+          ? 'translate-x-0 translate-y-0 scale-100 opacity-100 blur-none'
+          : hiddenByVariant[variant],
         className,
       )}
     >

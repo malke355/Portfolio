@@ -36,7 +36,7 @@ export function SocialLinks({
             target={isExternal(href) ? '_blank' : undefined}
             rel={isExternal(href) ? 'noreferrer noopener' : undefined}
             className={cn(
-              'text-muted-foreground hover:bg-secondary hover:text-foreground focus-visible:ring-ring grid place-items-center rounded-full transition-colors focus-visible:ring-2 focus-visible:outline-none',
+              'text-muted-foreground hover:bg-secondary hover:text-foreground focus-visible:ring-ring grid place-items-center rounded-full transition-[transform,colors,background-color] duration-300 hover:-translate-y-0.5 hover:scale-105 focus-visible:ring-2 focus-visible:outline-none',
               variants[variant],
             )}
           >
