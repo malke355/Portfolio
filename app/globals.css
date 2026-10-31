@@ -498,6 +498,70 @@
   animation: loader-breathe 1.4s ease-in-out infinite;
 }
 
+/* ——— Hero rotating phrase ——— */
+
+.rotating-phrase {
+  display: grid;
+  width: 100%;
+}
+
+.rotating-phrase-sizer,
+.rotating-phrase-viewport {
+  grid-area: 1 / 1;
+  display: grid;
+}
+
+.rotating-phrase-measure,
+.rotating-phrase-item {
+  grid-area: 1 / 1;
+}
+
+.rotating-phrase-measure {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.rotating-phrase-viewport {
+  position: relative;
+  overflow: hidden;
+}
+
+.rotating-phrase-item {
+  display: block;
+  width: 100%;
+  will-change: transform, opacity;
+}
+
+.rotating-phrase-enter {
+  animation: phrase-slide-in 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.rotating-phrase-exit {
+  animation: phrase-slide-out 480ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes phrase-slide-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.7em, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes phrase-slide-out {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -0.55em, 0);
+  }
+}
+
 /* ——— Custom cursor mood ——— */
 
 .cursor-mood,
@@ -599,7 +663,9 @@
   .text-shimmer,
   .aurora-wash,
   .skill-chip,
-  .loader-mark {
+  .loader-mark,
+  .rotating-phrase-enter,
+  .rotating-phrase-exit {
     animation: none !important;
   }
   .skill-chip {
