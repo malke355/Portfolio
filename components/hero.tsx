@@ -47,7 +47,7 @@ export function Hero() {
             <RotatingPhrase
               phrases={heroPhrases}
               intervalMs={2800}
-              className="phrase-accent mt-4 max-w-xl text-xl leading-snug font-semibold tracking-tight text-pretty sm:text-2xl lg:text-[1.75rem] lg:leading-[1.25]"
+              className="mt-4 max-w-xl text-xl leading-snug font-semibold tracking-tight text-pretty sm:text-2xl lg:text-[1.75rem] lg:leading-[1.25]"
             />
           </Reveal>
 

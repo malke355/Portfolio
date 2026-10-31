@@ -74,7 +74,6 @@
   --elevation-md: 0 4px 16px oklch(0.22 0.02 160 / 6%);
   --elevation-lg: 0 12px 40px oklch(0.22 0.02 160 / 8%);
 
-  /* Hero rotating phrases — warm amber that pulls the eye vs green primary. */
   --phrase-accent: oklch(0.55 0.16 55);
   --phrase-accent-bright: oklch(0.72 0.17 75);
   --phrase-accent-deep: oklch(0.42 0.14 45);
@@ -507,14 +506,9 @@
   animation: loader-breathe 1.4s ease-in-out infinite;
 }
 
-/* ——— Hero rotating phrase ——— */
+/* ——— Hero rotating phrases ——— */
 
-.phrase-accent {
-  /* Marker class — gradient is applied on each reel slot so text stays visible. */
-  color: var(--phrase-accent);
-}
-
-.phrase-accent .rotating-phrase-slot {
+.phrase-accent-text {
   background-image: linear-gradient(
     115deg,
     var(--phrase-accent-deep) 0%,
@@ -538,53 +532,58 @@
 .rotating-phrase-sizer,
 .rotating-phrase-viewport {
   grid-area: 1 / 1;
+  display: grid;
 }
 
-.rotating-phrase-sizer {
-  display: grid;
-  visibility: hidden;
-  pointer-events: none;
+.rotating-phrase-measure,
+.rotating-phrase-item {
+  grid-area: 1 / 1;
 }
 
 .rotating-phrase-measure {
-  grid-area: 1 / 1;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .rotating-phrase-viewport {
   position: relative;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    #000 14%,
-    #000 86%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    #000 14%,
-    #000 86%,
-    transparent 100%
-  );
 }
 
-.rotating-phrase-track {
-  display: flex;
-  flex-direction: column;
-  will-change: transform;
-}
-
-.rotating-phrase-track-animate {
-  transition: transform 850ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.rotating-phrase-slot {
-  display: flex;
+.rotating-phrase-item {
+  display: block;
   width: 100%;
-  flex: 0 0 auto;
-  align-items: center;
-  box-sizing: border-box;
+  will-change: transform, opacity;
+}
+
+.rotating-phrase-enter {
+  animation: phrase-in 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.rotating-phrase-exit {
+  animation: phrase-out 500ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes phrase-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.55em, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes phrase-out {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -0.45em, 0);
+  }
 }
 
 /* ——— Custom cursor mood ——— */
@@ -686,19 +685,19 @@
   .animate-float-slow,
   .animate-pulse-dot,
   .text-shimmer,
-  .phrase-accent,
+  .phrase-accent-text,
   .aurora-wash,
   .skill-chip,
   .loader-mark,
-  .rotating-phrase-track-animate {
-    transition: none !important;
+  .rotating-phrase-enter,
+  .rotating-phrase-exit {
+    animation: none !important;
   }
-  .phrase-accent .rotating-phrase-slot {
+  .phrase-accent-text {
     color: var(--phrase-accent);
     background: none;
     -webkit-background-clip: unset;
     background-clip: unset;
-    animation: none !important;
   }
   .skill-chip {
     opacity: 1;
