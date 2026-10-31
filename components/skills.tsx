@@ -21,10 +21,12 @@ export function Skills() {
   return (
     <section
       id="skills"
+      data-scroll-scene
       className="border-border bg-surface relative scroll-mt-24 overflow-hidden border-y py-20 lg:py-28"
     >
       <div
         aria-hidden
+        data-parallax="0.4"
         className="ambient-orb ambient-orb-a pointer-events-none top-[-20%] right-[-10%] size-[22rem] opacity-40"
       />
 

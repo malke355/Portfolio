@@ -190,10 +190,79 @@
 
 .reveal-base {
   transition:
-    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
-    filter 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 900ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, filter;
+}
+
+/* Scroll-driven section / parallax mood (driven by ScrollFx). */
+.scroll-fx {
+  --scroll-progress: 0;
+  --scroll-abs-vel: 0;
+  --marquee-boost: 1;
+}
+
+[data-parallax] {
+  transform: translate3d(0, var(--parallax-y, 0px), 0);
+  will-change: transform;
+}
+
+[data-scroll-scene] {
+  transform: translate3d(0, var(--scene-shift, 0px), 0)
+    scale(var(--scene-scale, 1)) rotate(var(--scene-rotate, 0deg));
+  filter: blur(var(--scene-blur, 0px));
+  opacity: var(--scene-opacity, 1);
+  transform-origin: center center;
+  will-change: transform, filter, opacity;
+  transition: none;
+}
+
+.scroll-fx .animate-marquee {
+  animation-duration: calc(48s / var(--marquee-boost, 1));
+}
+
+.scroll-fx .animate-marquee-reverse {
+  animation-duration: calc(56s / var(--marquee-boost, 1));
+}
+
+.scroll-progress-track {
+  height: 3px;
+  background: color-mix(in oklab, var(--primary) 12%, transparent);
+}
+
+.scroll-progress-bar {
+  transform-origin: left center;
+  box-shadow:
+    0 0 12px color-mix(in oklab, var(--primary) 55%, transparent),
+    0 0 28px
+      color-mix(
+        in oklab,
+        var(--primary) calc(20% + var(--scroll-abs-vel, 0) * 25%),
+        transparent
+      );
+  transition: box-shadow 120ms linear;
+}
+
+.scroll-velocity-wash {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  opacity: calc(var(--scroll-abs-vel, 0) * 0.22);
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--primary) 10%, transparent),
+    transparent 30%,
+    transparent 70%,
+    color-mix(in oklab, var(--primary) 8%, transparent)
+  );
+  mix-blend-mode: soft-light;
+  transition: opacity 80ms linear;
+}
+
+.scroll-fx .ambient-orb {
+  animation-duration: calc(16s / (1 + var(--scroll-abs-vel, 0) * 0.6));
 }
 
 .spotlight-surface {
@@ -274,10 +343,12 @@
 
 .animate-marquee {
   animation: marquee-x 48s linear infinite;
+  animation-duration: calc(48s / var(--marquee-boost, 1));
 }
 
 .animate-marquee-reverse {
   animation: marquee-x-reverse 56s linear infinite;
+  animation-duration: calc(56s / var(--marquee-boost, 1));
 }
 
 @keyframes float-y {
@@ -611,6 +682,15 @@
   }
   .card-lift:hover {
     transform: none;
+  }
+  [data-parallax],
+  [data-scroll-scene] {
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+  .scroll-velocity-wash {
+    display: none !important;
   }
   .page-loader {
     display: none;

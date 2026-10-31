@@ -40,11 +40,11 @@ function getSharedObserver() {
 }
 
 const hiddenByVariant: Record<RevealVariant, string> = {
-  up: 'translate-y-6 opacity-0',
-  left: '-translate-x-6 opacity-0',
-  right: 'translate-x-6 opacity-0',
-  scale: 'scale-[0.94] opacity-0',
-  blur: 'translate-y-4 scale-[0.98] opacity-0 blur-sm',
+  up: 'translate-y-12 opacity-0',
+  left: '-translate-x-14 opacity-0',
+  right: 'translate-x-14 opacity-0',
+  scale: 'scale-[0.88] opacity-0',
+  blur: 'translate-y-10 scale-[0.96] opacity-0 blur-md',
 }
 
 export function Reveal({
