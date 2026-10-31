@@ -80,10 +80,7 @@ export function Reveal({
     : undefined
 
   useEffect(() => {
-    if (eager) {
-      setVisible(true)
-      return
-    }
+    if (eager) return
 
     const node = ref.current
     if (!node) return
