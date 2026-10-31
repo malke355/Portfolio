@@ -74,6 +74,10 @@
   --elevation-md: 0 4px 16px oklch(0.22 0.02 160 / 6%);
   --elevation-lg: 0 12px 40px oklch(0.22 0.02 160 / 8%);
 
+  --phrase-accent: oklch(0.55 0.16 55);
+  --phrase-accent-bright: oklch(0.72 0.17 75);
+  --phrase-accent-deep: oklch(0.42 0.14 45);
+
   --radius: 0.75rem;
 }
 
@@ -106,6 +110,10 @@
   --elevation-sm: 0 1px 2px oklch(0 0 0 / 25%);
   --elevation-md: 0 4px 20px oklch(0 0 0 / 30%);
   --elevation-lg: 0 16px 48px oklch(0 0 0 / 40%);
+
+  --phrase-accent: oklch(0.86 0.16 75);
+  --phrase-accent-bright: oklch(0.94 0.12 95);
+  --phrase-accent-deep: oklch(0.78 0.17 55);
 }
 
 @layer base {
@@ -498,6 +506,86 @@
   animation: loader-breathe 1.4s ease-in-out infinite;
 }
 
+/* ——— Hero rotating phrases ——— */
+
+.phrase-accent-text {
+  background-image: linear-gradient(
+    115deg,
+    var(--phrase-accent-deep) 0%,
+    var(--phrase-accent) 28%,
+    var(--phrase-accent-bright) 52%,
+    var(--phrase-accent) 76%,
+    var(--phrase-accent-deep) 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-shimmer 3.2s linear infinite;
+}
+
+.rotating-phrase {
+  display: grid;
+  width: 100%;
+}
+
+.rotating-phrase-sizer,
+.rotating-phrase-viewport {
+  grid-area: 1 / 1;
+  display: grid;
+}
+
+.rotating-phrase-measure,
+.rotating-phrase-item {
+  grid-area: 1 / 1;
+}
+
+.rotating-phrase-measure {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.rotating-phrase-viewport {
+  position: relative;
+  overflow: hidden;
+}
+
+.rotating-phrase-item {
+  display: block;
+  width: 100%;
+  will-change: transform, opacity;
+}
+
+.rotating-phrase-enter {
+  animation: phrase-in 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.rotating-phrase-exit {
+  animation: phrase-out 500ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes phrase-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.55em, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes phrase-out {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -0.45em, 0);
+  }
+}
+
 /* ——— Custom cursor mood ——— */
 
 .cursor-mood,
@@ -597,10 +685,19 @@
   .animate-float-slow,
   .animate-pulse-dot,
   .text-shimmer,
+  .phrase-accent-text,
   .aurora-wash,
   .skill-chip,
-  .loader-mark {
+  .loader-mark,
+  .rotating-phrase-enter,
+  .rotating-phrase-exit {
     animation: none !important;
+  }
+  .phrase-accent-text {
+    color: var(--phrase-accent);
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
   }
   .skill-chip {
     opacity: 1;

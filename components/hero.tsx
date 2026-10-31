@@ -1,9 +1,11 @@
 import { ArrowRight, Mail, MapPin } from 'lucide-react'
 import Image from 'next/image'
 import { Reveal } from '@/components/reveal'
+import { RotatingPhrase } from '@/components/rotating-phrase'
 import { SocialLinks } from '@/components/social-links'
 import { TerminalTrigger } from '@/components/terminal/terminal-trigger'
 import { TiltCard } from '@/components/tilt-card'
+import { heroPhrases } from '@/content/hero'
 import { currentFocus } from '@/content/profile'
 import { heroStack } from '@/content/skills'
 import { site } from '@/lib/site'
@@ -41,7 +43,15 @@ export function Hero() {
             </h1>
           </Reveal>
 
-          <Reveal delay={140}>
+          <Reveal delay={110}>
+            <RotatingPhrase
+              phrases={heroPhrases}
+              intervalMs={2800}
+              className="mt-4 max-w-xl text-xl leading-snug font-semibold tracking-tight text-pretty sm:text-2xl lg:text-[1.75rem] lg:leading-[1.25]"
+            />
+          </Reveal>
+
+          <Reveal delay={160}>
             <p className="text-muted-foreground mt-5 max-w-xl text-base leading-relaxed sm:text-lg">
               {site.summary}
             </p>
