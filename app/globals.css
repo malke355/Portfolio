@@ -498,6 +498,91 @@
   animation: loader-breathe 1.4s ease-in-out infinite;
 }
 
+/* ——— Custom cursor mood ——— */
+
+.cursor-mood,
+.cursor-mood * {
+  cursor: none !important;
+}
+
+.cursor-mood-layer {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+}
+
+.cursor-mood-core,
+.cursor-mood-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 9999px;
+  will-change: transform;
+  transform: translate3d(-100px, -100px, 0);
+}
+
+.cursor-mood-core {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  background: var(--primary);
+  box-shadow: 0 0 0 1px
+    color-mix(in oklab, var(--primary-foreground) 35%, transparent);
+  transition:
+    transform 80ms ease-out,
+    width 180ms ease,
+    height 180ms ease,
+    margin 180ms ease,
+    background-color 180ms ease,
+    opacity 180ms ease;
+  mix-blend-mode: normal;
+}
+
+.cursor-mood-ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1.5px solid color-mix(in oklab, var(--primary) 70%, transparent);
+  background: color-mix(in oklab, var(--primary) 8%, transparent);
+  transition:
+    width 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    margin 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease,
+    background-color 220ms ease,
+    opacity 220ms ease;
+}
+
+.cursor-mood-hover .cursor-mood-core {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: var(--primary-foreground);
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+.cursor-mood-hover .cursor-mood-ring {
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  border-color: var(--primary);
+  background: color-mix(in oklab, var(--primary) 16%, transparent);
+}
+
+.cursor-mood-down .cursor-mood-core {
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+}
+
+.cursor-mood-down .cursor-mood-ring {
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+  opacity: 0.7;
+}
+
 .skip-intro .page-loader {
   display: none;
 }
