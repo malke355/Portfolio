@@ -194,6 +194,108 @@
   display: none;
 }
 
+/* ——— Premium site atmosphere (background only) ——— */
+
+.atmosphere-base {
+  background:
+    radial-gradient(
+      120% 80% at 10% -10%,
+      color-mix(in oklab, var(--primary) 14%, transparent),
+      transparent 55%
+    ),
+    radial-gradient(
+      90% 70% at 95% 15%,
+      color-mix(in oklab, var(--phrase-accent) 10%, transparent),
+      transparent 50%
+    ),
+    radial-gradient(
+      80% 60% at 50% 110%,
+      color-mix(in oklab, var(--primary) 8%, transparent),
+      transparent 55%
+    ),
+    var(--background);
+}
+
+.atmosphere-mesh {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--foreground) 3.5%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--foreground) 3.5%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 20%, black 10%, transparent 72%);
+  opacity: 0.55;
+}
+
+.atmosphere-beam {
+  width: 42vw;
+  max-width: 36rem;
+  height: 42vw;
+  max-height: 36rem;
+  border-radius: 9999px;
+  filter: blur(64px);
+  opacity: 0.45;
+  animation: drift 22s ease-in-out infinite;
+}
+
+.atmosphere-beam-a {
+  top: -12%;
+  left: -8%;
+  background: color-mix(in oklab, var(--primary) 32%, transparent);
+}
+
+.atmosphere-beam-b {
+  top: 18%;
+  right: -14%;
+  background: color-mix(in oklab, var(--phrase-accent) 22%, transparent);
+  animation-duration: 28s;
+  animation-delay: -8s;
+}
+
+.atmosphere-beam-c {
+  bottom: -18%;
+  left: 28%;
+  background: color-mix(in oklab, var(--primary) 18%, transparent);
+  animation-duration: 32s;
+  animation-delay: -14s;
+  opacity: 0.35;
+}
+
+.atmosphere-vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    color-mix(in oklab, var(--background) 70%, transparent) 100%
+  );
+}
+
+.atmosphere-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  mix-blend-mode: overlay;
+}
+
+.dark .atmosphere-beam {
+  opacity: 0.55;
+}
+
+/* Let section surfaces sit lightly over the atmosphere. */
+.surface,
+.surface-muted {
+  background: color-mix(in oklab, var(--surface-elevated) 88%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.surface-muted {
+  background: color-mix(in oklab, var(--surface) 86%, transparent);
+}
+
 /* ——— Motion system ——— */
 
 .reveal-base {
@@ -427,6 +529,12 @@
 }
 
 .aurora-wash {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--primary) 16%, transparent),
+    color-mix(in oklab, var(--phrase-accent) 8%, transparent),
+    transparent 75%
+  );
   animation: aurora-shift 10s ease-in-out infinite;
 }
 
@@ -689,6 +797,7 @@
   .animate-marquee,
   .animate-marquee-reverse,
   .ambient-orb,
+  .atmosphere-beam,
   .animate-float-slow,
   .animate-pulse-dot,
   .text-shimmer,

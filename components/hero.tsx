@@ -17,11 +17,11 @@ export function Hero() {
       className="relative overflow-hidden pt-28 pb-16 sm:pt-36 lg:pb-24"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="grid-bg absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_65%)] opacity-50" />
-        <div className="ambient-orb ambient-orb-a -top-16 left-[8%] size-[22rem] sm:size-[28rem]" />
-        <div className="ambient-orb ambient-orb-b top-[30%] right-[-6%] size-[18rem] sm:size-[24rem]" />
-        <div className="ambient-orb ambient-orb-c bottom-[-4%] left-[35%] size-[16rem] opacity-70" />
-        <div className="aurora-wash from-primary/10 to-primary/5 absolute inset-x-0 top-0 h-[70%] bg-gradient-to-b via-transparent" />
+        <div className="grid-bg absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)] opacity-40" />
+        <div className="ambient-orb ambient-orb-a -top-16 left-[8%] size-[22rem] sm:size-[30rem]" />
+        <div className="ambient-orb ambient-orb-b top-[28%] right-[-8%] size-[18rem] sm:size-[26rem]" />
+        <div className="ambient-orb ambient-orb-c bottom-[-6%] left-[32%] size-[16rem] opacity-70" />
+        <div className="aurora-wash absolute inset-x-0 top-0 h-[75%] opacity-90" />
       </div>
 
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
