@@ -54,6 +54,25 @@ export const projects: readonly Project[] = [
       demo: 'https://expense-tracker-u6mq.vercel.app/',
     },
   },
+  {
+    slug: 'filfilu-hms',
+    name: 'FILFILU Hospital Management System',
+    tag: 'Full-Stack',
+    description:
+      'A hospital duty schedule and management system with role-based access for admins, doctors, nurses and patients — cookie sessions, Google sign-in, and a PostgreSQL-backed API served with the product UI on one host.',
+    highlights: [
+      'Role-based access',
+      'Duty scheduling',
+      'Google sign-in',
+    ],
+    stack: ['NestJS', 'Express', 'PostgreSQL', 'Prisma', 'TypeScript'],
+    image: '/images/project-filfilu.jpg',
+    alt: 'FILFILU Hospital Management System landing page',
+    links: {
+      github: 'https://github.com/malke355/FILFILU-HMS',
+      demo: 'https://filfilu-hms.vercel.app/',
+    },
+  },
 ] as const
 
 export function findProject(slug: string) {
