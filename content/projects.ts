@@ -73,6 +73,25 @@ export const projects: readonly Project[] = [
       demo: 'https://filfilu-hms.vercel.app/',
     },
   },
+  {
+    slug: 'isms-platform',
+    name: 'ISMS Platform',
+    tag: 'Full-Stack',
+    description:
+      'An Integrated Savings and Credit Management System for SACCO members and staff — tenant-aware portals for deposits, shares, loans and statements, with NestJS APIs and a Next.js web front end.',
+    highlights: [
+      'SACCO multi-tenant',
+      'Member & staff portals',
+      'Savings & loans',
+    ],
+    stack: ['Next.js', 'NestJS', 'TypeScript', 'TypeORM', 'PostgreSQL'],
+    image: '/images/project-isms.jpg',
+    alt: 'ISMS Integrated Savings and Credit Management System welcome page',
+    links: {
+      github: 'https://github.com/Obsann/isms-platform',
+      demo: 'https://isms-platform-red.vercel.app/',
+    },
+  },
 ] as const
 
 export function findProject(slug: string) {
