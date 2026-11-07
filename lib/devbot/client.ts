@@ -1,8 +1,5 @@
 import { answerLocally } from '@/lib/devbot/demo-engine'
-import type {
-  DevBotHistoryItem,
-  DevBotReply,
-} from '@/lib/devbot/types'
+import type { DevBotHistoryItem, DevBotReply } from '@/lib/devbot/types'
 import {
   MAX_DEVBOT_HISTORY,
   MAX_DEVBOT_MESSAGE_LENGTH,
@@ -54,7 +51,10 @@ export async function askDevBot(
 
     const contentType = response.headers.get('content-type') ?? ''
 
-    if (contentType.includes('text/event-stream') || contentType.includes('text/plain')) {
+    if (
+      contentType.includes('text/event-stream') ||
+      contentType.includes('text/plain')
+    ) {
       const reader = response.body?.getReader()
       if (!reader) return answerLocally(cleaned)
 

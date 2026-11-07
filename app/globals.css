@@ -751,21 +751,13 @@
 /* Achievements — tasteful gold accents from the certificate palette */
 .achievement-badge {
   color: oklch(0.42 0.1 75);
-  background: linear-gradient(
-    135deg,
-    oklch(0.93 0.05 85),
-    oklch(0.88 0.08 75)
-  );
+  background: linear-gradient(135deg, oklch(0.93 0.05 85), oklch(0.88 0.08 75));
   border: 1px solid oklch(0.78 0.1 75 / 55%);
 }
 
 .dark .achievement-badge {
   color: oklch(0.9 0.08 85);
-  background: linear-gradient(
-    135deg,
-    oklch(0.32 0.05 75),
-    oklch(0.28 0.04 70)
-  );
+  background: linear-gradient(135deg, oklch(0.32 0.05 75), oklch(0.28 0.04 70));
   border-color: oklch(0.62 0.1 75 / 45%);
 }
 

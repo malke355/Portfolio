@@ -136,7 +136,9 @@ export function answerLocally(rawQuestion: string): DevBotReply {
     return { ...achievementAnswer(), leadCapture: wantsHire }
   }
 
-  if (/\bbackend\b|\bnest\b|\bexpress\b|\bnode\.?js\b|\bapi\b|\bsql\b/.test(lower)) {
+  if (
+    /\bbackend\b|\bnest\b|\bexpress\b|\bnode\.?js\b|\bapi\b|\bsql\b/.test(lower)
+  ) {
     return { ...backendAnswer(), leadCapture: wantsHire }
   }
 
@@ -149,7 +151,10 @@ export function answerLocally(rawQuestion: string): DevBotReply {
   }
 
   if (/\bcontact\b|\bemail\b|\breach\b|\bhire\b|\bavailable\b/.test(lower)) {
-    return { ...contactAnswer(), leadCapture: wantsHire || /\bhire\b/.test(lower) }
+    return {
+      ...contactAnswer(),
+      leadCapture: wantsHire || /\bhire\b/.test(lower),
+    }
   }
 
   const ranked = answerQuestion(question)
@@ -173,10 +178,7 @@ export function answerLocally(rawQuestion: string): DevBotReply {
 
   return {
     content: ranked.answer,
-    links:
-      links.length > 0
-        ? links
-        : [{ label: 'About', href: '#about' }],
+    links: links.length > 0 ? links : [{ label: 'About', href: '#about' }],
     leadCapture: wantsHire,
     mode: 'demo',
   }

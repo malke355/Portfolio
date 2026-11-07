@@ -14,14 +14,18 @@ type Body = {
 }
 
 function readHistory(raw: unknown) {
-  if (!Array.isArray(raw)) return [] as { role: 'user' | 'assistant'; content: string }[]
+  if (!Array.isArray(raw))
+    return [] as { role: 'user' | 'assistant'; content: string }[]
   return raw
     .slice(-MAX_DEVBOT_HISTORY)
     .map((item) => {
       if (!item || typeof item !== 'object') return null
       const role = (item as { role?: unknown }).role
       const content = (item as { content?: unknown }).content
-      if ((role !== 'user' && role !== 'assistant') || typeof content !== 'string') {
+      if (
+        (role !== 'user' && role !== 'assistant') ||
+        typeof content !== 'string'
+      ) {
         return null
       }
       return {

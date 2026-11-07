@@ -31,10 +31,7 @@ export const achievements: readonly Achievement[] = [
     city: 'Addis Ababa',
     summary:
       'For taking part in a day-and-a-half Cursor AI Hackathon at Adwa Museum, in partnership with the Ministry of Innovation and Technology (MinT) and Ethio telecom.',
-    partners: [
-      'Ministry of Innovation and Technology (MinT)',
-      'Ethio telecom',
-    ],
+    partners: ['Ministry of Innovation and Technology (MinT)', 'Ethio telecom'],
     signedBy: {
       name: 'Alpha Lencho',
       title: 'Cursor Ambassador',

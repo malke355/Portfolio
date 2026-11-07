@@ -131,7 +131,7 @@ export function DevBotPanel({ open, onClose }: DevBotPanelProps) {
             ? {
                 ...message,
                 content:
-                  "Something went wrong on my side. Please try again, or use the contact form.",
+                  'Something went wrong on my side. Please try again, or use the contact form.',
               }
             : message,
         ),
@@ -306,7 +306,7 @@ export function DevBotPanel({ open, onClose }: DevBotPanelProps) {
           <button
             type="submit"
             disabled={busy || !input.trim()}
-            className="bg-primary text-primary-foreground focus-visible:ring-ring grid size-10 shrink-0 place-items-center rounded-xl transition-opacity disabled:opacity-40 focus-visible:ring-2 focus-visible:outline-none"
+            className="bg-primary text-primary-foreground focus-visible:ring-ring grid size-10 shrink-0 place-items-center rounded-xl transition-opacity focus-visible:ring-2 focus-visible:outline-none disabled:opacity-40"
             aria-label="Send message"
           >
             <Send className="size-4" />

@@ -21,7 +21,10 @@ export function checkRateLimit(
 
   if (bucket.timestamps.length >= limit) {
     const oldest = bucket.timestamps[0] ?? now
-    const retryAfterSec = Math.max(1, Math.ceil((windowMs - (now - oldest)) / 1000))
+    const retryAfterSec = Math.max(
+      1,
+      Math.ceil((windowMs - (now - oldest)) / 1000),
+    )
     buckets.set(key, bucket)
     return { ok: false, retryAfterSec }
   }
