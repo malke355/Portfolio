@@ -31,6 +31,11 @@ export function About() {
       label: 'Availability',
       value: 'Open to Work & Collaboration',
     },
+    {
+      label: 'Highlight',
+      value: '1st Place — Cursor AI Hackathon Ethiopia',
+      detail: 'July 25–26 · Adwa Museum, Addis Ababa',
+    },
   ]
 
   return (

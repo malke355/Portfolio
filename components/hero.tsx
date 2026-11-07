@@ -29,9 +29,11 @@ export function Hero() {
           <Reveal eager variant="blur">
             <div className="border-border bg-surface-elevated text-muted-foreground inline-flex flex-wrap items-center gap-2 rounded-full border px-3 py-1.5 text-xs shadow-sm">
               <span className="bg-primary animate-pulse-dot size-1.5 rounded-full" />
-              {site.availability}
+              <span className="text-foreground font-medium">
+                Available for work
+              </span>
               <span className="border-border hidden border-l pl-2 sm:inline">
-                {site.role}
+                {site.availability} · {site.role}
               </span>
             </div>
           </Reveal>

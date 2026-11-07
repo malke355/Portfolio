@@ -31,7 +31,12 @@ jobs:
         run: npm install --no-audit --no-fund
 
       - name: Build
-        run: npm run build
+        # Static export cannot ship App Router route handlers. Stash app/api
+        # for the Pages build; DevBot still answers in local demo mode. LLM
+        # mode needs a Node host (Vercel) where the API route is kept.
+        run: |
+          if [ -d app/api ]; then mv app/api /tmp/portfolio-api-stash; fi
+          npm run build
         env:
           GITHUB_PAGES: 'true'
           NEXT_PUBLIC_SITE_URL: https://malke355.github.io/Portfolio
