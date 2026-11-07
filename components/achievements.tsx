@@ -1,11 +1,9 @@
 'use client'
 
 import { Award, MapPin } from 'lucide-react'
-import Image from 'next/image'
 import { useState } from 'react'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
-import { TiltCard } from '@/components/tilt-card'
 import { achievements } from '@/content/achievements'
 import { cn } from '@/lib/utils'
 
@@ -38,26 +36,24 @@ export function Achievements() {
           />
 
           <div className="relative grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
-            <TiltCard maxTilt={7} className="relative">
-              <button
-                type="button"
-                onClick={() => setLightbox(featured.image)}
-                className="bg-muted focus-visible:ring-ring relative aspect-4/3 overflow-hidden focus-visible:ring-2 focus-visible:outline-none lg:aspect-auto lg:min-h-[22rem]"
-                aria-label={`View full ${featured.title}`}
-              >
-                <Image
-                  src={featured.image}
-                  alt={featured.alt}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                />
-                <div className="tilt-shine" />
-                <div aria-hidden className="achievement-seal">
-                  <span>1</span>
-                </div>
-              </button>
-            </TiltCard>
+            <button
+              type="button"
+              onClick={() => setLightbox(featured.image)}
+              className="focus-visible:ring-ring relative aspect-[1062/774] overflow-hidden bg-[#0b0d10] focus-visible:ring-2 focus-visible:outline-none lg:min-h-[22rem]"
+              aria-label={`View full ${featured.title}`}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element -- show certificate reliably without optimizer quirks */}
+              <img
+                src={featured.image}
+                alt={featured.alt}
+                width={1062}
+                height={774}
+                className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+              />
+              <div aria-hidden className="achievement-seal">
+                <span>1</span>
+              </div>
+            </button>
 
             <div className="relative flex flex-col justify-center gap-5 p-6 sm:p-8 lg:p-10">
               <div className="flex flex-wrap items-center gap-2">
@@ -135,7 +131,8 @@ export function Achievements() {
             )}
             onClick={(event) => event.stopPropagation()}
           >
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={lightbox}
               alt={featured.alt}
               width={1062}
