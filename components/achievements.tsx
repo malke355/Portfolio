@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
+import { TiltCard } from '@/components/tilt-card'
 import { achievements } from '@/content/achievements'
 import { cn } from '@/lib/utils'
 
@@ -37,20 +38,26 @@ export function Achievements() {
           />
 
           <div className="relative grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
-            <button
-              type="button"
-              onClick={() => setLightbox(featured.image)}
-              className="bg-muted focus-visible:ring-ring relative aspect-4/3 overflow-hidden focus-visible:ring-2 focus-visible:outline-none lg:aspect-auto lg:min-h-[22rem]"
-              aria-label={`View full ${featured.title}`}
-            >
-              <Image
-                src={featured.image}
-                alt={featured.alt}
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-              />
-            </button>
+            <TiltCard maxTilt={7} className="relative">
+              <button
+                type="button"
+                onClick={() => setLightbox(featured.image)}
+                className="bg-muted focus-visible:ring-ring relative aspect-4/3 overflow-hidden focus-visible:ring-2 focus-visible:outline-none lg:aspect-auto lg:min-h-[22rem]"
+                aria-label={`View full ${featured.title}`}
+              >
+                <Image
+                  src={featured.image}
+                  alt={featured.alt}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                />
+                <div className="tilt-shine" />
+                <div aria-hidden className="achievement-seal">
+                  <span>1</span>
+                </div>
+              </button>
+            </TiltCard>
 
             <div className="relative flex flex-col justify-center gap-5 p-6 sm:p-8 lg:p-10">
               <div className="flex flex-wrap items-center gap-2">
