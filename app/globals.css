@@ -506,6 +506,454 @@
   animation: loader-breathe 1.4s ease-in-out infinite;
 }
 
+/* ——— Cinematic 3D welcome intro ——— */
+
+.welcome-intro {
+  background:
+    radial-gradient(
+      120% 80% at 50% 18%,
+      color-mix(in oklab, var(--primary) 18%, transparent),
+      transparent 55%
+    ),
+    linear-gradient(
+      165deg,
+      color-mix(in oklab, var(--background) 88%, var(--primary)) 0%,
+      var(--background) 42%,
+      color-mix(in oklab, var(--background) 92%, black) 100%
+    );
+  color: var(--foreground);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
+}
+
+.welcome-intro-exit {
+  opacity: 0;
+  transform: scale(1.08);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.welcome-intro-done {
+  opacity: 0;
+}
+
+.welcome-atmosphere {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.welcome-grid {
+  position: absolute;
+  inset: -20%;
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--foreground) 8%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--foreground) 8%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 64px 64px;
+  transform: perspective(900px) rotateX(62deg) translateY(-12%) scale(1.35);
+  transform-origin: center top;
+  mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 72%);
+  opacity: 0.55;
+  animation: welcome-grid-drift 8s ease-in-out infinite alternate;
+}
+
+.welcome-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(48px);
+  opacity: 0.7;
+}
+
+.welcome-glow-a {
+  top: 8%;
+  left: 12%;
+  width: 18rem;
+  height: 18rem;
+  background: color-mix(in oklab, var(--primary) 34%, transparent);
+  animation: welcome-glow-float 5.5s ease-in-out infinite;
+}
+
+.welcome-glow-b {
+  right: 8%;
+  bottom: 18%;
+  width: 22rem;
+  height: 22rem;
+  background: color-mix(in oklab, var(--phrase-accent) 22%, transparent);
+  animation: welcome-glow-float 7s ease-in-out infinite reverse;
+}
+
+.welcome-glow-c {
+  left: 42%;
+  top: 48%;
+  width: 14rem;
+  height: 14rem;
+  background: color-mix(in oklab, var(--primary) 18%, transparent);
+  animation: welcome-glow-float 6.2s ease-in-out infinite 0.8s;
+}
+
+.welcome-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--primary) 80%, white);
+  box-shadow: 0 0 12px color-mix(in oklab, var(--primary) 55%, transparent);
+  animation: welcome-particle-rise 3.4s linear infinite;
+  opacity: 0;
+}
+
+.welcome-particle-1 {
+  left: 18%;
+  bottom: 8%;
+  animation-delay: 0.1s;
+}
+.welcome-particle-2 {
+  left: 32%;
+  bottom: 4%;
+  animation-delay: 0.7s;
+  width: 3px;
+  height: 3px;
+}
+.welcome-particle-3 {
+  left: 48%;
+  bottom: 10%;
+  animation-delay: 1.2s;
+}
+.welcome-particle-4 {
+  left: 61%;
+  bottom: 6%;
+  animation-delay: 0.4s;
+  width: 4px;
+  height: 4px;
+}
+.welcome-particle-5 {
+  left: 74%;
+  bottom: 12%;
+  animation-delay: 1.6s;
+}
+.welcome-particle-6 {
+  left: 86%;
+  bottom: 5%;
+  animation-delay: 0.9s;
+  width: 3px;
+  height: 3px;
+}
+
+.welcome-stage {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.25rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.welcome-scene {
+  position: relative;
+  width: 11rem;
+  height: 11rem;
+  perspective: 900px;
+  transform-style: preserve-3d;
+  animation: welcome-scene-in 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.welcome-orbit {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  border: 1px solid color-mix(in oklab, var(--primary) 35%, transparent);
+  border-radius: 9999px;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.welcome-orbit-outer {
+  width: 12.5rem;
+  height: 12.5rem;
+  margin: -6.25rem 0 0 -6.25rem;
+  animation: welcome-orbit-spin 7s linear infinite;
+  border-top-color: color-mix(in oklab, var(--primary) 80%, transparent);
+  border-bottom-color: color-mix(
+    in oklab,
+    var(--phrase-accent) 55%,
+    transparent
+  );
+}
+
+.welcome-orbit-inner {
+  width: 9.5rem;
+  height: 9.5rem;
+  margin: -4.75rem 0 0 -4.75rem;
+  animation: welcome-orbit-spin 4.8s linear infinite reverse;
+  border-left-color: color-mix(in oklab, var(--primary) 70%, transparent);
+  border-right-color: transparent;
+  opacity: 0.85;
+}
+
+.welcome-cube {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 5.5rem;
+  height: 5.5rem;
+  margin: -2.75rem 0 0 -2.75rem;
+  transform-style: preserve-3d;
+  animation: welcome-cube-spin 3.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.welcome-face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in oklab, var(--primary) 40%, transparent);
+  background: color-mix(in oklab, var(--surface-elevated) 78%, var(--primary));
+  backface-visibility: hidden;
+  box-shadow:
+    inset 0 0 24px color-mix(in oklab, var(--primary) 18%, transparent),
+    0 0 28px color-mix(in oklab, var(--primary) 16%, transparent);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 1.35rem;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.welcome-face-front {
+  transform: translateZ(2.75rem);
+}
+.welcome-face-back {
+  transform: rotateY(180deg) translateZ(2.75rem);
+}
+.welcome-face-right {
+  transform: rotateY(90deg) translateZ(2.75rem);
+  background: color-mix(in oklab, var(--primary) 22%, var(--surface));
+}
+.welcome-face-left {
+  transform: rotateY(-90deg) translateZ(2.75rem);
+  background: color-mix(in oklab, var(--primary) 16%, var(--surface));
+}
+.welcome-face-top {
+  transform: rotateX(90deg) translateZ(2.75rem);
+  background: color-mix(in oklab, var(--phrase-accent) 18%, var(--surface));
+}
+.welcome-face-bottom {
+  transform: rotateX(-90deg) translateZ(2.75rem);
+  background: color-mix(in oklab, var(--primary) 12%, var(--surface));
+}
+
+.welcome-copy {
+  max-width: 28rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.welcome-kicker {
+  margin: 0;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--muted-foreground) 85%, var(--primary));
+  animation: welcome-copy-in 700ms cubic-bezier(0.22, 1, 0.36, 1) 280ms both;
+}
+
+.welcome-name {
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 3.35rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 560;
+  animation: welcome-copy-in 800ms cubic-bezier(0.22, 1, 0.36, 1) 480ms both;
+}
+
+.welcome-line {
+  margin: 0 auto;
+  max-width: 22rem;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--muted-foreground);
+  animation: welcome-copy-in 800ms cubic-bezier(0.22, 1, 0.36, 1) 720ms both;
+}
+
+.welcome-skip {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--surface-elevated) 82%, transparent);
+  color: var(--muted-foreground);
+  border-radius: 9999px;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(10px);
+  transition:
+    color 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease,
+    background-color 200ms ease;
+  animation: welcome-copy-in 600ms cubic-bezier(0.22, 1, 0.36, 1) 1100ms both;
+}
+
+.welcome-skip:hover {
+  color: var(--foreground);
+  border-color: color-mix(in oklab, var(--primary) 45%, var(--border));
+  background: var(--surface-elevated);
+  transform: translateY(-1px);
+}
+
+.welcome-skip:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--background),
+    0 0 0 4px var(--ring);
+}
+
+@keyframes welcome-scene-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, -80px) scale(0.72);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes welcome-cube-spin {
+  0% {
+    transform: rotateX(-28deg) rotateY(28deg) rotateZ(0deg) scale(0.55);
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(-18deg) rotateY(320deg) rotateZ(8deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes welcome-orbit-spin {
+  from {
+    transform: rotateX(68deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(68deg) rotateZ(360deg);
+  }
+}
+
+@keyframes welcome-copy-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+@keyframes welcome-glow-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(12px, -16px, 0) scale(1.08);
+  }
+}
+
+@keyframes welcome-grid-drift {
+  from {
+    opacity: 0.4;
+    transform: perspective(900px) rotateX(62deg) translateY(-10%) scale(1.3);
+  }
+  to {
+    opacity: 0.62;
+    transform: perspective(900px) rotateX(62deg) translateY(-16%) scale(1.38);
+  }
+}
+
+@keyframes welcome-particle-rise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.6);
+  }
+  20% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(8px, -180px, 0) scale(1);
+  }
+}
+
+@media (min-width: 640px) {
+  .welcome-scene {
+    width: 13rem;
+    height: 13rem;
+  }
+
+  .welcome-cube {
+    width: 6.25rem;
+    height: 6.25rem;
+    margin: -3.125rem 0 0 -3.125rem;
+  }
+
+  .welcome-face-front,
+  .welcome-face-back {
+    transform: translateZ(3.125rem);
+  }
+  .welcome-face-back {
+    transform: rotateY(180deg) translateZ(3.125rem);
+  }
+  .welcome-face-right {
+    transform: rotateY(90deg) translateZ(3.125rem);
+  }
+  .welcome-face-left {
+    transform: rotateY(-90deg) translateZ(3.125rem);
+  }
+  .welcome-face-top {
+    transform: rotateX(90deg) translateZ(3.125rem);
+  }
+  .welcome-face-bottom {
+    transform: rotateX(-90deg) translateZ(3.125rem);
+  }
+
+  .welcome-orbit-outer {
+    width: 14.5rem;
+    height: 14.5rem;
+    margin: -7.25rem 0 0 -7.25rem;
+  }
+
+  .welcome-orbit-inner {
+    width: 11rem;
+    height: 11rem;
+    margin: -5.5rem 0 0 -5.5rem;
+  }
+}
+
 /* ——— Hero rotating phrases ——— */
 
 .phrase-accent-text {
@@ -697,7 +1145,17 @@
   .skill-chip,
   .loader-mark,
   .rotating-phrase-enter,
-  .rotating-phrase-exit {
+  .rotating-phrase-exit,
+  .welcome-scene,
+  .welcome-cube,
+  .welcome-orbit,
+  .welcome-kicker,
+  .welcome-name,
+  .welcome-line,
+  .welcome-skip,
+  .welcome-glow,
+  .welcome-grid,
+  .welcome-particle {
     animation: none !important;
   }
   .phrase-accent-text {
