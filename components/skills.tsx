@@ -21,11 +21,15 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="border-border bg-surface relative scroll-mt-24 overflow-hidden border-y py-20 lg:py-28"
+      className="border-border relative scroll-mt-24 overflow-hidden border-y bg-transparent py-20 lg:py-28"
     >
       <div
         aria-hidden
-        className="ambient-orb ambient-orb-a pointer-events-none top-[-20%] right-[-10%] size-[22rem] opacity-40"
+        className="ambient-orb ambient-orb-a pointer-events-none top-[-20%] right-[-10%] size-[22rem] opacity-45"
+      />
+      <div
+        aria-hidden
+        className="ambient-orb ambient-orb-b pointer-events-none bottom-[-30%] left-[-12%] size-[18rem] opacity-30"
       />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
