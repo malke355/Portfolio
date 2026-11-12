@@ -1130,7 +1130,335 @@
   display: none;
 }
 
+/* ——— Futuristic 3D layer (CSS + canvas, no Three.js) ——— */
+
+.hologram-scene {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.hologram-ring {
+  pointer-events: none;
+  position: absolute;
+  inset: -6%;
+  border-radius: 28% 32% 30% 34% / 34% 30% 36% 32%;
+  border: 1px solid color-mix(in oklab, var(--primary) 35%, transparent);
+  transform-style: preserve-3d;
+  opacity: 0.55;
+}
+
+.hologram-ring-a {
+  animation: hologram-spin 18s linear infinite;
+}
+
+.hologram-ring-b {
+  inset: -12%;
+  opacity: 0.35;
+  border-color: color-mix(in oklab, var(--phrase-accent) 40%, transparent);
+  animation: hologram-spin-reverse 26s linear infinite;
+}
+
+.hologram-ring-c {
+  inset: -2%;
+  opacity: 0.25;
+  border-style: dashed;
+  animation: hologram-pulse-ring 4.5s ease-in-out infinite;
+}
+
+.hologram-scan {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in oklab, var(--primary) 18%, transparent) 50%,
+    transparent 100%
+  );
+  background-size: 100% 220%;
+  animation: hologram-scan 5.5s ease-in-out infinite;
+  mix-blend-mode: soft-light;
+  opacity: 0.55;
+}
+
+@keyframes hologram-spin {
+  to {
+    transform: rotateZ(360deg) rotateY(18deg);
+  }
+}
+
+@keyframes hologram-spin-reverse {
+  to {
+    transform: rotateZ(-360deg) rotateX(12deg);
+  }
+}
+
+@keyframes hologram-pulse-ring {
+  0%,
+  100% {
+    transform: scale(1) rotateX(8deg);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.04) rotateX(8deg);
+    opacity: 0.45;
+  }
+}
+
+@keyframes hologram-scan {
+  0% {
+    background-position: 0% -40%;
+  }
+  100% {
+    background-position: 0% 140%;
+  }
+}
+
+.magnetic-btn {
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms ease;
+}
+
+.magnetic-btn:hover {
+  box-shadow: 0 10px 28px color-mix(in oklab, var(--primary) 22%, transparent);
+}
+
+.achievement-seal {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 999px;
+  color: oklch(0.28 0.06 70);
+  font-weight: 700;
+  font-size: 1.15rem;
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      oklch(0.96 0.08 95),
+      oklch(0.78 0.14 75)
+    ),
+    linear-gradient(145deg, oklch(0.9 0.1 85), oklch(0.62 0.12 65));
+  box-shadow:
+    0 8px 20px oklch(0.55 0.1 70 / 35%),
+    inset 0 1px 0 oklch(1 0 0 / 45%);
+  transform: translateZ(40px) rotateY(-12deg);
+  animation: seal-float 3.8s ease-in-out infinite;
+}
+
+.achievement-seal::before {
+  content: '';
+  position: absolute;
+  inset: -0.35rem;
+  border-radius: inherit;
+  border: 1px dashed oklch(0.78 0.12 75 / 70%);
+  animation: hologram-spin 10s linear infinite;
+}
+
+.dark .achievement-seal {
+  color: oklch(0.22 0.05 70);
+}
+
+@keyframes seal-float {
+  0%,
+  100% {
+    transform: translateZ(40px) translateY(0) rotateY(-12deg);
+  }
+  50% {
+    transform: translateZ(48px) translateY(-6px) rotateY(8deg);
+  }
+}
+
+/* DevBot — CSS 3D stage + idle motion */
+.devbot-stage {
+  width: 100%;
+  height: 100%;
+  perspective: 600px;
+  transform-style: preserve-3d;
+}
+
+.devbot-rig {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateY(-12deg) rotateX(8deg);
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.devbot-stage:hover .devbot-rig,
+button:hover .devbot-rig {
+  transform: rotateY(14deg) rotateX(4deg) translateZ(8px);
+}
+
+.devbot-halo {
+  position: absolute;
+  inset: 8%;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    color-mix(in oklab, var(--primary) 35%, transparent),
+    transparent 68%
+  );
+  filter: blur(6px);
+  opacity: 0.55;
+  animation: hologram-pulse-ring 3.2s ease-in-out infinite;
+}
+
+@keyframes devbot-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes devbot-blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.12);
+  }
+}
+
+@keyframes devbot-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes devbot-wave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+
+.devbot-idle {
+  animation: devbot-bob 2.8s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.devbot-idle .devbot-eye {
+  transform-origin: center;
+  animation: devbot-blink 4.5s ease-in-out infinite;
+}
+
+.devbot-idle .devbot-antenna {
+  animation: devbot-pulse 2.4s ease-in-out infinite;
+}
+
+.devbot-idle .devbot-arm-r {
+  transform-origin: 53px 28px;
+  animation: devbot-wave 2.6s ease-in-out infinite;
+}
+
+.devbot-typing i {
+  display: inline-block;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.35;
+  animation: devbot-pulse 1s ease-in-out infinite;
+}
+
+.devbot-typing i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.devbot-typing i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* Achievements — tasteful gold accents from the certificate palette */
+.achievement-badge {
+  color: oklch(0.42 0.1 75);
+  background: linear-gradient(135deg, oklch(0.93 0.05 85), oklch(0.88 0.08 75));
+  border: 1px solid oklch(0.78 0.1 75 / 55%);
+}
+
+.dark .achievement-badge {
+  color: oklch(0.9 0.08 85);
+  background: linear-gradient(135deg, oklch(0.32 0.05 75), oklch(0.28 0.04 70));
+  border-color: oklch(0.62 0.1 75 / 45%);
+}
+
+.achievement-glow {
+  background:
+    radial-gradient(
+      60% 50% at 80% 20%,
+      oklch(0.82 0.12 85 / 18%),
+      transparent 70%
+    ),
+    radial-gradient(
+      50% 40% at 10% 90%,
+      oklch(0.7 0.1 160 / 10%),
+      transparent 70%
+    );
+}
+
+@keyframes achievement-sheen {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.achievement-card::after {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px oklch(0.78 0.1 75 / 22%);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .devbot-idle,
+  .devbot-idle .devbot-eye,
+  .devbot-idle .devbot-antenna,
+  .devbot-idle .devbot-arm-r,
+  .devbot-typing i,
+  .hologram-ring,
+  .hologram-scan,
+  .achievement-seal,
+  .achievement-seal::before,
+  .devbot-halo {
+    animation: none !important;
+  }
+
+  .hologram-ring,
+  .hologram-scan,
+  .devbot-halo {
+    opacity: 0 !important;
+  }
+
+  .devbot-rig,
+  .achievement-seal {
+    transform: none !important;
+  }
+
   html {
     scroll-behavior: auto;
   }

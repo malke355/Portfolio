@@ -1,5 +1,9 @@
+'use client'
+
 import { ArrowRight, Mail, MapPin } from 'lucide-react'
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
+import { HologramFrame } from '@/components/hologram-frame'
 import { Reveal } from '@/components/reveal'
 import { RotatingPhrase } from '@/components/rotating-phrase'
 import { SocialLinks } from '@/components/social-links'
@@ -10,6 +14,11 @@ import { currentFocus } from '@/content/profile'
 import { heroStack } from '@/content/skills'
 import { site } from '@/lib/site'
 
+const FutureField = dynamic(
+  () => import('@/components/future-field').then((mod) => mod.FutureField),
+  { ssr: false },
+)
+
 export function Hero() {
   return (
     <section
@@ -17,7 +26,8 @@ export function Hero() {
       className="relative overflow-hidden pt-28 pb-16 sm:pt-36 lg:pb-24"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="grid-bg absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_65%)] opacity-50" />
+        <FutureField />
+        <div className="grid-bg absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_65%)] opacity-40" />
         <div className="ambient-orb ambient-orb-a -top-16 left-[8%] size-[22rem] sm:size-[28rem]" />
         <div className="ambient-orb ambient-orb-b top-[30%] right-[-6%] size-[18rem] sm:size-[24rem]" />
         <div className="ambient-orb ambient-orb-c bottom-[-4%] left-[35%] size-[16rem] opacity-70" />
@@ -25,13 +35,15 @@ export function Hero() {
       </div>
 
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-        <div>
+        <div className="hero-copy-depth">
           <Reveal eager variant="blur">
             <div className="border-border bg-surface-elevated text-muted-foreground inline-flex flex-wrap items-center gap-2 rounded-full border px-3 py-1.5 text-xs shadow-sm">
               <span className="bg-primary animate-pulse-dot size-1.5 rounded-full" />
-              {site.availability}
+              <span className="text-foreground font-medium">
+                Available for work
+              </span>
               <span className="border-border hidden border-l pl-2 sm:inline">
-                {site.role}
+                {site.availability} · {site.role}
               </span>
             </div>
           </Reveal>
@@ -61,7 +73,7 @@ export function Hero() {
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <a
                 href="#projects"
-                className="btn-sheen group bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium shadow-md transition-[transform,opacity] duration-300 hover:-translate-y-0.5 hover:opacity-95 focus-visible:ring-2 focus-visible:outline-none"
+                className="btn-sheen magnetic-btn group bg-primary text-primary-foreground focus-visible:ring-ring inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium shadow-md transition-[transform,opacity] duration-300 hover:-translate-y-0.5 hover:opacity-95 focus-visible:ring-2 focus-visible:outline-none"
               >
                 View projects
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -69,7 +81,7 @@ export function Hero() {
               <TerminalTrigger variant="full" />
               <a
                 href="#contact"
-                className="border-border hover:bg-secondary focus-visible:ring-ring inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium transition-[transform,colors] duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:outline-none"
+                className="border-border hover:bg-secondary focus-visible:ring-ring magnetic-btn inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium transition-[transform,colors] duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:outline-none"
               >
                 Contact
                 <Mail className="size-4 transition-transform duration-300 group-hover:rotate-6" />
@@ -90,26 +102,32 @@ export function Hero() {
 
         <Reveal eager delay={120} variant="scale" className="relative">
           <div className="animate-float-slow relative mx-auto max-w-sm lg:max-w-none">
-            <TiltCard className="surface relative overflow-hidden rounded-2xl p-2 shadow-lg">
-              <div className="relative aspect-3/4 overflow-hidden rounded-xl">
-                <Image
-                  src="/images/hero-portrait.jpg"
-                  alt={`Portrait of ${site.name}, full-stack developer`}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 90vw, 420px"
-                  className="object-cover object-top transition-transform duration-700 ease-out"
-                />
-                <div className="tilt-shine" />
-              </div>
+            <HologramFrame>
+              <TiltCard
+                maxTilt={11}
+                className="surface relative overflow-hidden rounded-2xl p-2 shadow-lg"
+              >
+                <div className="relative aspect-3/4 overflow-hidden rounded-xl">
+                  <Image
+                    src="/images/hero-portrait.jpg"
+                    alt={`Portrait of ${site.name}, full-stack developer`}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 90vw, 420px"
+                    className="object-cover object-top transition-transform duration-700 ease-out"
+                  />
+                  <div className="tilt-shine" />
+                  <div aria-hidden className="hologram-scan" />
+                </div>
 
-              <div className="border-border bg-background/95 absolute inset-x-3 bottom-3 [transform:translateZ(28px)] rounded-xl border px-4 py-3 shadow-sm backdrop-blur-sm transition-transform duration-300">
-                <p className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
-                  Currently
-                </p>
-                <p className="mt-1 text-sm font-medium">{currentFocus}</p>
-              </div>
-            </TiltCard>
+                <div className="border-border bg-background/95 absolute inset-x-3 bottom-3 [transform:translateZ(36px)] rounded-xl border px-4 py-3 shadow-sm backdrop-blur-sm transition-transform duration-300">
+                  <p className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
+                    Currently
+                  </p>
+                  <p className="mt-1 text-sm font-medium">{currentFocus}</p>
+                </div>
+              </TiltCard>
+            </HologramFrame>
           </div>
         </Reveal>
       </div>

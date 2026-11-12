@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { CustomCursor } from '@/components/custom-cursor'
+import { DevBot } from '@/components/devbot/devbot'
 import { TerminalProvider } from '@/components/terminal/terminal-provider'
 import { allSkills } from '@/content/skills'
 import { absoluteUrl, site, siteUrl, socials } from '@/lib/site'
@@ -120,7 +121,10 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <TerminalProvider>{children}</TerminalProvider>
+        <TerminalProvider>
+          {children}
+          <DevBot />
+        </TerminalProvider>
         <CustomCursor />
         <script
           type="application/ld+json"

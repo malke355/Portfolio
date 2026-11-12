@@ -1,3 +1,4 @@
+import { achievements } from '@/content/achievements'
 import { education } from '@/content/experience'
 import { bio, currentFocus, remoteNote } from '@/content/profile'
 import { projects } from '@/content/projects'
@@ -10,6 +11,7 @@ export type KnowledgeSection =
   | 'projects'
   | 'experience'
   | 'education'
+  | 'achievements'
   | 'contact'
   | 'meta'
 
@@ -180,6 +182,30 @@ export const knowledge: readonly KnowledgeDoc[] = [
     ],
     anchor: '#education',
   },
+  ...achievements.map((item) => ({
+    id: `achievement-${item.id}`,
+    title: `${item.place} — ${item.event}`,
+    section: 'achievements' as const,
+    body: `${site.name} earned ${item.place} at the ${item.event} (${item.dates}, ${item.venue}, ${item.city}). ${item.summary} Certificate signed by ${item.signedBy.name}, ${item.signedBy.title}. Partners named on the certificate: ${item.partners.join(', ')}.`,
+    keywords: [
+      'achievement',
+      'achievements',
+      'award',
+      'certificate',
+      'hackathon',
+      'cursor',
+      'ai',
+      'first place',
+      '1st place',
+      'winner',
+      'ethiopia',
+      'adwa',
+      'mint',
+      item.event.toLowerCase(),
+      item.place.toLowerCase(),
+    ],
+    anchor: '#achievements',
+  })),
   {
     id: 'focus',
     title: 'What I am working on',
